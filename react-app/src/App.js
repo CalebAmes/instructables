@@ -7,6 +7,11 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./services/auth";
+import SplashPage from "./components/SlashLandingPage";
+import Create from "./components/Create";
+import Projects from "./components/AllProjectsPage";
+import Project from "./components/SingleProjectPage";
+
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -48,6 +53,15 @@ function App() {
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <h1>My Home Page</h1>
         </ProtectedRoute>
+        <Route path='/create'>
+          <Create />
+        </Route>
+        <Route path='/projects'>
+          <Projects />
+        </Route>
+        <Route path='/projects/:id'>
+          <Project />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
