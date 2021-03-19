@@ -5,13 +5,34 @@ import { signUp } from '../../services/auth';
 const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [avatar, setAvatar] = useState('')
+  const [avatarLoading, setAvatarLoading] = useState(false)
+  const [bio, setBio] = useState('')
+  const [type, setType] = useState('')
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(username, email, password);
+      const formData = new FormData()
+      formData.append('avatar', avatar)
+      setAvatarLoading(true)
+
+      const res = await fetch('/api/auth/signup', {
+        method: 'POST',
+        body: formData,
+      });
+      
+      if (res.ok) {
+        await res.json()
+        setAvatarLoading(false)
+      }
+      else {
+        setAvatarLoading(false)
+        console.log('an error occurred')
+      }
+      const user = await signUp(username, email, avatar, bio, type, password);
       if (!user.errors) {
         setAuthenticated(true);
       }
@@ -24,6 +45,19 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
+  };
+
+  const updateAvatar = (e) => {
+    const image = e.target.files[0]
+    setAvatar(image);
+  };
+
+    const updateBio = (e) => {
+    setBio(e.target.value);
+  };
+
+    const updateType = (e) => {
+    setType(e.target.value);
   };
 
   const updatePassword = (e) => {
@@ -59,13 +93,21 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
         ></input>
       </div>
       <div>
-        <label>Password</label>
+        <label>Avatar</label>
         <input
-          type="password"
-          name="password"
-          onChange={updatePassword}
-          value={password}
+          type="file"
+          name="avatar"
+          onChange={updateAvatar}
+          value={avatar}
         ></input>
+      </div>
+      <div>
+        <label>Biography</label>
+        <textarea
+          name="bio"
+          onChange={updateBio}
+          value={bio}
+        ></textarea>
       </div>
       <div>
         <label>Repeat Password</label>
