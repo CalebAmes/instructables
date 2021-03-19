@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Projects from './components/Projects'
+import Create from "./components/Create";
+import PublishForm from "./components/PublishForm"
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
@@ -18,7 +21,7 @@ function App() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       const user = await authenticate();
       if (!user.errors) {
         setAuthenticated(true);
@@ -45,7 +48,7 @@ function App() {
           <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
         <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
-          <UsersList/>
+          <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
           <User />
@@ -53,15 +56,15 @@ function App() {
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <h1>My Home Page</h1>
         </ProtectedRoute>
-        <Route path='/create'>
+        <ProtectedRoute path="/create" exact={true} authenticated={authenticated}>
           <Create />
-        </Route>
-        <Route path='/projects'>
+        </ProtectedRoute>
+        <ProtectedRoute path="/create" exact={true} authenticated={authenticated}>
+          <PublishForm />
+        </ProtectedRoute>
+        <ProtectedRoute path="/projects" exact={true} authenticated={authenticated}>
           <Projects />
-        </Route>
-        <Route path='/projects/:id'>
-          <Project />
-        </Route>
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
