@@ -1,15 +1,12 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+
+// this will be the intro/instructions page to create a project.
+// it will have a button that takes the user to create a new project.
+import React from 'react'
+
 
 function Create() {
-  return (
-    <>
-      <h1>Create your new instructable!!</h1>
-      <NavLink to="/editInstructable/new" exact={true} activeClassName="active">
-        New Instructable
-      </NavLink>
-    </>
-  )
+  return <h1>This is the publish instruction page</h1>
 }
 
-export default Create;
+
+export default Create

@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Projects from './components/Projects'
-import Create from "./components/Create";
-import PublishForm from "./components/PublishForm"
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
@@ -56,15 +53,15 @@ function App() {
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <h1>My Home Page</h1>
         </ProtectedRoute>
-        <ProtectedRoute path="/create" exact={true} authenticated={authenticated}>
+        <Route path='/create'>
           <Create />
-        </ProtectedRoute>
-        <ProtectedRoute path="/create" exact={true} authenticated={authenticated}>
-          <PublishForm />
-        </ProtectedRoute>
-        <ProtectedRoute path="/projects" exact={true} authenticated={authenticated}>
+        </Route>
+        <Route path='/projects'>
           <Projects />
-        </ProtectedRoute>
+        </Route>
+        <Route path='/projects/:id'>
+          <Project />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
