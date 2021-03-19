@@ -27,6 +27,16 @@ const NavBar = ({ setAuthenticated }) => {
           </NavLink>
         </li>
         <li>
+          <NavLink to="/create" exact={true} activeClassName="active">
+            Publish
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/projects" exact={true} activeClassName="active">
+            Projects
+          </NavLink>
+        </li>
+        <li>
           <LogoutButton setAuthenticated={setAuthenticated} />
         </li>
       </ul>
