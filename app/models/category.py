@@ -1,5 +1,6 @@
 from .db import db
 from sqlalchemy.dialects import postgresql
+from sqlalchemy.orm import relationship
 
 class Category(db.Model):
   __tablename__ = 'categories'
@@ -9,6 +10,7 @@ class Category(db.Model):
   titles = db.Column(postgresql.ARRAY(db.String(50)))
   imgs = db.Column(postgresql.ARRAY(db.String(50)))
   descriptions = db.Column(postgresql.ARRAY(db.String(50)))
+  categories = db.relationship("Project")
 
 
   # _titles = db.Column(db.String)
