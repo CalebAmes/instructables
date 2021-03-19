@@ -11,10 +11,10 @@ const removeUser = () => ({
 })
 
 
-export const login = ({ credential, password }) => async (dispatch) => {
+export const login = ({ email, password }) => async (dispatch) => {
     const result = await fetch(`/api/auth/login`, {
         method: 'POST',
-        body: JSON.stringify({ credential, password })
+        body: JSON.stringify({ email, password })
     });
     if (result.ok) {
         const user = await result.json();
@@ -25,7 +25,7 @@ export const login = ({ credential, password }) => async (dispatch) => {
 
 
 export const logout = () => async (dispatch) => {
-    const result = await csrfFetch(`/api/auth/logout`, {
+    const result = await fetch(`/api/auth/logout`, {
         method: 'DELETE'
     });
     if (result.ok) {
@@ -48,14 +48,16 @@ export const restoreUser = () => async (dispatch) => {
 export const signUp = (user) => async (dispatch) => {
     const { avatar, username, email, bio, type, password } = user;
     const formData = new FormData();
-    formData.append("username", blogName);
+    formData.append("username", username);
     formData.append("email", email);
+    formData.append("bio", bio)
+    formData.append('type', type)
     formData.append("password", password);
     if (avatar) formData.append("avatar", avatar)
 
     console.log(formData.get('avatar'));
 
-    const res = await csrfFetch(`/api/auth/signup`, {
+    const res = await fetch(`/api/auth/signup`, {
         method: "POST",
         headers: {
             "Content-Type": "multipart/form-data",
