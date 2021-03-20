@@ -3,14 +3,14 @@ from wtforms import StringField, FileField, TextAreaField, SelectField
 from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import User
 
-types = [
-    ('Hobbyist', 'hobbyist'),
-    ('Student', 'student'),
-    ('Teacher', 'teacher'),
-    ('Parent', 'parent')
-    ('Professional', 'professional'),
-    ('Robot','robot')
-]
+# types = [
+#     ('Hobbyist', 'hobbyist'),
+#     ('Student', 'student'),
+#     ('Teacher', 'teacher'),
+#     ('Parent', 'parent')
+#     ('Professional', 'professional'),
+#     ('Robot','robot')
+# ]
 
 def user_exists(form, field):
     print("Checking if user exits", field.data)
@@ -25,6 +25,6 @@ class SignUpForm(FlaskForm):
     email = StringField('email', validators=[DataRequired(), user_exists])
     avatar = FileField('upload an avatar')
     bio = TextAreaField('tell us about yourself')
-    type = SelectField('I am a....', choices=types)
+    # type = SelectField('I am a....', choices=types)
     password = StringField('password', validators=[DataRequired()])
 

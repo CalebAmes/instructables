@@ -64,16 +64,17 @@ def sign_up():
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    user_avatar = request.files['user_avatar']
-    if user_avatar and allowed_file(user_avatar.filename):
-        user_avatar.filename = get_unique_filename(user_avatar.filename)
-        upload = upload_file_to_s3(user_avatar)
     if form.validate_on_submit():
+        user_avatar = request.files['user_avatar']
+        if user_avatar and allowed_file(user_avatar.filename):
+            user_avatar.filename = get_unique_filename(user_avatar.filename)
+            upload = upload_file_to_s3(user_avatar)
         user = User(
             username=form.data['username'],
             email=form.data['email'],
+            avatar=upload ,
+            bio=form.data['bio'],
             password=form.data['password'],
-            avatar=upload 
         )
         db.session.add(user)
         db.session.commit()

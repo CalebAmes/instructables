@@ -45,7 +45,7 @@ export const restoreUser = () => async (dispatch) => {
     }
 }
 
-export const signUp = (user) => async (dispatch) => {
+export const signUpUser = (user) => async (dispatch) => {
     const { avatar, username, email, bio, type, password } = user;
     const formData = new FormData();
     formData.append("username", username);

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Redirect } from 'react-router-dom';
+import { signUpUser } from '../../store/session'
 import { signUp } from '../../services/auth';
 
 const SignUpForm = ({authenticated, setAuthenticated}) => {
@@ -16,24 +17,28 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
     e.preventDefault();
     if (password === repeatPassword) {
       const formData = new FormData()
-      formData.append('avatar', avatar)
+      if (avatar) formData.append('avatar', avatar)
+      formData.append("username", username);
+      formData.append("email", email);
+      if (bio) formData.append("bio", bio)
+      formData.append('type', type)
+      formData.append("password", password);
       setAvatarLoading(true)
 
-      const res = await fetch('/api/auth/signup', {
-        method: 'POST',
-        body: formData,
-      });
-      
-      if (res.ok) {
-        await res.json()
-        setAvatarLoading(false)
-      }
-      else {
-        setAvatarLoading(false)
-        console.log('an error occurred')
-      }
-      const user = await signUp(username, email, avatar, bio, type, password);
+      // const res = await signUp(formData)
+   
+      // if (res.ok) {
+      //   await res.json()
+      //   setAvatarLoading(false)
+      //   setAuthenticated(true)
+      // }
+      // else {
+      //   setAvatarLoading(false)
+      //   console.log('an error occurred')
+      // }
+      const user = await signUp(formData);
       if (!user.errors) {
+        setAvatarLoading(false)
         setAuthenticated(true);
       }
     }
@@ -97,6 +102,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
         <input
           type="file"
           name="avatar"
+          accept="image/*"
           onChange={updateAvatar}
           value={avatar}
         ></input>

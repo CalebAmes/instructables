@@ -3,13 +3,13 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 import enum
 
-class Types(enum.Enum):
-    Hobbyist 'hobbyist'
-    Student = 'student'
-    Teacher = 'teacher'
-    Parent = 'parent'
-    Professional = 'professional'
-    Robot = 'robot'
+# class Types(enum.Enum):
+#     Hobbyist = 'hobbyist'
+#     Student = 'student'
+#     Teacher = 'teacher'
+#     Parent = 'parent'
+#     Professional = 'professional'
+#     Robot = 'robot'
 
 
 class User(db.Model, UserMixin):
@@ -18,9 +18,9 @@ class User(db.Model, UserMixin):
   id = db.Column(db.Integer, primary_key = True)
   username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
-  avatar = db.Column(db.String(1000), default=https://instructables2.s3.amazonaws.com/robots.jpg)
+  avatar = db.Column(db.Text)
   bio = db.Column(db.String(1000))
-  type = db.Column(db.Enum(Types))
+  # type = db.Column(db.Enum(Types))
   hashed_password = db.Column(db.String(255), nullable = False)
 
 
