@@ -24,6 +24,7 @@ flask-login = "*"
 boto3 = "*"
 alembic = "*"
 flask-migrate = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 psycopg2-binary = "*"

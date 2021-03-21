@@ -11,7 +11,7 @@ const removeUser = () => ({
 })
 
 
-export const login = ({ email, password }) => async (dispatch) => {
+export const loginUser = ({ email, password }) => async (dispatch) => {
     const result = await fetch(`/api/auth/login`, {
         method: 'POST',
         body: JSON.stringify({ email, password })
@@ -24,7 +24,7 @@ export const login = ({ email, password }) => async (dispatch) => {
 }
 
 
-export const logout = () => async (dispatch) => {
+export const logoutUser = () => async (dispatch) => {
     const result = await fetch(`/api/auth/logout`, {
         method: 'DELETE'
     });
@@ -36,22 +36,22 @@ export const logout = () => async (dispatch) => {
 }
 
 
-export const restoreUser = () => async (dispatch) => {
-    const response = await fetch(`/api/auth`);
-    if (response.ok) {
-        const sessionUser = await response.json();
+export const authenticateUser = () => async (dispatch) => {
+    const res = await fetch(`/api/auth`);
+    if (res.ok) {
+        const sessionUser = await res.json();
         dispatch(setUser(sessionUser.user));
-        return response;
+        return res;
     }
 }
 
 export const signUpUser = (user) => async (dispatch) => {
-    const { avatar, username, email, bio, type, password } = user;
+    const { avatar, username, email, bio, password } = user;
     const formData = new FormData();
     formData.append("username", username);
     formData.append("email", email);
     formData.append("bio", bio)
-    formData.append('type', type)
+    // formData.append('type', type)
     formData.append("password", password);
     if (avatar) formData.append("avatar", avatar)
 

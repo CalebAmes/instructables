@@ -1,29 +1,57 @@
 import React, { useState } from "react";
 import { Redirect } from 'react-router-dom';
 import { signUpUser } from '../../store/session'
+import {useDispatch, useSelector} from 'react-redux'
 import { signUp } from '../../services/auth';
 
 const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [avatar, setAvatar] = useState('')
+  const [avatar, setAvatar] = useState(null)
   const [avatarLoading, setAvatarLoading] = useState(false)
   const [bio, setBio] = useState('')
   const [type, setType] = useState('')
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [errors, setErrors] = useState([])
+
+  const dispatch = useDispatch()
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const formData = new FormData()
-      if (avatar) formData.append('avatar', avatar)
-      formData.append("username", username);
-      formData.append("email", email);
-      if (bio) formData.append("bio", bio)
-      formData.append('type', type)
-      formData.append("password", password);
-      setAvatarLoading(true)
+      const user = await signUp({username, email, avatar, bio, password})
+      // setErrors([])
+      // let newErrors = []
+      // dispatch(signUpUser({ username, email, password, avatar, bio }))
+      //  .then(() => {
+      //               setUsername("");
+      //               setEmail("");
+      //               setAvatar(null);
+      //               setBio('')
+      //               setPassword("");
+      //               setRepeatPassword('')
+      //           })
+      //           .catch(async (res) => {
+      //               const data = await res.json();
+      //               if (data && data.errors) {
+      //                   newErrors = data.errors;
+      //                   setErrors(newErrors);
+      //               }
+      //           });
+    } else {
+          return setErrors(['Confirm Password field must be the same as the Password.'])
+        }
+    };
+
+      // const formData = new FormData()
+      // if (avatar) formData.append('avatar', avatar)
+      // formData.append("username", username);
+      // formData.append("email", email);
+      // if (bio) formData.append("bio", bio)
+      // formData.append('type', type)
+      // formData.append("password", password);
+      // setAvatarLoading(true)
 
       // const res = await signUp(formData)
    
@@ -36,13 +64,13 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
       //   setAvatarLoading(false)
       //   console.log('an error occurred')
       // }
-      const user = await signUp(formData);
-      if (!user.errors) {
-        setAvatarLoading(false)
-        setAuthenticated(true);
-      }
-    }
-  };
+      // const user = await signUp(formData);
+  //     if (!user.errors) {
+  //       setAvatarLoading(false)
+  //       setAuthenticated(true);
+  //     }
+  //   }
+  // };
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -104,7 +132,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           name="avatar"
           accept="image/*"
           onChange={updateAvatar}
-          value={avatar}
+          // value={avatar}
         ></input>
       </div>
       <div>
@@ -114,6 +142,16 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           onChange={updateBio}
           value={bio}
         ></textarea>
+      </div>
+      <div>
+        <label>Password</label>
+        <input
+          type="password"
+          name="password"
+          onChange={updatePassword}
+          value={password}
+          required={true}
+        ></input>
       </div>
       <div>
         <label>Repeat Password</label>
