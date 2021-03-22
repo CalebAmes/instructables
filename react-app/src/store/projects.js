@@ -54,5 +54,22 @@ export const deleteProject = () => async (dispatch) => {
 
 function reducer(state = {}, action) {
   let newState;
-  
+  switch (action.type) {
+    case ADD_PROJECT:
+      newState = { ...state };
+      newState[action.project.id] = action.project;
+      return newState;
+    case SET_PROJECT:
+      newState = {};
+      action.project.forEach(i => {
+        newState[i.id] = i;
+      });
+      return newState;
+    case REMOVE_PROJECT:
+      return { ...state, project: null };
+    default:
+      return state;
+  }
 }
+
+export default reducer

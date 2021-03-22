@@ -36,4 +36,24 @@ export const createComment = (comment) => async (dispatch) => {
   return res;
 }
 
-function reducer
+function reducer(state = {}, action) {
+  let newState;
+  switch (action.type) {
+    case ADD_COMMENT:
+      newState = { ...state };
+      newState[action.comment.id] = action.comment;
+      return newState;
+    case SET_PROJECT:
+      newState = {};
+      action.comment.forEach(i => {
+        newState[i.id] = i;
+      });
+      return newState;
+    case REMOVE_COMMENT:
+      return { ...state, comment: null };
+    default:
+      return state;
+  }
+}
+
+export default reducer
