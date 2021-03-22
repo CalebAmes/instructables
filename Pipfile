@@ -24,6 +24,7 @@ flask-login = "*"
 psycopg2-binary = "*"
 alembic = "*"
 flask-migrate = "*"
+boto3 = "*"
 
 [dev-packages]
 psycopg2-binary = "==2.8.6"

@@ -8,6 +8,8 @@ class User(db.Model, UserMixin):
   id = db.Column(db.Integer, primary_key = True)
   username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
+  avatar = db.Column(db.Text)
+  bio = db.Column(db.String(1000))
   hashed_password = db.Column(db.String(255), nullable = False)
 
   projects = db.relationship("Project")

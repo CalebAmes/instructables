@@ -5,14 +5,16 @@ import { signUp } from '../../services/auth';
 const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [avatar, setAvatar] = useState(null)
+  const [bio, setBio] = useState('')
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(username, email, password);
-      if (!user.errors) {
+      const user = await signUp({username, email, avatar, bio, password})
+      if (user) {
         setAuthenticated(true);
       }
     }
@@ -24,6 +26,15 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
+  };
+
+  const updateAvatar = (e) => {
+    const image = e.target.files[0]
+    setAvatar(image);
+  };
+
+  const updateBio = (e) => {
+    setBio(e.target.value);
   };
 
   const updatePassword = (e) => {
@@ -57,6 +68,23 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           onChange={updateEmail}
           value={email}
         ></input>
+      </div>
+      <div>
+        <label>Avatar</label>
+        <input
+          type="file"
+          name="avatar"
+          accept="image/*"
+          onChange={updateAvatar}
+        ></input>
+      </div>
+      <div>
+        <label>Biography</label>
+        <textarea
+          name="bio"
+          onChange={updateBio}
+          value={bio}
+        ></textarea>
       </div>
       <div>
         <label>Password</label>
