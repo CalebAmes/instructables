@@ -15,3 +15,12 @@ class Project(db.Model):
     intro = db.Column(db.Text)
     steps = db.relationship("Step")
     comments = db.relationship("Comment")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "keywords": self.keywords,
+            "intro_img": self.intro_img,
+            "intro": self.intro
+        }

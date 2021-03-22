@@ -2,12 +2,12 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import project from './project'
 import comment from './comment'
-import category from './category'
+// import category from './category'
 
 const rootReducer = combineReducers({
   project,
   comment,
-  category,
+  // category,
 })
 
 const logger = require('redux-logger').default;

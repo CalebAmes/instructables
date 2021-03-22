@@ -1,11 +1,18 @@
-from flask import Blueprint
+from flask import Blueprint, jsonify
+from app.models.db import db
+from app.models import Project
+import json
 
-
-api_routes = Blueprint('api', __name__, url_prefix="/api")
+api_routes = Blueprint('/api', __name__)
 
 
 @api_routes.route("/projects", methods=['GET'])
 def api_projects_all():
-    projects = db.session.query(Project)
-    # maybe add in .all
-    return jsonify(projects)
+    print("laksjdflkasjkdflfkdsjlk")
+    # projects = db.session.query(Project).all()
+    # print(projects.to_dict())
+    projects = Project.query.all()
+    # print("_________________________________________", projects[0].title)
+    # p = {"projects": [project.to_dict() for project in projects]}
+    # print(p)
+    return {"projects": [project.to_dict() for project in projects]}
