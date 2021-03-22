@@ -21,15 +21,15 @@ WTForms = "==2.3.3"
 Flask-JWT-Extended = "==3.24.1"
 email-validator = "*"
 flask-login = "*"
-psycopg2-binary = "*"
+boto3 = "*"
 alembic = "*"
 flask-migrate = "*"
-boto3 = "*"
+
 
 [dev-packages]
-psycopg2-binary = "==2.8.6"
+psycopg2-binary = "*"
 autopep8 = "*"
 pylint = "*"
 
 [requires]
-python_version = "3.9.1"
+python_version = "3.8.3"
