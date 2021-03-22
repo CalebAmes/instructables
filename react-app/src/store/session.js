@@ -59,9 +59,9 @@ export const signUpUser = (user) => async (dispatch) => {
 
     const res = await fetch(`/api/auth/signup`, {
         method: "POST",
-        headers: {
-            "Content-Type": "multipart/form-data",
-        },
+        // headers: {
+        //     "Content-Type": "multipart/form-data",
+        // },
         body: formData,
     });
     if (res.ok) {

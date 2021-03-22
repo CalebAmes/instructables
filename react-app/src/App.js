@@ -37,19 +37,19 @@ function App() {
   //   })dispatch(auth.authenticateUser()).then(() => setLoaded(true)).then(() => setAuthenticated(true));
   // }, [dispatch]);
 
-  // useEffect(() => {
-  //   (async() => {
-  //     const user = dispatch(authenticateUser());
-  //     if (!user.errors) {
-  //       setAuthenticated(true);
-  //     }
-  //     setLoaded(true);
-  //   })();
-  // }, []);
+  useEffect(() => {
+    (async() => {
+      const user = await authenticate();
+      if (!user.errors) {
+        setAuthenticated(true);
+      }
+      setLoaded(true);
+    })();
+  }, []);
 
-  // if (!loaded) {
-  //   return null;
-  // }
+  if (!loaded) {
+    return null;
+  }
 
   return (
     <BrowserRouter>
