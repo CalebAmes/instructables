@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import {useDispatch} from 'react-redux'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
@@ -11,11 +12,30 @@ import SplashPage from "./components/SlashLandingPage";
 import Create from "./components/Create";
 import Projects from "./components/AllProjectsPage";
 import Project from "./components/SingleProjectPage";
-
+import {authenticateUser} from './store/session'
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const dispatch = useDispatch()
+
+  // useEffect(() => {
+  //   (async() => {
+  //     const res = await dispatch(auth.authenticateUser());
+  //     if (res.ok) {
+  //       setAuthenticated(true)
+  //     }
+  //     setLoaded(true)
+  //     })();
+  //   }, []);
+
+  //   if (!loaded) {
+  //       return null;
+  // }
+
+  // if 
+  //   })dispatch(auth.authenticateUser()).then(() => setLoaded(true)).then(() => setAuthenticated(true));
+  // }, [dispatch]);
 
   useEffect(() => {
     (async () => {
@@ -35,6 +55,9 @@ function App() {
     <BrowserRouter>
       <NavBar setAuthenticated={setAuthenticated} />
       <Switch>
+        <Route exact path='/'>
+          <SplashPage/>
+        </Route>
         <Route path="/login" exact={true}>
           <LoginForm
             authenticated={authenticated}
