@@ -4,12 +4,15 @@ import { CSSTransition } from 'react-transition-group';
 import { NavLink, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import LogoutButton from '../auth/LogoutButton';
+import './NavBar.css'
 
 const NavBar = ({ setAuthenticated }, props) => {
   
   return (
     <>
-      
+      <nav className='NavBar'>
+        <ul className='NavBar-ul'>This is a test</ul>
+      </nav>
     </>
   )
 }
@@ -56,7 +59,22 @@ function Dropdown() {
     )
   }
 
-  
+  return (
+    <div className='dropdown' style={{ height: menuHeight }}>
+      <CSSTransition
+        in={activeMenu === 'main'}
+        unmountOnExit
+        timeout={500}
+        classNames='menu-primary'
+        onEnter={ calcHeight }
+      >
+        <div className='menu'>
+          <DdToMenu leftIcon={<i class='far fa-calendar-alt'/>}
+            goToMenu='categories'>Projects</DdToMenu> 
+        </div>
+      </CSSTransition>
+    </div>
+  )
 
 
 }

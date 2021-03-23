@@ -1,1 +1,14 @@
 /* TODO Add site wide styles */
+:root {
+  --bg: #fff;
+  --bg-secondary: #f6f6f6;
+  --text-color-1: #333;
+  --text-color-2: #555;
+  --font-size: 14px;
+  --border-radius: 4px;
+  --speed: 500ms;
+}
+
+body{
+  font-family: 'Poppins', sans-serif;
+}
