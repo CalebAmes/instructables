@@ -11,7 +11,17 @@ class Category(db.Model):
     titles = db.Column(postgresql.ARRAY(db.String(50)))
     imgs = db.Column(postgresql.ARRAY(db.String(50)))
     descriptions = db.Column(postgresql.ARRAY(db.String(50)))
+
     categories = db.relationship("Project")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'titles': self.titles,
+            'imgs': self.imgs,
+            'descriptions': self.descriptions,
+        }
 
     # _titles = db.Column(db.String)
     # _imgs = db.Column(db.String)

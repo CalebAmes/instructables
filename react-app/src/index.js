@@ -1,23 +1,24 @@
 import React from 'react';
-import {Provider} from 'react-redux'
-import {BrowserRouter} from 'react-router-dom'
 import ReactDOM from 'react-dom';
-import './index.css';
-import configureStore from './store'
+import { BrowserRouter } from 'react-router-dom';
 import { Provider as ReduxProvider } from "react-redux";
+import './index.css';
+import configureStore from './store';
 import App from './App';
-const store = configureStore()
 
-const Root = () => {
+const store = configureStore();
+
+window.store = store;
+
+function Root() {
   return (
-    <Provider store={store}>
+    <ReduxProvider store={store}>
       <BrowserRouter>
-      <App / >
+        <App/>
       </BrowserRouter>
-    </Provider>
+    </ReduxProvider>
   )
 }
-
 
 ReactDOM.render(
   <React.StrictMode>
