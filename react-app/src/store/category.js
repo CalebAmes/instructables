@@ -1,6 +1,6 @@
-const SET_CATEGORY = 'category/setCategory';
+const SET_CATEGORY = 'category/setCategory'
 
-const setCategory = (category) = ({
+const setCategory = (category) => ({
   type: SET_CATEGORY,
   category,
 })
@@ -16,14 +16,11 @@ function reducer(state = {}, action) {
   let newState;
   switch (action.type) {
     case SET_CATEGORY:
-      newState = {};
-      action.category.forEach(item => {
-        newState[item.id] = item;
-      });
+      newState = action.category;
       return newState;
     default:
       return state;
   }
 }
 
-export default reducer
+export default reducer;

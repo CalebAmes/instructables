@@ -8,7 +8,6 @@ api_routes = Blueprint('/api', __name__)
 
 @api_routes.route("/projects", methods=['GET'])
 def api_projects_all():
-    print("laksjdflkasjkdflfkdsjlk")
     # projects = db.session.query(Project).all()
     # print(projects.to_dict())
     projects = Project.query.all()

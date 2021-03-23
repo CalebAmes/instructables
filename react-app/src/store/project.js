@@ -20,44 +20,35 @@ const removeProject = (project) => ({
 export const getProjects = () => async (dispatch) => {
   const res = await fetch('/api/projects');
   const data = await res.json();
-  dispatch(setProject(data.project))
+  dispatch(setProject(data.projects))
   return res;
 }
 
-// export const getAllProjects = () => async (dispatch) => {
-//   const res = await fetch('/api/projects');
-//   const data = await res.json();
-//   console.log(data)
-//   return data;
-// }
+export const createProject = (project) => async (dispatch) => {
+  const { user_id, title, category_id, keywords, intro_img, intro } = project;
+  const res = await fetch('/api/project', {
+    method: 'POST',
+    body: JSON.stringify({
+      user_id,
+      title,
+      category_id,
+      keywords,
+      intro_img,
+      intro,
+    }),
+  });
+  const data = await res.json();
+  dispatch(addProject(data.projects));
+  return res;
+};
 
-// export const createProject = (event) => async (dispatch) => {
-//   const { id, user_id, title, category_id, keywords, intro_img, intro, created_at } = project;
-//   const res = await fetch('/api/project', {
-//     method: 'POST',
-//     body: JSON.stringify({
-//       id,
-//       user_id,
-//       title,
-//       category_id,
-//       keywords,
-//       intro_img,
-//       intro,
-//       created_at,
-//     }),
-//   });
-//   const data = await res.json();
-//   dispatch(addProject(data.project));
-//   return res;
-// };
-
-// export const deleteProject = () => async (dispatch) => {
-//   const res = await fetch('/api/project', {
-//     method: 'DELETE',
-//   });
-//   dispatch(removeProject());
-//   return res;
-// }
+export const deleteProject = () => async (dispatch) => {
+  const res = await fetch('/api/project', {
+    method: 'DELETE',
+  });
+  dispatch(removeProject());
+  return res;
+}
 
 function reducer(state = {}, action) {
   let newState;
@@ -67,10 +58,7 @@ function reducer(state = {}, action) {
       newState[action.project.id] = action.project;
       return newState;
     case SET_PROJECT:
-      newState = {};
-      action.project.forEach(i => {
-        newState[i.id] = i;
-      });
+      newState = action.project;
       return newState;
     case REMOVE_PROJECT:
       return { ...state, project: null };
