@@ -64,6 +64,9 @@ function App() {
             setAuthenticated={setAuthenticated}
           />
         </Route>
+        <Route exact path='/'>
+          <SplashPage/>
+        </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
@@ -73,9 +76,9 @@ function App() {
         <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
+        {/* <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <h1>My Home Page</h1>
-        </ProtectedRoute>
+        </ProtectedRoute> */}
         <Route path='/create'>
           <Create />
         </Route>

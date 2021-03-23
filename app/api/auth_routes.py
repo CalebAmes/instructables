@@ -4,7 +4,6 @@ from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.helpers import *
-import code
 
 auth_routes = Blueprint('auth', __name__)
 
@@ -64,11 +63,16 @@ def sign_up():
     """
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    # code.interact(local=dict(globals(),**locals()))
 
     if form.validate_on_submit():
-        user_avatar = request.files['avatar']
-        upload = None
+        user_avatar = None
+        if 'avatar' not in request.files:
+            upload = 'https://instructables2.s3.amazonaws.com/robots.jpg'
+        else:    
+            user_avatar = request.files['avatar']
+
+        # if not allowed_file(user_avatar.filename):
+        #     return {'errors': 'image required'}, 400
 
         if user_avatar and allowed_file(user_avatar.filename):
             user_avatar.filename = get_unique_filename(user_avatar.filename)
@@ -88,6 +92,26 @@ def sign_up():
         login_user(user)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}
+
+
+# @auth_routes.route('/signup', methods=['POST'])
+# def sign_up():
+#     """
+#     Creates a new user and logs them in
+#     """
+#     form = SignUpForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+#     if form.validate_on_submit():
+#         user = User(
+#             username=form.data['username'],
+#             email=form.data['email'],
+#             password=form.data['password']
+#         )
+#         db.session.add(user)
+#         db.session.commit()
+#         login_user(user)
+#         return user.to_dict()
+#     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
 @auth_routes.route('/unauthorized')

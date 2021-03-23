@@ -3,14 +3,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 import enum
 
-# class Types(enum.Enum):
-#     Hobbyist = 'hobbyist'
-#     Student = 'student'
-#     Teacher = 'teacher'
-#     Parent = 'parent'
-#     Professional = 'professional'
-#     Robot = 'robot'
-
 
 
 class User(db.Model, UserMixin):
