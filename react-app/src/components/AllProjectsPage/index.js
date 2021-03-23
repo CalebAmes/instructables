@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProjects } from "../../store/project"
 import { getComment } from '../../store/comment'
 import { getCategory } from '../../store/category'
+import NavBar from '../NavBar'
 
 function Projects() {
   const dispatch = useDispatch();
@@ -21,7 +22,8 @@ function Projects() {
     dispatch(getCategory());
     dispatch(getComment());
   }, [dispatch])
-  return <div>
+  return (
+    <>
     <h1>All projects page</h1>
     {projectArray.map((project) => (
       <div>
@@ -43,7 +45,7 @@ function Projects() {
         <div>upvotes: {comment.upvotes}</div>
       </div>
     ))}
-  </div>
-}
+  </>
+  )}
 
 export default Projects
