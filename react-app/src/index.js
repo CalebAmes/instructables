@@ -6,7 +6,6 @@ import './index.css';
 import configureStore from './store'
 import { Provider as ReduxProvider } from "react-redux";
 import App from './App';
-import configureStore from './store'
 const store = configureStore()
 
 const Root = () => {
@@ -19,7 +18,6 @@ const Root = () => {
   )
 }
 
-const store = configureStore();
 
 ReactDOM.render(
   <React.StrictMode>
