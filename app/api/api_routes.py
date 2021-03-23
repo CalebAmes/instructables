@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 from app.models.db import db
-from app.models import Project, Comment, Category, Step
+from app.models import Comment, Category, Step
+from app.models.user import User, Project, user_favorites
 
 
 api_routes = Blueprint('/api', __name__)
@@ -134,3 +135,28 @@ def api_delete_comment(commentId):
     except:
         return "unsuccessful"
     return "successful"
+
+
+@api_routes.route('/user/favorites/<int:userId>/<int:projectId>', methods=['POST'])
+def api_add_user_favorite(userId, projectId):
+    user = db.session.query(User).get(userId)
+    project = db.session.query(Project).get(projectId)
+    user.favoriteProjects.append(project)
+    db.session.commit()
+    return "success"
+
+
+@api_routes.route('/user/favorites/<int:userId>/<int:projectId>', methods=['DELETE'])
+def api_remove_user_favorite(userId, projectId):
+    user = db.session.query(User).get(userId)
+    project = db.session.query(Project).get(projectId)
+    user.favoriteProjects.remove(project)
+    db.session.commit()
+    return "success"
+
+
+@api_routes.route('/user/favorites/<int:userId>', methods=['GET'])
+def api_get_user_favorites(userId):
+    user = db.session.query(User).get(userId)
+    print(user)
+    return user.to_dict()

@@ -18,6 +18,9 @@ class Project(db.Model):
     # , back_populates="projects", cascade="all, delete", passive_deletes=True
     comments = db.relationship("Comment")
 
+    # users = db.relationship(
+    #     "User", secondary=user_favorites, back_populates="projects")
+
     def to_dict(self):
         return {
             "id": self.id,
