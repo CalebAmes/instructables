@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import project from './project';
 import comment from './comment';
 import category from './category';
+import user from './user';
 
 const rootReducer = combineReducers({
   project,
   comment,
   category,
+  user,
 })
 
 const logger = require('redux-logger').default;
