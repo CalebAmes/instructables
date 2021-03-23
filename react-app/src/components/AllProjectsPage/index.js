@@ -1,8 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { getProjects } from "../../store/project"
 
+function Projects() {
+  // const dispatch = useDispatch();
+  // const projectsObject = dispatch(getProjects())
+  // const projects = projectsObject["projects"]
+  const [projects, setProjects] = useState([]);
 
-function Projects () {
-  return <h1>This is a bulk of projects render</h1>
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch("/api/projects")
+      const data = await response.json();
+      setProjects(data.projects)
+    }
+    fetchData();
+  }, [])
+  return <div>
+    <h1>All projects page</h1>
+    {projects.map((project) => (
+      <div>
+        <div>Title: {project.title}</div>
+        <div>Intro: {project.intro}</div>
+        <img src={project.intro_img} />
+      </div>
+    ))}
+    {/* <div>projects</div> */}
+  </div>
 }
 
 export default Projects
