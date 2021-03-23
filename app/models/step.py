@@ -10,3 +10,12 @@ class Step(db.Model):
     project_id = db.Column(db.Integer, db.ForeignKey("projects.id"))
     step_img = db.Column(db.Text)
     step = db.Column(db.Text)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'step_count': self.step_count,
+            'project_id': self.project_id,
+            'step_img': self.step_img,
+            'step': self.step,
+        }
