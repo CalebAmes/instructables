@@ -15,6 +15,7 @@ class Project(db.Model):
     intro = db.Column(db.Text)
 
     steps = db.relationship("Step")
+    # , back_populates="projects", cascade="all, delete", passive_deletes=True
     comments = db.relationship("Comment")
 
     def to_dict(self):

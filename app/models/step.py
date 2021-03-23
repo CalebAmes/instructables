@@ -7,7 +7,8 @@ class Step(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     step_count = db.Column(db.Integer, nullable=False)
-    project_id = db.Column(db.Integer, db.ForeignKey("projects.id"))
+    project_id = db.Column(db.Integer, db.ForeignKey(
+        "projects.id", ondelete="CASCADE"))
     step_img = db.Column(db.Text)
     step = db.Column(db.Text)
 
