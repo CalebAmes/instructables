@@ -11,5 +11,5 @@ def seed_steps():
 
 
 def undo_steps():
-    db.session.execute('TRUNCATE steps')
+    db.session.execute('TRUNCATE steps CASCADE')
     db.session.commit()
