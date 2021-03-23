@@ -58,7 +58,10 @@ function reducer(state = {}, action) {
       newState[action.project.id] = action.project;
       return newState;
     case SET_PROJECT:
-      newState = action.project;
+      newState = {};
+      action.project.forEach(item => {
+        newState[item.id] = item;
+      });
       return newState;
     case REMOVE_PROJECT:
       return { ...state, project: null };

@@ -44,7 +44,10 @@ function reducer(state = {}, action) {
       newState[action.comment.id] = action.comment;
       return newState;
     case SET_COMMENT:
-      newState = action.comment;
+      newState = {};
+      action.comment.forEach(item => {
+        newState[item.id] = item;
+      });
       return newState;
     case REMOVE_COMMENT:
       return { ...state, comment: null };

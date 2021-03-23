@@ -16,7 +16,10 @@ function reducer(state = {}, action) {
   let newState;
   switch (action.type) {
     case SET_CATEGORY:
-      newState = action.category;
+      newState = {};
+      action.category.forEach(item => {
+        newState[item.id] = item;
+      });
       return newState;
     default:
       return state;
