@@ -20,6 +20,7 @@ const removeProject = (project) => ({
 export const getProjects = () => async (dispatch) => {
   const res = await fetch('/api/projects');
   const data = await res.json();
+  console.log(data, "THIS IS THE DATA")
   dispatch(setProject(data.projects))
   return res;
 }

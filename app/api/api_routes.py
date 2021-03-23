@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 from app.models.db import db
 from app.models import Project, Comment, Category, Step
+from sqlalchemy.orm.strategy_options import joinedload
 
 
 api_routes = Blueprint('/api', __name__)

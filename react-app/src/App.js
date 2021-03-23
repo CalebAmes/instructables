@@ -13,6 +13,7 @@ import Create from "./components/Create";
 import Projects from "./components/AllProjectsPage";
 import Project from "./components/SingleProjectPage";
 import {authenticateUser} from './store/session'
+import Category from "./components/UniqueCategoryPage";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -87,6 +88,9 @@ function App() {
         </Route>
         <Route path='/projects/:id'>
           <Project />
+        </Route>
+        <Route path='/category/:id'>
+          <Category/>
         </Route>
       </Switch>
     </BrowserRouter>
