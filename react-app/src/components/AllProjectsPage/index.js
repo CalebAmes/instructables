@@ -28,6 +28,8 @@ function Projects() {
     dispatch(getComment());
     // dispatch(getUsers())
   }, [dispatch])
+
+  
   return (
     <>
     <h1>All projects page</h1>

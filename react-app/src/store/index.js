@@ -5,6 +5,7 @@ import comment from './comment';
 import category from './category';
 import user from './user';
 import favorite from './favorite'
+import steps from './step';
 
 const rootReducer = combineReducers({
   project,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   category,
   user,
   favorite
+  steps,
 })
 
 const logger = require('redux-logger').default;
@@ -24,4 +26,3 @@ const configureStore = (preloadedState) => {
 };
 
 export default configureStore;
-
