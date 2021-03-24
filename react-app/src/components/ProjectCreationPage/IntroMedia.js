@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Video from '../Video'
 
+
 const IntroMedia = () => {
     const [type, setType] = useState('image')
     const [image, setImage] = useState(null);
@@ -21,7 +22,6 @@ const IntroMedia = () => {
         if (res.ok) {
             await res.json();
             setImageLoading(false);
-            history.push("/images");
         }
         else {
             setImageLoading(false);
@@ -31,21 +31,21 @@ const IntroMedia = () => {
 
     const embedVideo = (e) => {
         e.preventDefault();
-        const urlArray= url.split('/')
-        const code = urlArray[urlArray.length - 1]
         return (
-        <Video embedId={code}/>
+        <Video embedId={video}/>
         )
     }
 
       const updateImage = (e) => {
-        const file = e.target.files[0];
-        setImage(file);
-    }
+         const file = e.target.files[0];
+         setImage(file);
+      }
 
     const updateVideo = (e) => {
-        const videoUrl = e.target.value
-        setVideo(videoUrl)
+      const videoUrl = e.target.value
+      const urlArray= video.split('/')
+      const embedCode = urlArray[urlArray.length - 1]
+      setVideo(embedCode)
     }
     
     return (
@@ -81,9 +81,10 @@ const IntroMedia = () => {
                 <form onSubmit={embedVideo}>
                     <div>
                         <input
+                        name='video'
                         type='url'
+                        onChange={updateVideo}
                         value={video}
-                        onChange={() => setVideo(e.target.value)}
                         />
                     </div>
                     <button type="submit">Submit</button>

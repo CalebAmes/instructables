@@ -3,14 +3,6 @@ from wtforms import StringField, TextAreaField, FileField
 from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import User
 
-# types = [
-#     ('Hobbyist', 'hobbyist'),
-#     ('Student', 'student'),
-#     ('Teacher', 'teacher'),
-#     ('Parent', 'parent')
-#     ('Professional', 'professional'),
-#     ('Robot','robot')
-# ]
 
 def user_exists(form, field):
     print("Checking if user exits", field.data)
