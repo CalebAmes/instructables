@@ -12,7 +12,7 @@ const IntroMedia = () => {
     const uploadImage = async (e) => {
         e.preventDefault();
         const formData = new FormData();
-        formData.append("image", image);
+        formData.append("intro_img", image);
         setImageLoading(true);
 
         const res = await fetch('/api/images', {
@@ -54,7 +54,7 @@ const IntroMedia = () => {
                 <div className='imageUpload'>  
                     <h4 
                     onClick={() => setType('image')}>
-                    Upload a Photo
+                    Upload Photos
                     </h4>
                 </div>
                 <div className='embedVideo'>

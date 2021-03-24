@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: be23119c3fc2
+Revision ID: 932b0b5ad7fd
 Revises: 
-Create Date: 2021-03-24 12:39:43.015988
+Create Date: 2021-03-24 16:18:06.124099
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
-revision = 'be23119c3fc2'
+revision = '932b0b5ad7fd'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -64,7 +64,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('step_count', sa.Integer(), nullable=False),
     sa.Column('project_id', sa.Integer(), nullable=True),
-    sa.Column('step_img', sa.Text(), nullable=True),
+    sa.Column('step_imgs', postgresql.ARRAY(sa.Text()), nullable=True),
     sa.Column('step', sa.Text(), nullable=True),
     sa.ForeignKeyConstraint(['project_id'], ['projects.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
