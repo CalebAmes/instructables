@@ -35,12 +35,13 @@ function ClickProject() {
               {categories.map((category) => {
                 if (user.id === project.user_id && project.category_id === category.id) {
                   return (
+                    <>
                     <div key={category.id} className='clickableP'>
                       <Link to={`/project/${project.id}`}>
                         <img className='project-img' src={project?.intro_imgs[0]} />
                       </Link>
-                      <div className='project-info'>
-                        <NavLink className='title' to={`/project/${project.id}`}>{project?.title}</NavLink> by
+                        <div className='project-info'>
+                          <NavLink className='title' to={`/project/${project.id}`}>{project?.title}</NavLink> by
                           <NavLink className='user-link' to={`/users/${user.id}`} >{user?.username}</NavLink> in
                           <NavLink className='category-link' to={`/category/${category.id}`}>{category?.name}</NavLink>
                         </div>
@@ -52,11 +53,8 @@ function ClickProject() {
                             <i class="fas fa-heart" />
                           </span>
                         </div>
-                      </div>
-                      <div className='favorites'>
-                        <span className='featured'> ⭐️ </span> ❤️
-                        </div>
                     </div>
+                    </>
                   )
                 }
               })}

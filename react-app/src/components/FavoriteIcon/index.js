@@ -7,7 +7,7 @@ import { getUsers } from '../../store/user'
 
 function AddFavorite() {
   const dispatch = useDispatch()
-
+  
   const projectItems = useSelector((state) => state.project)
   const userItems = useSelector((state) => state.user)
   const favoriteItems = useSelector((state) => state.favorite)
@@ -17,6 +17,16 @@ function AddFavorite() {
   const favorites = Object.values(favoriteItems)
   console.log(favorites)
 
+  // useEffect(() => {
+  //   users.forEach((user) => {
+  //     (async () => {
+  //       const response = await fetch(`/api/users/favorites/${user.id}`);
+  //       const favorites = await response.json();
+  //       console.log(favorites)
+  //       return favorites
+  //     })();
+  //   }, []);
+  // })
 
   useEffect(() => {
     dispatch(getProjects())

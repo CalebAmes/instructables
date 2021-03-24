@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
   comment,
   category,
   user,
-  favorite
+  favorite,
   steps,
 })
 
