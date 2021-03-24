@@ -1,4 +1,5 @@
-from app.models import db, Project
+from app.models import db
+from app.models.user import Project
 
 
 def seed_projects():

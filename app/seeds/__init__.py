@@ -3,7 +3,6 @@ from .users import seed_users, undo_users
 from .categories import seed_categories, undo_categories
 from .projects import seed_projects, undo_projects
 from .steps import seed_steps, undo_steps
-from .favorites import seed_favorites, undo_favorites
 from .comments import seed_comments, undo_comments
 
 # Creates a seed group to hold our commands

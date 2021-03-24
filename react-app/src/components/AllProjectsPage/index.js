@@ -8,7 +8,7 @@ import NavBar from '../NavBar'
 
 function Projects() {
   const dispatch = useDispatch();
-  
+
   const projectItems = useSelector((state) => state.project)
   const categoryItems = useSelector((state) => state.category)
   const commentItems = useSelector((state) => state.comment)
@@ -57,6 +57,6 @@ function Projects() {
       </div>
     ))}
   </>
-  )}
-
+ )}
+  
 export default Projects
