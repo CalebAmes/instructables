@@ -1,12 +1,41 @@
-
-// this will be the intro/instructions page to create a project.
-// it will have a button that takes the user to create a new project.
 import React from 'react'
+import ProjectIntro from '../ProjectCreationPage/ProjectIntro'
+import Video from '../Video'
+import create from '../../images/create.png'
+import {Redirect, Link} from 'react-router-dom';
+
+const Create = ({authenticated}) => {
 
 
-function Create() {
-  return <h1>This is the publish instruction page</h1>
+  return (
+    <div>
+      <h1>SHARE WHAT YOU MAKE WITH INSTRUCTABLES</h1>
+      <p>Instructables is a platform for you to share what you make through words, photos, video and files.</p>
+      <p>From a one step recipe to a 100 step jet engine build, everyone has something to share.</p>
+      <p>Join the biggest DIY community on the web.</p>
+      <div>
+       <Link to='/create/new'>New Instructable</Link>
+      </div>
+      <div>
+        <h3>Here's how it works:</h3>
+        <div>
+          <Video embedId='iStxkeZlZjc'/>
+        </div>
+      </div>
+      <div>
+        <h1>WHY PUBLISH AN INSTRUCTABLE?</h1>
+        <div>
+          <img src={create} />
+        </div>
+        <div>
+          <h4>Everyone has something to share</h4>
+          <p>We all have secret skills. Whether it's a special recipe for the best hot chocolate or the perfect way to drive a nail, even the simplest ideas are worth sharing. What's your secret?</p>
+        </div>
+      </div>
+    </div>
+  )
 }
+
 
 
 export default Create
