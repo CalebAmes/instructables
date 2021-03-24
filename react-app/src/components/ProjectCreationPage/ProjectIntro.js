@@ -1,22 +1,15 @@
 import React, { useEffect, useState } from "react";
-import {Redirect} from 'react-router-dom';
-
+import {Redirect, Link} from 'react-router-dom';
+import StepForm from './Step'
 const ProjectIntro = () => {
-    // const [steps, setSteps] = useState({});
+
     const [title, setTitle] = useState('');
     const [project, setProject] = useState({});
 
 
-    const addStep = (i, img, val) => {
-        const imgKey = `step ${i}`;
-        const stepKey = `img ${i}`;
-        setState({ ...state, [imgKey]: img, [stepKey]: val })
-    }
-
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
         setProject({...project, 'title': title})
-        return <Step project={project} />
     }
 
     return (
@@ -30,12 +23,12 @@ const ProjectIntro = () => {
                 <input 
                 type='text'
                 name='title'
+                onChange={(e) => setTitle(e.target.value)}
                 value={title}
-                onChange={() => setTitle(e.target.value)}
                 />
                 </div>
                 <div>
-                    <button type='submit'>Start Instructable</button>
+                   <Link to='/create/intro'>Start Instructable</Link>
                 </div>
             </form>
         </div>

@@ -13,29 +13,14 @@ import Create from "./components/Create";
 import Projects from "./components/AllProjectsPage";
 import Project from "./components/SingleProjectPage";
 import {authenticateUser} from './store/session'
+import ProjectIntro from './components/ProjectCreationPage/ProjectIntro'
+import StepForm from './components/ProjectCreationPage/Step'
+import IntroMedia from './components/ProjectCreationPage/IntroMedia'
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch()
-
-  // useEffect(() => {
-  //   (async() => {
-  //     const res = await dispatch(auth.authenticateUser());
-  //     if (res.ok) {
-  //       setAuthenticated(true)
-  //     }
-  //     setLoaded(true)
-  //     })();
-  //   }, []);
-
-  //   if (!loaded) {
-  //       return null;
-  // }
-
-  // if 
-  //   })dispatch(auth.authenticateUser()).then(() => setLoaded(true)).then(() => setAuthenticated(true));
-  // }, [dispatch]);
 
   useEffect(() => {
     (async () => {
@@ -75,6 +60,15 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute path='/create/new' authenticated={authenticated}>
+          <ProjectIntro />
+        </ProtectedRoute>
+        <ProtectedRoute path='/create/intro' authenticated={authenticated}>
+            <IntroMedia />
+        </ProtectedRoute>
+        <ProtectedRoute path='/create/steps' authenticated={authenticated}>
+            <StepForm />
         </ProtectedRoute>
         {/* <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <h1>My Home Page</h1>
