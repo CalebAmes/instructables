@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProjects } from "../../store/project"
-import { getComment } from '../../store/comment'
-import { getCategory } from '../../store/category'
+import { getProjects } from "../../store/project";
+import { getComment } from '../../store/comment';
+import { getCategory } from '../../store/category';
 import { getUsers } from '../../store/user'
+import NavBar from '../NavBar'
 
 function Projects() {
   const dispatch = useDispatch();
@@ -23,11 +24,10 @@ function Projects() {
     dispatch(getProjects());
     dispatch(getCategory());
     dispatch(getComment());
-    dispatch(getUsers())
+    dispatch(getUsers());
   }, [dispatch])
-
-
-  return <div>
+  return (
+    <>
     <h1>All projects page</h1>
     {projectArray.map((project) => (
       <div>
@@ -56,7 +56,7 @@ function Projects() {
         <img src={user?.avatar} />
       </div>
     ))}
-  </div>
-}
-
+  </>
+ )}
+  
 export default Projects
