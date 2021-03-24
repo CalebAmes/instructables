@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import Project from '../SingleProjectPage'
 import { NavLink, Link } from 'react-router-dom'
-import { getProjects } from "../../store/project"
 import { useDispatch, useSelector } from 'react-redux'
+import { getProjects } from "../../store/project"
 import { getUsers } from '../../store/user'
 import { getCategory } from '../../store/category'
 import './ClickableProject.css'
@@ -35,17 +34,19 @@ function ClickProject() {
               {categories.map((category) => {
                 if(user.id === project.user_id && project.category_id === category.id){
                   return (
-                    <>
-                      <div className='clickableP'>
-                      <NavLink to='/project/:id'>
-                      <img src={project?.intro_img} />
-                      <div className='links'>{project?.title} by 
-                      <NavLink className='userlink'to='users/:userId' >{user?.username}</NavLink> in 
-                      <NavLink className='catagorylink' to='/category/:categoryId'>{category?.name}</NavLink>
+                      <div key={category.id} className='clickableP'>
+                        <Link to={`/project/${project.id}`}>
+                        <img className='project-img' src={project?.intro_img} />
+                        </Link>
+                        <div className='project-info'>
+                          <NavLink className='title' to={`/project/${project.id}`}>{project?.title}</NavLink> by 
+                          <NavLink className='user-link'to={`/users/${user.id}`} >{user?.username}</NavLink> in 
+                          <NavLink className='category-link' to={`/category/${category.id}`}>{category?.name}</NavLink>
+                        </div>
+                        <div className='favorites'> 
+                          <span className='featured'> ⭐️ </span> ❤️
+                        </div>
                       </div>
-                      </NavLink>
-                      </div>
-                    </>
                   )   
                 }
               })}

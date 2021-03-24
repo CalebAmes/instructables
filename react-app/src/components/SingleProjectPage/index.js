@@ -1,8 +1,28 @@
-import React from 'react'
-
+import React, {useEffect} from 'react'
+import { getProjects } from "../../store/project"
+import { useDispatch, useSelector } from 'react-redux'
 
 function Project () {
-  return <h1>Here we have one wonderful project</h1>
+  const dispatch = useDispatch()
+
+  const projectItems = useSelector((state) => state.project)
+  
+  const projects = Object.values(projectItems)
+
+
+  useEffect(() => {
+    dispatch(getProjects())
+
+  }, [dispatch])
+
+  return (
+    <>
+    {projects.map((project) => (
+      <div key={project.id}>{project.title}</div>
+    ))}
+    </>
+  )
+
 }
 
 export default Project

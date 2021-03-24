@@ -9,19 +9,19 @@ import { getUsers } from '../../store/user'
 function Projects() {
   const dispatch = useDispatch();
   
-  // const projectItems = useSelector((state) => state.project)
+  const projectItems = useSelector((state) => state.project)
   // const categoryItems = useSelector((state) => state.category)
   const commentItems = useSelector((state) => state.comment)
   // const userItems = useSelector((state) => state.user)
 
-  // const projectArray = Object.values(projectItems)
+  const projectArray = Object.values(projectItems)
   // const categoryArray = Object.values(categoryItems)
   const commentArray = Object.values(commentItems)
   // const usersArray = Object.values(userItems)
 
 
   useEffect(() => {
-    // dispatch(getProjects());
+    dispatch(getProjects());
     dispatch(getCategory());
     dispatch(getComment());
     // dispatch(getUsers())
@@ -30,9 +30,11 @@ function Projects() {
   
   return <div>
     <h1>All projects page</h1>
-      <div>
+    {projectArray.map((project) => (
+      <div key={project.id}>
         <ClickProject/>
       </div>
+    ))}
     <h2>All Categories</h2>
     {/* {categoryArray.map((category) => (
       <div>
