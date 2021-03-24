@@ -2,6 +2,7 @@ const SET_PROJECT = 'project/setProject';
 const ADD_PROJECT = 'project/addProject';
 const REMOVE_PROJECT = 'project/removeProject';
 
+
 const setProject = (project) => ({
   type: SET_PROJECT,
   project,
@@ -17,12 +18,14 @@ const removeProject = (project) => ({
   project,
 })
 
+
 export const getProjects = () => async (dispatch) => {
   const res = await fetch('/api/projects');
   const data = await res.json();
   dispatch(setProject(data.projects))
   return res;
 }
+
 
 export const createProject = (project) => async (dispatch) => {
   const { user_id, title, category_id, keywords, intro_img, intro } = project;
