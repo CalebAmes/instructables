@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: b7450bdf0e75
+Revision ID: 2c43fa17ba00
 Revises: 
-Create Date: 2021-03-24 12:15:36.776611
+Create Date: 2021-03-24 12:45:54.165599
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
-revision = 'b7450bdf0e75'
+revision = '2c43fa17ba00'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -44,7 +44,7 @@ def upgrade():
     sa.Column('title', sa.String(length=255), nullable=True),
     sa.Column('category_id', sa.Integer(), nullable=False),
     sa.Column('keywords', postgresql.ARRAY(sa.String(length=30)), nullable=True),
-    sa.Column('intro_img', sa.Text(), nullable=True),
+    sa.Column('intro_imgs', postgresql.ARRAY(sa.Text()), nullable=True),
     sa.Column('intro', sa.Text(), nullable=True),
     sa.ForeignKeyConstraint(['category_id'], ['categories.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
@@ -63,8 +63,9 @@ def upgrade():
     op.create_table('steps',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('step_count', sa.Integer(), nullable=False),
+    sa.Column('step_title', sa.String(length=50), nullable=True),
     sa.Column('project_id', sa.Integer(), nullable=True),
-    sa.Column('step_img', sa.Text(), nullable=True),
+    sa.Column('step_imgs', postgresql.ARRAY(sa.Text()), nullable=True),
     sa.Column('step', sa.Text(), nullable=True),
     sa.ForeignKeyConstraint(['project_id'], ['projects.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')

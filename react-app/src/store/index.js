@@ -4,12 +4,14 @@ import project from './project';
 import comment from './comment';
 import category from './category';
 import user from './user';
+import steps from './step';
 
 const rootReducer = combineReducers({
   project,
   comment,
   category,
   user,
+  steps,
 })
 
 const logger = require('redux-logger').default;
@@ -22,4 +24,3 @@ const configureStore = (preloadedState) => {
 };
 
 export default configureStore;
-
