@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProjects } from "../../store/project"
 import { getUsers } from '../../store/user'
 import { getCategory } from '../../store/category'
 import './ClickableProject.css'
+import RandomFeatured from '../FeaturedIcon'
 
 function ClickProject() {
   const dispatch = useDispatch()
@@ -16,7 +17,6 @@ function ClickProject() {
 
   const categories = Object.values(categoryItems)
   const projects = Object.values(projectItems)
-  console.log(projects)
   const users = Object.values(userItems)
 
 
@@ -25,6 +25,19 @@ function ClickProject() {
     dispatch(getUsers())
     dispatch(getCategory());
   }, [dispatch])
+
+  // function RandomFeatured(){
+  //   let randomNum = 1
+  //   {projects.map((project) => {
+  //     if(project.id === randomNum) {
+  //       return (
+  //         <span className='featured'>
+  //           <i class="fas fa-star"></i>
+  //         </span>
+  //       )
+  //     }
+  //   })}
+  // }
   
   return (
     <>
@@ -44,8 +57,13 @@ function ClickProject() {
                           <NavLink className='user-link'to={`/users/${user.id}`} >{user?.username}</NavLink> in 
                           <NavLink className='category-link' to={`/category/${category.id}`}>{category?.name}</NavLink>
                         </div>
-                        <div className='favorites'> 
-                          <span className='featured'> ⭐️ </span> ❤️
+                        <div className='favorites'>
+                          <span className='justforflex'>
+                            <RandomFeatured />
+                          </span>
+                          <span className='favorite'>
+                            <i class="fas fa-heart" />
+                          </span>
                         </div>
                       </div>
                   )   

@@ -6,6 +6,7 @@ import { getComment } from '../../store/comment'
 import { getCategory } from '../../store/category'
 import { getUsers } from '../../store/user'
 import NavBar from '../NavBar'
+import AddFavorite from "../FavoriteIcon";
 
 function Projects() {
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ function Projects() {
       {/* </div>
      ))}  */}
     <h2>All Categories</h2>
+     <AddFavorite/>
     {/* {categoryArray.map((category) => (
       <div>
         <div>name: {category?.name}</div>
