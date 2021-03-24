@@ -1,9 +1,9 @@
 .NavBar {
-  height: 48px;
+  height: var(--nav-size);
   background: var(--bg);
   font-size: 14px;
-  box-shadow: 0 4px 2px -2px gray;
-  padding: 0px;
+  border-bottom: var(--border);
+  padding: 0px 1rem;
   margin: 0px;
   width: 100%;
 
@@ -55,16 +55,23 @@ i:hover {
 
 .dd {
     position: absolute;
-    top: 58px;
-    width: 300px;
+    top: 48px;
+    width: 150px;
     max-height: 600px;
-    /* transform: translateX(-45%); */
+    transform: translateX(-12%);
     color: white;
-    background-color: red;
+    background-color: var(--bg-secondary);
     border: var(--border);
-    border-radius: var(--border-radius);
     padding: 1rem;
     overflow: scroll;
     z-index: 10;
     transition: height var(--speed) ease;
+}
+
+.dd > li {
+  transition: filter var(--speed);
+}
+
+.dd > li :hover {
+  filter: brightness(2.0);
 }
