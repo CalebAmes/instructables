@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+<<<<<<< HEAD
 import { getProjects } from "../../store/project"
 import ClickProject from "../ClickableProjectComponent";
 import { getComment } from '../../store/comment'
 import { getCategory } from '../../store/category'
+=======
+import { getProjects } from "../../store/project";
+import { getComment } from '../../store/comment';
+import { getCategory } from '../../store/category';
+>>>>>>> main
 import { getUsers } from '../../store/user'
+import NavBar from '../NavBar'
 
 function Projects() {
   const dispatch = useDispatch();
@@ -24,11 +31,14 @@ function Projects() {
     dispatch(getProjects());
     dispatch(getCategory());
     dispatch(getComment());
+<<<<<<< HEAD
     // dispatch(getUsers())
+=======
+    dispatch(getUsers());
+>>>>>>> main
   }, [dispatch])
-
-
-  return <div>
+  return (
+    <>
     <h1>All projects page</h1>
     {/* {projectArray.map((project) => (
       <div key={project.id}> */}
@@ -54,8 +64,15 @@ function Projects() {
         <div>Username: {user?.username}</div>
         <img src={user?.avatar} />
       </div>
+<<<<<<< HEAD
     ))} */}
   </div>
 }
 
+=======
+    ))}
+  </>
+ )}
+  
+>>>>>>> main
 export default Projects
