@@ -138,7 +138,7 @@ export function Dropdown({setAuthenticated}) {
     return (
       <Link to={`/project/${project.id}`} className='menu-item'>
         <div className='icon-button'></div>
-        {project.name}
+        {project.title}
       </Link>)
   }
 
