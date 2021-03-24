@@ -48,7 +48,7 @@ def api_projects_steps(projectId):
 def api_create_project(userId, categoryId):
     data = request.get_json()
     project = Project(user_id=userId, title=data['title'], category_id=categoryId,
-                      keywords=data['keywords'], intro_img=data['intro_img'], intro=data['intro'])
+                      keywords=data['keywords'], intro_imgs=data['intro_imgs'], intro=data['intro'])
     db.session.add(project)
     db.session.commit()
 

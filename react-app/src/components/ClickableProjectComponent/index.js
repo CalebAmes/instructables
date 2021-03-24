@@ -12,7 +12,7 @@ function ClickProject() {
   const projectItems = useSelector((state) => state.project)
   const userItems = useSelector((state) => state.user)
   const categoryItems = useSelector((state) => state.category)
- 
+
 
   const categories = Object.values(categoryItems)
   const projects = Object.values(projectItems)
@@ -25,33 +25,33 @@ function ClickProject() {
     dispatch(getUsers())
     dispatch(getCategory());
   }, [dispatch])
-  
+
   return (
     <>
       {projects.map((project) => (
         <div key={project.id}>
-          {users.map((user)=> (
+          {users.map((user) => (
             <div key={user.id}>
               {categories.map((category) => {
-                if(user.id === project.user_id && project.category_id === category.id){
+                if (user.id === project.user_id && project.category_id === category.id) {
                   return (
-                      <div key={category.id} className='clickableP'>
-                        <Link to={`/project/${project.id}`}>
-                        <img className='project-img' src={project?.intro_img} />
-                        </Link>
-                        <div className='project-info'>
-                          <NavLink className='title' to={`/project/${project.id}`}>{project?.title}</NavLink> by 
-                          <NavLink className='user-link'to={`/users/${user.id}`} >{user?.username}</NavLink> in 
+                    <div key={category.id} className='clickableP'>
+                      <Link to={`/project/${project.id}`}>
+                        <img className='project-img' src={project?.intro_imgs[0]} />
+                      </Link>
+                      <div className='project-info'>
+                        <NavLink className='title' to={`/project/${project.id}`}>{project?.title}</NavLink> by
+                          <NavLink className='user-link' to={`/users/${user.id}`} >{user?.username}</NavLink> in
                           <NavLink className='category-link' to={`/category/${category.id}`}>{category?.name}</NavLink>
-                        </div>
-                        <div className='favorites'> 
-                          <span className='featured'> ⭐️ </span> ❤️
-                        </div>
                       </div>
-                  )   
+                      <div className='favorites'>
+                        <span className='featured'> ⭐️ </span> ❤️
+                        </div>
+                    </div>
+                  )
                 }
               })}
-              </div>
+            </div>
           ))}
         </div>
       ))}
