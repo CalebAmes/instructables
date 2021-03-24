@@ -3,7 +3,7 @@
   background: var(--bg);
   font-size: 14px;
   border-bottom: var(--border);
-  padding: 0px 1rem;
+  /* padding: 0px 1rem; */
   margin: 0px;
   width: 100%;
 
@@ -19,10 +19,52 @@ nav {
   z-index: 9;
 }
 
+.categoryGrid {
+  color: var(--text-color-1);
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 2;
+  margin: 0;
+  padding: 0;
+}
+
+.cGridItem {
+  border: var(--border);
+  margin: auto;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+}
+
+.profileGrid {
+  color: var(--text-color-1);
+  display: grid;
+  grid-template-columns: 50% 50%;
+  height: 30px;
+  width: 100%;
+
+}
+
+.pGridItem {
+  border: var(--border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .NavBar-div .far-els {
   display: flex;
-  /* flex-direction: row-reverse; */
-  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.navItem {
+display: flex;
+justify-content: flex-start;
 }
 
 .far-els {
@@ -56,13 +98,12 @@ i:hover {
 .dd {
     position: absolute;
     top: 48px;
-    width: 150px;
-    max-height: 600px;
-    transform: translateX(-12%);
+    width: 153px;
+    transform: translateX(-5%);
     color: white;
     background-color: var(--bg-secondary);
     border: var(--border);
-    padding: 1rem;
+    /* padding: 1rem; */
     overflow: scroll;
     z-index: 10;
     transition: height var(--speed) ease;
@@ -70,8 +111,47 @@ i:hover {
 
 .dd > li {
   transition: filter var(--speed);
+  color: var(--text-color-1);
 }
 
 .dd > li :hover {
   filter: brightness(2.0);
+}
+
+.menu-primary-enter {
+  position: absolute;
+  transform: translateX(-110%);
+}
+
+.menu-primary-enter-active {
+  transform:translateX(0%);
+  transition: all var(--speed) ease;
+}
+
+.menu-primary-exit {
+  position: absolute;
+}
+
+.menu-primary-exit-active {
+  transform: translateX(-110%);
+  transition: all var(--speed) ease;
+}
+
+.menu-secondary-enter {
+  position: absolute;
+  transform: translateX(110%);
+}
+
+.menu-secondary-enter-active {
+  transform:translateX(0%);
+  transition: all var(--speed) ease;
+}
+
+.menu-secondary-exit {
+  position: absolute;
+}
+
+.menu-secondary-exit-active {
+  transform: translateX(110%);
+  transition: all var(--speed) ease;
 }
