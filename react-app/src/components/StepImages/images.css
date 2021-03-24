@@ -1,0 +1,22 @@
+.one-image {
+  display: flex;
+  justify-content: center;
+}
+
+.three-images {
+  display: flex;
+}
+
+.side-images {
+  display: flex;
+  flex-direction: column;
+}
+
+.img-one-one {
+  /* width: 80vh; */
+  height: 60hv;
+}
+
+.img-two-one {
+  border-radius: 50px;
+}
