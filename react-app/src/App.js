@@ -16,6 +16,7 @@ import {authenticateUser} from './store/session'
 import ProjectIntro from './components/ProjectCreationPage/ProjectIntro'
 import StepForm from './components/ProjectCreationPage/Step'
 import IntroMedia from './components/ProjectCreationPage/IntroMedia'
+import CreateProject from './components/ProjectCreationPage'
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -63,10 +64,13 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/create/new' authenticated={authenticated}>
-          <ProjectIntro />
-        </ProtectedRoute>
-        <ProtectedRoute path='/create/intro' authenticated={authenticated}>
-          <IntroMedia />
+          <CreateProject/>
+          <ProtectedRoute path='/create/intro' authenticated={authenticated}>
+            <ProjectIntro />
+              <ProtectedRoute path='/create/intro-media' authenticated={authenticated}>
+              <IntroMedia />
+            </ProtectedRoute>
+          </ProtectedRoute>
         </ProtectedRoute>
         <ProtectedRoute path='/create/steps' authenticated={authenticated}>
             <StepForm />

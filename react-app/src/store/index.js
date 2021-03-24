@@ -4,12 +4,14 @@ import project from './project';
 import comment from './comment';
 import category from './category';
 import user from './user';
+import session from './session';
 
 const rootReducer = combineReducers({
   project,
   comment,
   category,
   user,
+  session
 })
 
 const logger = require('redux-logger').default;

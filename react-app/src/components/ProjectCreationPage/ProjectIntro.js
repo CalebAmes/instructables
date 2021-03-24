@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import {Redirect, Link} from 'react-router-dom';
 import StepForm from './Step'
-const ProjectIntro = () => {
+const ProjectIntro = ({project, setProject}) => {
 
     const [title, setTitle] = useState('');
-    const [project, setProject] = useState({});
+    // const [project, setProject] = useState({});
 
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        setProject({...project, 'title': title})
+        let key = 'title'
+        setProject({...project, [key]: title})
     }
 
     return (
@@ -28,7 +29,8 @@ const ProjectIntro = () => {
                 />
                 </div>
                 <div>
-                   <Link to='/create/intro'>Start Instructable</Link>
+                   {/* <Link to='/create/intro'>Start Instructable</Link> */}
+                   <button type='submit'>Start Instructable</button>
                 </div>
             </form>
         </div>
