@@ -3,6 +3,11 @@
   justify-content: center;
 }
 
+.two-images {
+  display: flex;
+  flex-direction: row;
+}
+
 .three-images {
   display: flex;
 }
@@ -13,10 +18,9 @@
 }
 
 .img-one-one {
-  /* width: 80vh; */
   height: 60hv;
 }
 
-.img-two-one {
-  border-radius: 50px;
+.img-two-one, .img-two-two {
+  border-radius: 5px; margin: 2px 5px;
 }

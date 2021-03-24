@@ -5,7 +5,9 @@ export const OneImage = ({ images }) => {
   console.log(images)
   return (
     <div className="one-image">
-      <img src={images[0]} className="img-one-one" />
+      <div>
+        <img src={images[0]} className="img-one-one" />
+      </div>
     </div>
   )
 }
