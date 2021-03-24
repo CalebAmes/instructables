@@ -69,6 +69,7 @@ class Project(db.Model):
             "id": self.id,
             "user_id": self.user_id,
             "title": self.title,
+            "category_id": self.category_id,
             "keywords": self.keywords,
             "intro_img": self.intro_img,
             "intro": self.intro
