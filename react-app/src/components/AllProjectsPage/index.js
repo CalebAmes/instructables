@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-<<<<<<< HEAD
 import { getProjects } from "../../store/project"
 import ClickProject from "../ClickableProjectComponent";
 import { getComment } from '../../store/comment'
 import { getCategory } from '../../store/category'
-=======
-import { getProjects } from "../../store/project";
-import { getComment } from '../../store/comment';
-import { getCategory } from '../../store/category';
->>>>>>> main
 import { getUsers } from '../../store/user'
 import NavBar from '../NavBar'
 
@@ -31,11 +25,7 @@ function Projects() {
     dispatch(getProjects());
     dispatch(getCategory());
     dispatch(getComment());
-<<<<<<< HEAD
     // dispatch(getUsers())
-=======
-    dispatch(getUsers());
->>>>>>> main
   }, [dispatch])
   return (
     <>
@@ -58,21 +48,14 @@ function Projects() {
         <div>upvotes: {comment?.upvotes}</div>
       </div>
     ))}
-    {/* <h2>All users</h2>
-    {usersArray.map((user) => (
+     <h2>All users</h2>
+    {/* {usersArray.map((user) => (
       <div>
         <div>Username: {user?.username}</div>
         <img src={user?.avatar} />
       </div>
-<<<<<<< HEAD
     ))} */}
-  </div>
-}
-
-=======
-    ))}
   </>
  )}
   
->>>>>>> main
 export default Projects
