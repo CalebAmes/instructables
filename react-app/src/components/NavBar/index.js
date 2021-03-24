@@ -15,7 +15,7 @@ const NavBar = ({ setAuthenticated }, props) => {
       <nav className='NavBar'>
           <div>
             <NavItem icon={<DdIcon />}>
-              <Dropdown />
+              <Dropdown setAuthenticated={setAuthenticated} />
             </NavItem>
           </div>
           <div className='NavBar-div'>
@@ -84,7 +84,7 @@ export function Dropdown({setAuthenticated}) {
       </NavLink>
       </li>
       <li>
-      <NavLink to='/signup' exact={true} activeClassName='active'>
+      <NavLink to='/sign-up' exact={true} activeClassName='active'>
         Sign Up
       </NavLink>
       </li>

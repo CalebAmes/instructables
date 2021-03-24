@@ -28,7 +28,6 @@ nav {
 .far-els {
   justify-content: flex-end;
   transform: translateX(-20px);
-  border: 3px solid black;
 }
 
 .icon-button svg {
@@ -37,20 +36,21 @@ nav {
   fill: var(--text-color-1);
   width: 32px;
   height: 32px;
+  transform: translateX(10px);
 }
 
 i {
   font-size: 25px;
-  color:red;
+  /* color:red; */
+}
+
+i:hover {
+  color: red;
 }
 
 .nav-div {
   margin: 3px 10px;
   /* transform: translateX() */
-}
-
-.nav-item {
-  /* transform: translateX(10px); */
 }
 
 .dd {
