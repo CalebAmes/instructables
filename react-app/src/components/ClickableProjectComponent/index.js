@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProjects } from "../../store/project"
@@ -16,6 +16,7 @@ function ClickProject() {
 
   const categories = Object.values(categoryItems)
   const projects = Object.values(projectItems)
+  console.log(projects)
   const users = Object.values(userItems)
 
 
