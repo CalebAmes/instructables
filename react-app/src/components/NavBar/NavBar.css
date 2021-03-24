@@ -1,4 +1,4 @@
-.NavBar{
+.NavBar {
   height: 48px;
   background: var(--bg);
   font-size: 14px;
@@ -6,5 +6,65 @@
   padding: 0px;
   margin: 0px;
   width: 100%;
+
   color: var(--text-color-1);
+}
+
+.pad {
+  height: 100px;
+}
+
+nav {
+  position: fixed;
+  z-index: 9;
+}
+
+.NavBar-div .far-els {
+  display: flex;
+  /* flex-direction: row-reverse; */
+  align-items: center;
+}
+
+.far-els {
+  justify-content: flex-end;
+  transform: translateX(-20px);
+  border: 3px solid black;
+}
+
+.icon-button svg {
+  position:fixed;
+  z-index: 10;
+  fill: var(--text-color-1);
+  width: 32px;
+  height: 32px;
+}
+
+i {
+  font-size: 25px;
+  color:red;
+}
+
+.nav-div {
+  margin: 3px 10px;
+  /* transform: translateX() */
+}
+
+.nav-item {
+  /* transform: translateX(10px); */
+}
+
+.dd {
+    position: absolute;
+    top: 58px;
+    width: 300px;
+    max-height: 600px;
+    /* transform: translateX(-45%); */
+    color: white;
+    background-color: red;
+    border: var(--border);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    overflow: scroll;
+    z-index: 10;
+    transition: height var(--speed) ease;
 }
