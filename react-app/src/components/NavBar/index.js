@@ -6,14 +6,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ReactComponent as DdIcon } from '../../icons/robot.svg';
 import { getProjects } from '../../store/project';
 import { getCategory } from '../../store/category';
-
 import { getUsers } from '../../store/user';
 import { logout } from '../../services/auth'
 import '../../index.css';
 import './NavBar.css';
 
 const NavBar = ({ setAuthenticated }, props) => {
-  
   return (
     <>
       <nav className='NavBar'>
@@ -38,20 +36,17 @@ const NavBar = ({ setAuthenticated }, props) => {
 export function NavItem(props) {
   const [open, setOpen] = useState(false);
   
-  
   useEffect(() => {
     getCategory();
     getProjects();
     getUsers();
   }, [])
   
-  
   const openFunc = () => {
     setOpen(!open);
   }
 
   return (
-
     <div className='nav-item'>
       <a href='#' className={ open && 'icon-button-flip' } onClick={openFunc}>
         { props.icon }
@@ -87,22 +82,14 @@ export function NavComment(props) {
   )
 }
 
-export function ProjectsMenu(props) {
-
-}
-
 export function Dropdown({setAuthenticated}) {
   const dispatch = useDispatch();
-  const categoryItems = useSelector((state) => state.category);
   const projectItems = useSelector((state) => state.project);
-  const userItems = useSelector((state) => state.user);
   
   const [ activeMenu, setActiveMenu ] = useState('main');
   const [ menuHeight, setMenuHeight ] = useState(null);
 
-  const categoryArray = Object.values(categoryItems);
   const projectArray = Object.values(projectItems);
-  const userArray = Object.values(userItems);
   
   useEffect(() => {
     dispatch(getProjects());
@@ -157,7 +144,6 @@ export function Dropdown({setAuthenticated}) {
   return (
     <>
     <div className='dropdown' style={{ height: menuHeight }}>
-
       <CSSTransition 
         in={ activeMenu === 'main' } 
         unmountOnExit
@@ -213,7 +199,7 @@ export function Dropdown({setAuthenticated}) {
             </Link>
           </div>
           <Link to='/' className='menu-item item'>
-              Home
+            Home
           </Link>
           <Link to='/login' className='menu-item item'>
             Login
@@ -232,7 +218,6 @@ export function Dropdown({setAuthenticated}) {
           </Link>
           <DropdownItem rightRightIcon={<i class="fas fa-chevron-right"/>} goToMenu='categories'>Categories</DropdownItem>
         </ul>
-
       </CSSTransition>
 
       <CSSTransition 
@@ -241,10 +226,17 @@ export function Dropdown({setAuthenticated}) {
         timeout={ 500 }
         classNames='menu-secondary'
         >
-          
         <ul className='dd'>
-          <DropdownItem rightRightIcon={<i class="fas fa-chevron-left"/>} goToMenu='main'>main</DropdownItem>
-          <DropdownItem rightRightIcon={<i class="fas fa-chevron-right"/>}goToMenu='projects'>projects</DropdownItem>
+          <DropdownItem 
+            rightRightIcon={<i class="fas fa-chevron-left"/>} 
+            goToMenu='main'>
+              ...back
+          </DropdownItem>
+          <DropdownItem 
+            rightRightIcon={<i class="fas fa-chevron-right"/>}
+            goToMenu='projects'>
+              Projects
+            </DropdownItem>
             <Link to={ `/category/1` } className='cat-menu cat-menu menu-item item cat1-2'>
               <i class="fas fa-microchip"/>
               <div>Circuits</div>
@@ -278,21 +270,23 @@ export function Dropdown({setAuthenticated}) {
         timeout={ 500 }
         classNames='menu-secondary'
         >
-          
         <ul className='dd'>
           <DropdownItem 
-            rightRightIcon={<i class="fas fa-chevron-left"/>}goToMenu='categories'>categories</DropdownItem>
+            rightRightIcon={<i class="fas fa-chevron-left"/>}goToMenu='categories'>
+              ...back
+          </DropdownItem>
           <DropdownItem 
             rightIcon={<i class="fas fa-chevron-left"/>}
             rightRightIcon={<i class="fas fa-chevron-left"/>}
-            goToMenu='main'>main</DropdownItem>
+            goToMenu='main'>
+              ....main
+          </DropdownItem>
           {
             projectArray.map(item => (
               <DropdownProject project={ item } key={ item.id }> { item.name }</DropdownProject>
             ))
           }
         </ul>
-
       </CSSTransition>
     </div>
     </>
