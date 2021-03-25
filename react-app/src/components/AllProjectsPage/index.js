@@ -39,7 +39,6 @@ function Projects() {
       {/* </div>
      ))}  */}
     <h2>All Categories</h2>
-     <AddFavorite/>
     {/* {categoryArray.map((category) => (
       <div>
         <div>name: {category?.name}</div>
