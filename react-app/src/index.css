@@ -25,3 +25,7 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+link, div {
+  text-decoration: none;
+}

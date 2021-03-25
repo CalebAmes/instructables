@@ -1,0 +1,9 @@
+.fa-lightbulb-o > a:hover {
+  text-decoration: underline;
+}
+.fa-question-circle > a:hover {
+  text-decoration: underline;
+}
+.fa-comments > a:hover {
+  text-decoration: underline;
+}
