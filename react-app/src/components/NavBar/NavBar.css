@@ -74,8 +74,12 @@ nav {
   align-items: center;
 }
 
-.pGridItem:hover {
-  background-color: red;
+.logout:hover {
+  background-color: #d00000;
+}
+
+.profile:hover {
+  background: #E6BEAE;
 }
 
 .NavBar-div .far-els {
@@ -132,17 +136,14 @@ justify-content: flex-start;
     font-weight: 400;
 }
 
-.dd > li, .menu-item {
-  transition: color var(--speed);
+.item {
+  transition: all var(--speed);
   color: black;
   height: 60px;
   display: flex;
   align-items: center;
   border-bottom: var(--border);
-}
-
-.dd > li :hover {
-  color: var(--text-color-2);
+  padding: 0px 8px;
 }
 
 .menu-primary-enter {
@@ -245,10 +246,19 @@ justify-content: flex-start;
   color: #4c7fcf;
 }
 
-.menu-item {
-  transition: all var(--speed);
+.dropdown-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dropdown-item:hover {
+  background: #f1a7a9;
 }
 
 .menu-item:hover {
   background: #EEE4E1;
+}
+
+.cat-menu > i{
+  padding-right: 8px;
 }

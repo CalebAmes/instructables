@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ReactComponent as DdIcon } from '../../icons/robot.svg';
 import { getProjects } from '../../store/project';
 import { getCategory } from '../../store/category';
-import { getComment } from '../../store/comment';
+
 import { getUsers } from '../../store/user';
 import { logout } from '../../services/auth'
 import '../../index.css';
@@ -122,18 +122,21 @@ export function Dropdown({setAuthenticated}) {
   function DropdownItem(props) {
     return (
       <a href='#' 
-        className='menu-item' 
+        className='dropdown-item item' 
         onClick={()=> props.goToMenu && setActiveMenu(props.goToMenu)}
         >
-          <span className='icon-button'>{ props.icon }</span>
-          { props.children }
-        </a>
+            { props.children }
+            <div>
+              <span className='rightIcon'>{ props.rightIcon }</span>
+              <span className='rightRightIcon'>{ props.rightRightIcon }</span>
+            </div>
+      </a>
     );
   }
 
   function DropdownCategory({ category }) {
     return (
-      <Link to={`/category/${category.id}`} className='menu-item'>
+      <Link to={`/category/${category.id}`} className='menu-item item'>
         <div className='icon-button'></div>
         {category.name}
       </Link>
@@ -142,10 +145,13 @@ export function Dropdown({setAuthenticated}) {
 
   function DropdownProject({ project }) {
     return (
-      <Link to={`/project/${project.id}`} className='menu-item'>
+      <div className='menu-item item'>
+      <Link to={`/project/${project.id}`}>
         <div className='icon-button'></div>
         {project.title}
-      </Link>)
+      </Link>
+      </div>
+    )
   }
 
   return (
@@ -161,82 +167,70 @@ export function Dropdown({setAuthenticated}) {
         >
         <ul className='dd'>
           <div className='categoryGrid'>
-            <div className='cGridItem cat1'>
+            <Link to={'/category/1'} className='cGridItem cat1'>
               <div className='gridDiv'>
                 <i class="fas fa-microchip fa-sm"/>
                 <div>circuits</div>
               </div>
-            </div>
-            <div className='cGridItem cat2'>
+            </Link>
+            <Link to={ `/category/2` } className='cGridItem cat2'>
               <div className='gridDiv'>
                 <i class="fas fa-wrench fa-sm"/>
                 <div>workshop</div>
               </div>
-            </div>
-            <div className='cGridItem cat3'>
+            </Link>
+            <Link to={ `/category/3` } className='cGridItem cat3'>
               <div className='gridDiv'>
                 <i class="fas fa-cut fa-sm"/>
                 <div>crafts</div>
               </div>
-            </div>
-            <div className='cGridItem cat4'>
+            </Link>
+            <Link to={ `/category/4` } className='cGridItem cat4'>
               <div className='gridDiv'>
                 <i class="fas fa-utensils fa-sm"/>
                 <div>cooking</div>
               </div>
-            </div>
-            <div className='cGridItem cat5'>
+            </Link>
+            <Link to={ `/category/5` } className='cGridItem cat5'>
               <div className='gridDiv'>
                 <i class="fas fa-home fa-sm"/>
                 <div>living</div>
               </div>
-            </div>
-            <div className='cGridItem cat6'>
+            </Link>
+            <Link to={ `/category/6` } className='cGridItem cat6'>
               <div className='gridDiv'>
                 <i class="fas fa-bicycle fa-sm"/>
                 <div>outdoors</div>
               </div>
-            </div>
+            </Link>
           </div>
           <div className='profileGrid'>
-            <div className='pGridItem' id='profile'>Profile</div>
-            <div className='pGridItem' onClick={ logoutUser }>
+            <Link to={`/users/`} className='pGridItem profile' id='profile'>
+              Profile
+            </Link>
+            <Link to='/' className='pGridItem logout' onClick={ logoutUser }>
               Logout
-            </div>
+            </Link>
           </div>
-          <li>
-            <NavLink to='/' exact={true} activeClassName='active'>
+          <Link to='/' className='menu-item item'>
               Home
-            </NavLink>
-          </li>
-          <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
+          </Link>
+          <Link to='/login' className='menu-item item'>
             Login
-          </NavLink>
-          </li>
-          <li>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
+          </Link>
+          <Link to='/sign-up' className='menu-item item'>
             Sign Up
-          </NavLink>
-          </li>
-          <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
+          </Link>
+          <Link to='/users' className='menu-item item'>
             Users
-          </NavLink>
-          </li>
-          <li>
-          <NavLink to='/create' exact={true} activeClassName='active'>
+          </Link>
+          <Link to='/create' className='menu-item item'>
             Publish
-          </NavLink>
-          </li>
-          <li>
-          <NavLink to='/projects' exact={true} activeClassName='active'>
+          </Link>
+          <Link to='/projects' className='menu-item item'>
             Projects
-          </NavLink>
-          </li>
-          <li>
-          <DropdownItem goToMenu='categories'>Categories</DropdownItem>
-          </li>
+          </Link>
+          <DropdownItem rightRightIcon={<i class="fas fa-chevron-right"/>} goToMenu='categories'>Categories</DropdownItem>
         </ul>
 
       </CSSTransition>
@@ -249,38 +243,32 @@ export function Dropdown({setAuthenticated}) {
         >
           
         <ul className='dd'>
-          <li>
-          <DropdownItem icon={<i class="fas fa-arrow-left"></i>} goToMenu='main'>main</DropdownItem>
-          </li>
-          <li>
-          <DropdownItem goToMenu='projects'>projects</DropdownItem>
-          </li>
-          <div className=''>
-            <div className='menu-item cat1-2'>
+          <DropdownItem rightRightIcon={<i class="fas fa-chevron-left"/>} goToMenu='main'>main</DropdownItem>
+          <DropdownItem rightRightIcon={<i class="fas fa-chevron-right"/>}goToMenu='projects'>projects</DropdownItem>
+            <Link to={ `/category/1` } className='cat-menu cat-menu menu-item item cat1-2'>
               <i class="fas fa-microchip"/>
               <div>Circuits</div>
-            </div>
-            <div className='menu-item cat2-2'>
+            </Link>
+            <Link to={ `/category/2` } className='cat-menu menu-item item cat2-2'>
               <i class="fas fa-wrench"/>
               Workshop
-            </div>
-            <div className= 'menu-item cat3-2'>
+            </Link>
+            <Link to={ `/category/3` } className= 'cat-menu menu-item item cat3-2'>
               <i class="fas fa-cut"/>
               Craft
-            </div>
-            <div className='menu-item cat4-2'>
+            </Link>
+            <Link to={ `/category/4` } className='cat-menu menu-item item cat4-2'>
               <i class="fas fa-utensils"/>
               Cooking
-            </div>
-            <div className= 'menu-item cat5-2'>
+            </Link>
+            <Link to={ `/category/5` } className= 'cat-menu menu-item item cat5-2'>
             <i class="fas fa-home"/>
             Living
-            </div>
-            <div className='menu-item cat6-2'>
+            </Link>
+            <Link to={ `/category/6` } className='cat-menu menu-item item cat6-2'>
             <i class="fas fa-bicycle"/>
             Outside
-            </div>
-          </div>
+            </Link>
         </ul>
 
       </CSSTransition>
@@ -292,12 +280,12 @@ export function Dropdown({setAuthenticated}) {
         >
           
         <ul className='dd'>
-          <li>
-          <DropdownItem goToMenu='categories'>categories</DropdownItem>
-          </li>
-          <li>
-          <DropdownItem goToMenu='main'>main</DropdownItem>
-          </li>
+          <DropdownItem 
+            rightRightIcon={<i class="fas fa-chevron-left"/>}goToMenu='categories'>categories</DropdownItem>
+          <DropdownItem 
+            rightIcon={<i class="fas fa-chevron-left"/>}
+            rightRightIcon={<i class="fas fa-chevron-left"/>}
+            goToMenu='main'>main</DropdownItem>
           {
             projectArray.map(item => (
               <DropdownProject project={ item } key={ item.id }> { item.name }</DropdownProject>
