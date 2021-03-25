@@ -3,11 +3,9 @@
   background: var(--bg);
   font-size: 14px;
   border-bottom: var(--border);
-  /* padding: 0px 1rem; */
   width: 100%;
   position: fixed;
   z-index: 9;
-  /* color: var(--text-color-1); */
   transform: translateX(-8px) translateY(-8px);
 }
 
@@ -25,7 +23,6 @@ nav {
 }
 
 .categoryGrid {
-  /* color: var(--text-color-1); */
   display: grid;
   grid-template-columns: 33.3% 33.3% 33.3%;
   grid-template-rows: 2;
@@ -58,7 +55,6 @@ nav {
 }
 
 .profileGrid {
-  /* color: var(--text-color-1); */
   display: grid;
   grid-template-columns: 50% 50%;
   height: 60px;
@@ -117,7 +113,6 @@ justify-content: flex-start;
 
 .nav-div {
   margin: 3px 10px;
-  /* transform: translateX() */
 }
 
 .dropdown {
@@ -152,25 +147,20 @@ justify-content: flex-start;
 }
 
 .menu-primary-enter {
-  /* position: absolute;
-  transform: translateX(110%); */
   opacity: 0;
 }
 
 .menu-primary-enter-active {
-  /* /* transform:translateX(0%); */
   opacity: 1;
   transition: all var(--speed) ease;
 
 }
 
 .menu-primary-exit {
-  /* position: absolute; */
   opacity: 1;
 }
 
 .menu-primary-exit-active {
-  /* transform: translateX(110%); */
   opacity: 0;
   transition: all var(--speed) ease;
 }
@@ -193,7 +183,6 @@ justify-content: flex-start;
   transform: translateX(-110%);
   transition: all var(--speed) ease;
 }
-
 
 .cat1 {
   color: #1F8439;
