@@ -10,7 +10,7 @@ class Category(db.Model):
     name = db.Column(db.String(50), nullable=False, unique=True)
     titles = db.Column(postgresql.ARRAY(db.String(50)))
     imgs = db.Column(postgresql.ARRAY(db.String(50)))
-    description = db.Column(db.String(200))
+    description = db.Column(db.Text)
 
     categories = db.relationship("Project")
 

@@ -42,7 +42,6 @@ def seed_categories():
     db.session.add(category5)
     db.session.add(category6)
 
-
     db.session.commit()
 
 

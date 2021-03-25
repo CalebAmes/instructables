@@ -1,7 +1,6 @@
 from flask import Blueprint, request
 from app.models.db import db
-from app.models import Comment, Category, Step
-from app.models.user import User, Project, user_favorites
+from app.models import Comment, Category, Step, User, Project, Favorite, Build
 
 
 api_routes = Blueprint('/api', __name__)
@@ -139,29 +138,72 @@ def api_delete_comment(commentId):
 
 @api_routes.route('/user/favorites/<int:userId>/<int:projectId>', methods=['POST'])
 def api_add_user_favorite(userId, projectId):
-    user = db.session.query(User).get(userId)
-    project = db.session.query(Project).get(projectId)
-    user.favoriteProjects.append(project)
-    db.session.commit()
-    return "success"
+    if Favorite.query.filter_by(user_id=userId, project_id=projectId).all() == []:
+        favorite = Favorite(user_id=userId, project_id=projectId)
+        db.session.add(favorite)
+        db.session.commit()
+        return "successful"
+    else:
+        return "unsuccessful"
 
 
 @api_routes.route('/user/favorites/<int:userId>/<int:projectId>', methods=['DELETE'])
 def api_remove_user_favorite(userId, projectId):
-    user = db.session.query(User).get(userId)
-    project = db.session.query(Project).get(projectId)
-    user.favoriteProjects.remove(project)
-    db.session.commit()
-    return "success"
+    if Favorite.query.filter_by(user_id=userId, project_id=projectId).all() == []:
+        return "unsuccessful"
+    else:
+        favorites = Favorite.query.filter_by(
+            user_id=userId, project_id=projectId).all()
+        for favorite in favorites:
+            db.session.delete(favorite)
+            db.session.commit()
+        return "success"
 
 
-@api_routes.route('/user/favorite/<int:userId>', methods=['GET'])
-def api_get_user_favorites(userId):
-    user = db.session.query(User).get(userId)
-    print(user)
-    return user.to_dict()
+@ api_routes.route('/user/favorites/<int:userId>', methods=['GET'])
+def api_get_favorites_for_user(userId):
+    projects = Favorite.query.filter_by(user_id=userId)
+    return {"favorites": [project.to_dict() for project in projects]}
 
-@api_routes.route('/user/favorites/<int:projectId>')
+
+@ api_routes.route('/project/favorites/<int:projectId>', methods=['GET'])
 def api_get_project_favorites(projectId):
-    users = User.query.filter_by(projectId in (User.to_dict()["favoriteProjectIds"]))
-    return {"users": [user.to_dict() for user in users]}
+    projects = Favorite.query.filter_by(project_id=projectId)
+    return {"favorites": [project.to_dict() for project in projects]}
+
+
+# project builds
+@api_routes.route('/user/builds/<int:userId>/<int:projectId>', methods=['POST'])
+def api_add_user_build(userId, projectId):
+    if Build.query.filter_by(user_id=userId, project_id=projectId).all() == []:
+        build = Build(user_id=userId, project_id=projectId)
+        db.session.add(build)
+        db.session.commit()
+        return "successful"
+    else:
+        return "unsuccessful"
+
+
+@api_routes.route('/user/builds/<int:userId>/<int:projectId>', methods=['DELETE'])
+def api_remove_user_build(userId, projectId):
+    if Build.query.filter_by(user_id=userId, project_id=projectId).all() == []:
+        return "unsuccessful"
+    else:
+        builds = Build.query.filter_by(
+            user_id=userId, project_id=projectId).all()
+        for build in builds:
+            db.session.delete(build)
+            db.session.commit()
+        return "success"
+
+
+@ api_routes.route('/user/builds/<int:userId>', methods=['GET'])
+def api_get_build_for_user(userId):
+    builds = Build.query.filter_by(user_id=userId)
+    return {"builds": [build.to_dict() for build in builds]}
+
+
+@ api_routes.route('/project/builds/<int:projectId>', methods=['GET'])
+def api_get_project_builds(projectId):
+    builds = Build.query.filter_by(project_id=projectId)
+    return {"builds": [build.to_dict() for build in builds]}
