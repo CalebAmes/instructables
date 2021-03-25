@@ -2,7 +2,6 @@ import React from 'react'
 import './images.css'
 
 export const OneImage = ({ images }) => {
-  console.log(images)
   return (
     <div className="one-image">
       <div>
@@ -13,7 +12,6 @@ export const OneImage = ({ images }) => {
 }
 
 export const TwoImages = ({ images }) => {
-  console.log(images)
   return (
     <div className="two-images">
       <img src={images[0]} className="img-two-one" />
@@ -23,7 +21,6 @@ export const TwoImages = ({ images }) => {
 }
 
 export const ThreeImages = ({ images }) => {
-  console.log(images)
   return (
     <div className="three-images">
       <img src={images[0]} className="img-three-one" />

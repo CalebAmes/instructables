@@ -4,7 +4,7 @@ import { getCurrentSteps } from "../../store/step"
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import Steps from '../Steps'
-
+import Comments from '../Comments'
 import './SingleProjectPage.css'
 
 function Project() {
@@ -31,6 +31,9 @@ function Project() {
       )}
       {loaded && (
         <Steps />
+      )}
+      {loaded && (
+        <Comments />
       )}
     </div>
   )

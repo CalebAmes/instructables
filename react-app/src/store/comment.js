@@ -16,10 +16,10 @@ const removeComment = () => ({
   type: REMOVE_COMMENT,
 })
 
-export const getComment = () => async (dispatch) => {
-  const res = await fetch('/api/comment');
+export const getComments = (projectId) => async (dispatch) => {
+  const res = await fetch(`/api/comments/${projectId}`);
   const data = await res.json();
-  dispatch(setComment(data.comment));
+  dispatch(setComment(data.comments));
   return res;
 }
 
@@ -35,6 +35,8 @@ export const createComment = (comment) => async (dispatch) => {
   dispatch(addComment(data.comment));
   return res;
 }
+
+
 
 function reducer(state = {}, action) {
   let newState;
