@@ -4,7 +4,8 @@ from app.models import User
 
 user_routes = Blueprint('users', __name__)
 
-#TODO: COMMENT BACK IN LOGIN REQUIRED
+# TODO: COMMENT BACK IN LOGIN REQUIRED
+
 
 @user_routes.route('/')
 # @login_required
@@ -18,4 +19,3 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
-

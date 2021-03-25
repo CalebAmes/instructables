@@ -1,13 +1,13 @@
-from app.models import db
+from app.models import db, Favorite
 
 
-# def seed_favorites():
+def seed_favorites():
 
-#     favorite1 = Favorite(user_id=1, project_id=1)
+    favorite1 = Favorite(user_id=1, project_id=1)
 
-#     db.session.add(favorite1)
+    db.session.add(favorite1)
 
-#     db.session.commit()
+    db.session.commit()
 
 
 # def undo_favorites():
