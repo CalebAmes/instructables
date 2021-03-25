@@ -120,6 +120,11 @@ justify-content: flex-start;
   /* transform: translateX() */
 }
 
+.dropdown {
+  position: absolute;
+  z-index:10;
+}
+
 .dd {
     position: absolute;
     top: 48px;

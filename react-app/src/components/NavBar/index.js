@@ -123,7 +123,7 @@ export function Dropdown({setAuthenticated}) {
 
   function DropdownCategory({ category }) {
     return (
-      <Link to={`/category/${category.id}`} className='menu-item item'>
+      <Link to={`/category/${ category.id }`} className='menu-item item'>
         <div className='icon-button'></div>
         {category.name}
       </Link>
@@ -133,9 +133,9 @@ export function Dropdown({setAuthenticated}) {
   function DropdownProject({ project }) {
     return (
       <div className='menu-item item'>
-      <Link to={`/project/${project.id}`}>
+      <Link to={`/project/${ project.id }`}>
         <div className='icon-button'></div>
-        {project.title}
+        { project.title }
       </Link>
       </div>
     )
@@ -191,11 +191,15 @@ export function Dropdown({setAuthenticated}) {
             </Link>
           </div>
           <div className='profileGrid'>
-            <Link to={`/users/`} className='pGridItem profile' id='profile'>
-              Profile
+            <Link to={`/users/`} 
+              className='pGridItem profile' 
+              id='profile'>
+                Profile
             </Link>
-            <Link to='/' className='pGridItem logout' onClick={ logoutUser }>
-              Logout
+            <Link to='/' 
+              className='pGridItem logout' 
+              onClick={ logoutUser }>
+                Logout
             </Link>
           </div>
           <Link to='/' className='menu-item item'>
@@ -216,7 +220,10 @@ export function Dropdown({setAuthenticated}) {
           <Link to='/projects' className='menu-item item'>
             Projects
           </Link>
-          <DropdownItem rightRightIcon={<i class="fas fa-chevron-right"/>} goToMenu='categories'>Categories</DropdownItem>
+          <DropdownItem 
+            rightRightIcon={<i class="fas fa-chevron-right"/>} goToMenu='categories'>
+              Categories
+          </DropdownItem>
         </ul>
       </CSSTransition>
 
@@ -237,27 +244,33 @@ export function Dropdown({setAuthenticated}) {
             goToMenu='projects'>
               Projects
             </DropdownItem>
-            <Link to={ `/category/1` } className='cat-menu cat-menu menu-item item cat1-2'>
+            <Link to={ `/category/1` } 
+              className='cat-menu cat-menu menu-item item cat1-2'>
               <i class="fas fa-microchip"/>
               <div>Circuits</div>
             </Link>
-            <Link to={ `/category/2` } className='cat-menu menu-item item cat2-2'>
+            <Link to={ `/category/2` } 
+              className='cat-menu menu-item item cat2-2'>
               <i class="fas fa-wrench"/>
               Workshop
             </Link>
-            <Link to={ `/category/3` } className= 'cat-menu menu-item item cat3-2'>
+            <Link to={ `/category/3` } 
+              className= 'cat-menu menu-item item cat3-2'>
               <i class="fas fa-cut"/>
               Craft
             </Link>
-            <Link to={ `/category/4` } className='cat-menu menu-item item cat4-2'>
+            <Link to={ `/category/4` } 
+              className='cat-menu menu-item item cat4-2'>
               <i class="fas fa-utensils"/>
               Cooking
             </Link>
-            <Link to={ `/category/5` } className= 'cat-menu menu-item item cat5-2'>
+            <Link to={ `/category/5` } 
+              className= 'cat-menu menu-item item cat5-2'>
             <i class="fas fa-home"/>
             Living
             </Link>
-            <Link to={ `/category/6` } className='cat-menu menu-item item cat6-2'>
+            <Link to={ `/category/6` } 
+              className='cat-menu menu-item item cat6-2'>
             <i class="fas fa-bicycle"/>
             Outside
             </Link>
@@ -272,7 +285,8 @@ export function Dropdown({setAuthenticated}) {
         >
         <ul className='dd'>
           <DropdownItem 
-            rightRightIcon={<i class="fas fa-chevron-left"/>}goToMenu='categories'>
+            rightRightIcon={<i class="fas fa-chevron-left"/>}
+            goToMenu='categories'>
               ...back
           </DropdownItem>
           <DropdownItem 
