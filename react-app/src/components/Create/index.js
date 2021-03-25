@@ -1,8 +1,7 @@
 import React from 'react'
-import ProjectIntro from '../ProjectCreationPage/ProjectIntro'
 import Video from '../Video'
 import create from '../../images/create.png'
-import {Redirect, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 const Create = ({authenticated}) => {
 

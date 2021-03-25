@@ -65,19 +65,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/create/new' authenticated={authenticated}>
           <CreateProject/>
-          <ProtectedRoute path='/create/intro' authenticated={authenticated}>
-            <ProjectIntro />
-              <ProtectedRoute path='/create/intro-media' authenticated={authenticated}>
-              <IntroMedia />
-            </ProtectedRoute>
-          </ProtectedRoute>
         </ProtectedRoute>
-        <ProtectedRoute path='/create/steps' authenticated={authenticated}>
-            <StepForm />
-        </ProtectedRoute>
-        {/* <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-          <h1>My Home Page</h1>
-        </ProtectedRoute> */}
         <Route path='/create'>
           <Create />
         </Route>
