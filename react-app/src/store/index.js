@@ -6,6 +6,7 @@ import category from './category';
 import user from './user';
 import favorite from './favorite'
 import steps from './step';
+import currentUser from './currentUser';
 
 const rootReducer = combineReducers({
   project,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   user,
   favorite,
   steps,
+  currentUser,
 })
 
 const logger = require('redux-logger').default;
