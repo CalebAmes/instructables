@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import ProjectIntro from './ProjectIntro'
 
 const IntroMedia = ({project, setProject}) => {
     const [image, setImage] = useState(null);
@@ -7,9 +7,10 @@ const IntroMedia = ({project, setProject}) => {
     const [introImg, setIntroImg] = useState('')
 
     const moveOn = (e) => {
-        setProject({...project, 'intro_img': image})
-    }
+        console.log(introImg)
 
+        // setProject({...project, ...json})
+    }
 
     const uploadImage = async (e) => {
         e.preventDefault();
@@ -25,7 +26,8 @@ const IntroMedia = ({project, setProject}) => {
         if (res.ok) {
             const json = await res.json();
             setImageLoading(false);
-            setIntroImg(json.url)
+            await setIntroImg(json.url)
+            await setProject({...project, ...json})
             console.log(project)
         }
         else {
@@ -42,7 +44,7 @@ const IntroMedia = ({project, setProject}) => {
     return (
         <div className='upload'>
             <h4>Upload Photos</h4>
-            <div>
+            <div className=''>
                 <form onSubmit={uploadImage}>
                     <div>
                         <input

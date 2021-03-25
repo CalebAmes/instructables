@@ -10,12 +10,34 @@ const StepForm = ({project, setProject}) => {
     const [title, setTitle] = useState('')
     const [steps, setSteps] = useState({});
     const [count, setCount] = useState(1)
-    const [image, setImage] = useState(null);
     const [step, setStep] = useState('');
 
     const addStep = (i, str, img, val) => {
         setSteps({ ...steps, 'step_count': i, 'title': str, 'step_img': img, 'step': val })
     }
+
+
+    const uploadImage = async (e) => {
+            e.preventDefault();
+            const formData = new FormData();
+            formData.append("step_img", image);
+            setImageLoading(true);
+
+            const res = await fetch('/api/images/intro', {
+                method: "POST",
+                body: formData,
+            });
+
+            if (res.ok) {
+                const json = await res.json();
+                setImageLoading(false);
+                console.log(project)
+            }
+            else {
+                setImageLoading(false);
+                console.log("Something went wrong");
+            }
+        }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -30,6 +52,20 @@ const StepForm = ({project, setProject}) => {
     return (
         <div>
             <h1>Add Step</h1>
+            <div className='upload'>
+                <div className='uploadNav'>
+                    <div className='imageUpload'>  
+                        <h4 
+                        onClick={() => setType('image')}>
+                        Upload Photos
+                        </h4>
+                    </div>
+                    <div className='embedVideo'>
+                        <h4 onClick={() => setType('video')}>
+                        Embed a Video
+                        </h4>
+                    </div>
+                </div>
             <form onSubmit={handleSubmit}>
                 <div>
                     <input 
@@ -40,6 +76,7 @@ const StepForm = ({project, setProject}) => {
                 </div>
             </form>
         </div>
+    </div>
     )
     }
 

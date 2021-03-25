@@ -1,0 +1,11 @@
+.new-btn {
+  background-color: orange;
+  width: fit-content;
+  height: fit-content;
+  border-radius: var(--border-radius);
+}
+
+.new-btn a {
+  color: white;
+  padding: 5px;
+}
