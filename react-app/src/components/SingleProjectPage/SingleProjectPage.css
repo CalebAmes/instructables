@@ -27,7 +27,7 @@
 .step-imgs {
   margin-top: 15px;
   display: flex;
-  flex-direction: ;
+  justify-content: center;
 }
 
 .step-text {

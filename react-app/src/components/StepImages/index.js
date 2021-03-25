@@ -26,10 +26,10 @@ export const ThreeImages = ({ images }) => {
   console.log(images)
   return (
     <div className="three-images">
-      <img src={images[0]} />
+      <img src={images[0]} className="img-three-one" />
       <div className="side-images">
-        <img src={images[1]} />
-        <img src={images[2]} />
+        <img src={images[1]} className="img-three-two" />
+        <img src={images[2]} className="img-three-three" />
       </div>
     </div>
   )
