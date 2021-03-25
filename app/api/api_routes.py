@@ -94,7 +94,7 @@ def api_create_project(userId, categoryId):
 def api_create_one_step(projectId):
     data = request.get_json()
     step = Step(step_count=data['step_count'],
-                project_id=projectId, step_img=data['step_img'], step=data['step'])
+                project_id=projectId, step_imgs=data['step_imgs'], step=data['step'])
     db.session.add(step)
     db.session.commit()
     return step.to_dict()
@@ -109,7 +109,7 @@ def api_create_all_steps(projectId):
     for i in range(len(steps)):
         currentStep = steps[i]
         step = Step(step_count=currentStep['step_count'],
-                    project_id=projectId, step_img=currentStep['step_img'], step=currentStep['step'])
+                    project_id=projectId, step_imgs=currentStep['step_imgs'], step=currentStep['step'])
         db.session.add(step)
     db.session.commit()
     result = db.session.query(Step).filter_by(project_id=projectId)

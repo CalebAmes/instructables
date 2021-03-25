@@ -7,6 +7,7 @@ class Step(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     step_count = db.Column(db.Integer, nullable=False)
+    step_title = db.Column(db.String(50))
     project_id = db.Column(db.Integer, db.ForeignKey(
         "projects.id", ondelete="CASCADE"))
     step_imgs = db.Column(postgresql.ARRAY(db.Text))

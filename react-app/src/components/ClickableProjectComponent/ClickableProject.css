@@ -1,0 +1,74 @@
+
+.user-link,
+.category-link{
+  margin-left: 3px;
+  font-weight: 600;
+}
+
+.title:hover,
+.user-link:hover,
+.category-link:hover {
+ text-decoration: underline; 
+}
+
+.title:visited,
+.user-link:visited,
+.category-link:visited {
+  color: #999;
+}
+
+.title{
+  font-weight: 800;
+}
+
+
+.clickableP{
+  float: left;
+  width: 306px;
+  min-width: 306px;
+  height: 368px;
+  background: #fff;
+  box-sizing: border-box;
+  margin: 10px 10px 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 1px 0 rgb(0 0 0 / 15%);
+}
+.clickableP:hover{
+  box-shadow: 0 2px 0 #ddd;
+
+}
+
+.project-img{
+  vertical-align: middle;
+  border: 0 ;
+}
+
+.project-info{
+  padding: 10px 13px;
+  height: 70px;
+  max-height: 60px;
+  color: #999;
+}
+
+.favorites{
+  height: 31px;
+  background: #f6f6f6;
+  border-top: 1px solid #e7e7e7;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #aeaeae;
+}
+
+.featured{
+  border-right: 2px solid #e7e7e7;
+  padding-right: 5px;
+}
+
+.fa-heart,
+.fa-star {
+  margin-top: 7px;
+  font-size: 15px;
+}

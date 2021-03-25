@@ -58,7 +58,7 @@ class Project(db.Model):
     category_id = db.Column(db.Integer, db.ForeignKey(
         "categories.id"), nullable=False)
     keywords = db.Column(postgresql.ARRAY(db.String(30)))
-    intro_img = db.Column(db.Text)
+    intro_imgs = db.Column(postgresql.ARRAY(db.Text))
     intro = db.Column(db.Text)
 
     steps = db.relationship("Step")
@@ -69,7 +69,8 @@ class Project(db.Model):
             "id": self.id,
             "user_id": self.user_id,
             "title": self.title,
+            "category_id": self.category_id,
             "keywords": self.keywords,
-            "intro_img": self.intro_img,
+            "intro_imgs": self.intro_imgs,
             "intro": self.intro
         }

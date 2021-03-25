@@ -17,6 +17,7 @@ import ProjectIntro from './components/ProjectCreationPage/ProjectIntro'
 import StepForm from './components/ProjectCreationPage/Step'
 import IntroMedia from './components/ProjectCreationPage/IntroMedia'
 import CreateProject from './components/ProjectCreationPage'
+import Category from "./components/UniqueCategoryPage";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -72,8 +73,11 @@ function App() {
         <Route path='/projects'>
           <Projects />
         </Route>
-        <Route path='/projects/:id'>
-          <Project />
+        <Route path='/project/:id' exact={true}>
+          <Project/>
+        </Route>
+        <Route path='/category/:id'>
+          <Category/>
         </Route>
       </Switch>
     </BrowserRouter>

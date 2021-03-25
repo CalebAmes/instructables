@@ -3,11 +3,16 @@
   background: var(--bg);
   font-size: 14px;
   border-bottom: var(--border);
-  padding: 0px 1rem;
-  margin: 0px;
+  /* padding: 0px 1rem; */
   width: 100%;
+  position: fixed;
+  z-index: 9;
+  /* color: var(--text-color-1); */
+  transform: translateX(-8px) translateY(-8px);
+}
 
-  color: var(--text-color-1);
+.nav-div {
+  color: black;
 }
 
 .pad {
@@ -19,33 +24,91 @@ nav {
   z-index: 9;
 }
 
-.NavBar-div .far-els {
+.categoryGrid {
+  /* color: var(--text-color-1); */
+  display: grid;
+  grid-template-columns: 33.3% 33.3% 33.3%;
+  grid-template-rows: 2;
+  margin: 0;
+  padding: 0;
+  border-bottom: var(--border);
+}
+
+.cGridItem {
+  margin: auto;
+  padding: 0;
   display: flex;
-  /* flex-direction: row-reverse; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90px;
+  width: 100%;
+  transition: color 1000ms;
+}
+
+.gridDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
-.far-els {
+.cGridItem :hover {
+  color: greenyellow;
+}
+
+.profileGrid {
+  /* color: var(--text-color-1); */
+  display: grid;
+  grid-template-columns: 50% 50%;
+  height: 60px;
+  width: 100%;
+  font-weight: 400;
+  border-bottom: var(--border)
+}
+
+.pGridItem {
+  transition: background var(--speed);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pGridItem:hover {
+  background-color: red;
+}
+
+.NavBar-div .far-els {
+  display: flex;
+  flex-direction: row;
   justify-content: flex-end;
+}
+
+.navItem {
+display: flex;
+justify-content: flex-start;
+}
+
+.far-els {
+  margin-top: 8px;
   transform: translateX(-20px);
 }
 
-.icon-button svg {
+.nav-item svg{
   position:fixed;
   z-index: 10;
-  fill: var(--text-color-1);
   width: 32px;
   height: 32px;
   transform: translateX(10px);
+  transition: transform var(--speed) ease;
 }
 
-i {
-  font-size: 25px;
-  /* color:red; */
+.icon-button-flip svg{
+  transform: rotate(0.5turn) translateX(-250px);
 }
 
-i:hover {
-  color: red;
+#profile {
+  border-right: var(--border)
 }
 
 .nav-div {
@@ -56,22 +119,136 @@ i:hover {
 .dd {
     position: absolute;
     top: 48px;
-    width: 150px;
-    max-height: 600px;
-    transform: translateX(-12%);
-    color: white;
-    background-color: var(--bg-secondary);
+    width: 300px;
+    transform: translateX(-8px);
+    color: black;
+    background-color: var(--bg);
     border: var(--border);
-    padding: 1rem;
     overflow: scroll;
     z-index: 10;
     transition: height var(--speed) ease;
+    overflow: hidden;
+    font-size: 18px;
+    font-weight: 400;
 }
 
-.dd > li {
-  transition: filter var(--speed);
+.dd > li, .menu-item {
+  transition: color var(--speed);
+  color: black;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  border-bottom: var(--border);
 }
 
 .dd > li :hover {
-  filter: brightness(2.0);
+  color: var(--text-color-2);
+}
+
+.menu-primary-enter {
+  /* position: absolute;
+  transform: translateX(110%); */
+  opacity: 0;
+}
+
+.menu-primary-enter-active {
+  /* /* transform:translateX(0%); */
+  opacity: 1;
+  transition: all var(--speed) ease;
+
+}
+
+.menu-primary-exit {
+  /* position: absolute; */
+  opacity: 1;
+}
+
+.menu-primary-exit-active {
+  /* transform: translateX(110%); */
+  opacity: 0;
+  transition: all var(--speed) ease;
+}
+
+.menu-secondary-enter {
+  position: absolute;
+  transform: translateX(-110%);
+}
+
+.menu-secondary-enter-active {
+  transform:translateX(0%);
+  transition: all var(--speed) ease;
+}
+
+.menu-secondary-exit {
+  position: absolute;
+}
+
+.menu-secondary-exit-active {
+  transform: translateX(-110%);
+  transition: all var(--speed) ease;
+}
+
+
+.cat1 {
+  color: #1F8439;
+  border-bottom: var(--border);
+  border-right: var(--border);
+  margin-right: 8px
+}
+
+.cat2 {
+  color: #da7300;
+  border-bottom: var(--border);
+  border-right: var(--border);
+}
+
+.cat3 {
+  color: #0f9ba3;
+  border-bottom: var(--border);
+}
+
+.cat4 {
+  color: #b2419e;
+  border-right: var(--border);
+}
+
+.cat5 {
+  color: #bd2120;
+  border-right: var(--border);
+}
+
+.cat6 {
+  color: #4c7fcf;
+}
+
+.cat1-2 {
+  color: #1F8439;
+}
+
+.cat2-2 {
+  color: #da7300;
+}
+
+.cat3-2 {
+  color: #0f9ba3;
+}
+
+.cat4-2 {
+  color: #b2419e;
+}
+
+.cat5-2 {
+  color: #bd2120;
+}
+
+.cat6-2 {
+  color: #4c7fcf;
+}
+
+.menu-item {
+  transition: all var(--speed);
+}
+
+.menu-item:hover {
+  background: #EEE4E1;
 }
