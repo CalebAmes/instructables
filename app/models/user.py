@@ -45,7 +45,8 @@ class User(db.Model, UserMixin):
             "id": self.id,
             "username": self.username,
             "email": self.email,
-            "favoriteProjects": [project.to_dict() for project in self.favoriteProjects]
+            "favoriteProjects": [project.to_dict() for project in self.favoriteProjects],
+            "favoriteProjectIds": [project.id for project in self.favoriteProjects]
         }
 
 
@@ -60,6 +61,7 @@ class Project(db.Model):
     keywords = db.Column(postgresql.ARRAY(db.String(30)))
     intro_imgs = db.Column(postgresql.ARRAY(db.Text))
     intro = db.Column(db.Text)
+
 
     steps = db.relationship("Step")
     comments = db.relationship("Comment")

@@ -155,8 +155,13 @@ def api_remove_user_favorite(userId, projectId):
     return "success"
 
 
-@api_routes.route('/user/favorites/<int:userId>', methods=['GET'])
+@api_routes.route('/user/favorite/<int:userId>', methods=['GET'])
 def api_get_user_favorites(userId):
     user = db.session.query(User).get(userId)
     print(user)
     return user.to_dict()
+
+@api_routes.route('/user/favorites/<int:projectId>')
+def api_get_project_favorites(projectId):
+    users = User.query.filter_by(projectId in (User.to_dict()["favoriteProjectIds"]))
+    return {"users": [user.to_dict() for user in users]}
