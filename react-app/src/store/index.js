@@ -4,6 +4,7 @@ import project from './project';
 import comment from './comment';
 import category from './category';
 import user from './user';
+import favorite from './favorite'
 import steps from './step';
 
 const rootReducer = combineReducers({
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   comment,
   category,
   user,
+  favorite,
   steps,
 })
 
