@@ -8,7 +8,7 @@ import { getProjects } from '../../store/project';
 import { getCategory } from '../../store/category';
 import { getComment } from '../../store/comment';
 import { getUsers } from '../../store/user';
-import LogoutButton from '../auth/LogoutButton';
+import { logout } from '../../services/auth'
 import '../../index.css';
 import './NavBar.css';
 
@@ -26,9 +26,9 @@ const NavBar = ({ setAuthenticated }, props) => {
         </div>
       </nav>
           <div className='navItem'>
-            <NavItem icon={<DdIcon />}>
-              <Dropdown setAuthenticated={setAuthenticated} />
-            </NavItem>
+              <NavItem icon={<DdIcon />}>
+                <Dropdown setAuthenticated={setAuthenticated} />
+              </NavItem>
           </div>
       <div className='pad'/>
     </>
@@ -51,8 +51,9 @@ export function NavItem(props) {
   }
 
   return (
+
     <div className='nav-item'>
-      <a href='#' className='icon-button' onClick={openFunc}>
+      <a href='#' className={ open && 'icon-button-flip' } onClick={openFunc}>
         { props.icon }
       </a>
 
@@ -113,6 +114,11 @@ export function Dropdown({setAuthenticated}) {
     setMenuHeight(height);
   }
 
+  const logoutUser = async (e) => {
+    logout();
+    setAuthenticated(false);
+  };
+
   function DropdownItem(props) {
     return (
       <a href='#' 
@@ -155,29 +161,47 @@ export function Dropdown({setAuthenticated}) {
         >
         <ul className='dd'>
           <div className='categoryGrid'>
-            <div className='cGridItem'>
-              <i class="fas fa-microchip"/>
+            <div className='cGridItem cat1'>
+              <div className='gridDiv'>
+                <i class="fas fa-microchip fa-sm"/>
+                <div>circuits</div>
+              </div>
             </div>
-            <div className='cGridItem'>
-              <i class="fas fa-wrench"/>
+            <div className='cGridItem cat2'>
+              <div className='gridDiv'>
+                <i class="fas fa-wrench fa-sm"/>
+                <div>workshop</div>
+              </div>
             </div>
-            <div className='cGridItem'>
-              <i class="fas fa-cut"/>
+            <div className='cGridItem cat3'>
+              <div className='gridDiv'>
+                <i class="fas fa-cut fa-sm"/>
+                <div>crafts</div>
+              </div>
             </div>
-            <div className='cGridItem'>
-              <i class="fas fa-utensils"></i>
+            <div className='cGridItem cat4'>
+              <div className='gridDiv'>
+                <i class="fas fa-utensils fa-sm"/>
+                <div>cooking</div>
+              </div>
             </div>
-            <div className='cGridItem'>
-            <i class="fas fa-home"></i>
+            <div className='cGridItem cat5'>
+              <div className='gridDiv'>
+                <i class="fas fa-home fa-sm"/>
+                <div>living</div>
+              </div>
             </div>
-            <div className='cGridItem'>
-            <i class="fas fa-bicycle"></i>
+            <div className='cGridItem cat6'>
+              <div className='gridDiv'>
+                <i class="fas fa-bicycle fa-sm"/>
+                <div>outdoors</div>
+              </div>
             </div>
           </div>
           <div className='profileGrid'>
-            <div className='pGridItem'>Profile</div>
-            <div className='pGridItem'>
-              <LogoutButton setAuthenticated={setAuthenticated} />
+            <div className='pGridItem' id='profile'>Profile</div>
+            <div className='pGridItem' onClick={ logoutUser }>
+              Logout
             </div>
           </div>
           <li>
@@ -226,18 +250,37 @@ export function Dropdown({setAuthenticated}) {
           
         <ul className='dd'>
           <li>
-          <DropdownItem goToMenu='main'>main</DropdownItem>
+          <DropdownItem icon={<i class="fas fa-arrow-left"></i>} goToMenu='main'>main</DropdownItem>
           </li>
           <li>
           <DropdownItem goToMenu='projects'>projects</DropdownItem>
           </li>
-          {
-            categoryArray.map(item => (
-              <DropdownCategory category={ item } key={ item.id }> 
-              { item.name }
-              </DropdownCategory>
-            ))
-          }
+          <div className=''>
+            <div className='menu-item cat1-2'>
+              <i class="fas fa-microchip"/>
+              <div>Circuits</div>
+            </div>
+            <div className='menu-item cat2-2'>
+              <i class="fas fa-wrench"/>
+              Workshop
+            </div>
+            <div className= 'menu-item cat3-2'>
+              <i class="fas fa-cut"/>
+              Craft
+            </div>
+            <div className='menu-item cat4-2'>
+              <i class="fas fa-utensils"/>
+              Cooking
+            </div>
+            <div className= 'menu-item cat5-2'>
+            <i class="fas fa-home"/>
+            Living
+            </div>
+            <div className='menu-item cat6-2'>
+            <i class="fas fa-bicycle"/>
+            Outside
+            </div>
+          </div>
         </ul>
 
       </CSSTransition>
