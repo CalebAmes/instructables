@@ -45,7 +45,8 @@ class User(db.Model, UserMixin):
             "id": self.id,
             "username": self.username,
             "email": self.email,
-            "favoriteProjects": [project.to_dict() for project in self.favoriteProjects]
+            # "favoriteProjects": [project.id for project in self.favoriteProjects],
+            # "favoriteProjectsIds": [project.id for project in self.favoriteProjects]
         }
 
 
@@ -64,6 +65,9 @@ class Project(db.Model):
     steps = db.relationship("Step")
     comments = db.relationship("Comment")
 
+    user_favorites = db.relationship(
+        "User", secondary=user_favorites)
+    
     def to_dict(self):
         return {
             "id": self.id,
@@ -72,5 +76,6 @@ class Project(db.Model):
             "category_id": self.category_id,
             "keywords": self.keywords,
             "intro_imgs": self.intro_imgs,
-            "intro": self.intro
+            "intro": self.intro,
+            "user_favorites": [user.to_dict() for user in self.user_favorites]
         }

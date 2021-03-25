@@ -2,7 +2,7 @@ from flask import Blueprint, request
 from app.models.db import db
 from app.models import Comment, Category, Step
 from app.models.user import User, Project, user_favorites
-
+from sqlalchemy import func
 
 api_routes = Blueprint('/api', __name__)
 
@@ -21,8 +21,20 @@ def api_projects_category(categoryId):
 
 @api_routes.route('/projects/<int:projectId>', methods=['GET'])
 def api_projects_one(projectId):
-    project = db.session.query(Project).get(projectId)
+    # Bad implementation of favorite count
+    # all_users = User.query.all()
+    # favorite_count = 0
+    # for user in all_users:
+    #     if projectId in user.to_dict()['favoriteProjectsIds']:
+    #         favorite_count += 1
+    # print(f'This project has {favorite_count} favorite')
+    project = Project.query.get(projectId)
+    
+    print(len(project.user_favorites), 'project!!!')
+
+    # project = db.session.query(Project).get(projectId)
     return project.to_dict()
+
 
 
 @api_routes.route("/categories", methods=['GET'])
