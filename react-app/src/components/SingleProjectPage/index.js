@@ -4,6 +4,7 @@ import { getCurrentSteps } from "../../store/step"
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import Steps from '../Steps'
+
 import './SingleProjectPage.css'
 
 function Project() {
