@@ -20,10 +20,10 @@ function ClickProject() {
   const users = Object.values(userItems)
 
 
-  useEffect(() => {
-    dispatch(getProjects())
-    dispatch(getUsers())
-    dispatch(getCategory());
+  useEffect( async () => {
+    await dispatch(getProjects())
+    await dispatch(getUsers())
+    await dispatch(getCategory());
   }, [dispatch])
 
   return (
@@ -47,7 +47,7 @@ function ClickProject() {
                         </div>
                         <div className='favorites'>
                           <span className='justforflex'>
-                          <RandomFeatured />
+                          {/* <RandomFeatured /> */}
                           </span>
                           <span className='favorite'>
                             <i class="fas fa-heart" />
