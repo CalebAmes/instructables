@@ -1,4 +1,9 @@
-import { setCurrentUser } from '../store/currentUser';
+const SET_USER = 'user';
+
+const setUser = (user) => ({
+  type: SET_USER,
+  user,
+})
 
 export const authenticate = async () => {
   const response = await fetch('/api/auth/', {
@@ -9,7 +14,7 @@ export const authenticate = async () => {
   return await response.json();
 }
 
-export const login = async (email, password) => {
+export const login = (email, password) => async (dispatch) => {
   const response = await fetch('/api/auth/login', {
     method: 'POST',
     headers: {
@@ -20,7 +25,21 @@ export const login = async (email, password) => {
       password
     })
   });
-  return await response.json();
+  const data = await response.json();
+  dispatch(setUser(data));
+
+  return data;
+}
+
+function reducer(state = {}, action) {
+  let newState;
+  switch (action.type) {
+    case SET_USER:
+      newState = action;
+      return newState;
+    default:
+      return state;
+  }
 }
 
 export const logout = async () => {
@@ -33,7 +52,7 @@ export const logout = async () => {
 };
 
 
-export const signUp = async (user) => {
+export const signUp = (user) => async (dispatch) => {
   const { avatar, username, email, bio, password } = user;
   const formData = new FormData();
   formData.append("username", username);
@@ -51,9 +70,12 @@ export const signUp = async (user) => {
 
   if (res.ok) {
     const data = await res.json();
+    dispatch(setUser(data));
     return data;
   }
   else {
     console.log('Something went wrong', res)
   }
 }
+
+export default reducer;
