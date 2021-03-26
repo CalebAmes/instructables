@@ -2,33 +2,18 @@ import React, { useEffect, useState } from "react";
 import Video from '../Video'
 import ProjectIntro from './ProjectIntro'
 import IntroMedia from './IntroMedia'
-// import { authenticate } from "../../services/auth";
-import StepForm from "./Step";
-// import {authenticateUser} from '../../store/session'
+import IntroText from './IntroText'
+import StepMedia from "./StepMedia";
+import StepForm from './StepForm'
 import {useSelector, useDispatch} from 'react-redux'
 
 const CreateProject = () => {
-   const [userId, setUserId] = useState('')
-   const [project, setProject] = useState({user_id: 1})
+   const [userId, setUserId] = useState(1)
+   const [project, setProject] = useState({})
    const dispatch = useDispatch()
-
-   // const getUser = async () => {
-   //    const user = await authenticate()
-   //    return user
-   // }
-   
-   // useEffect(() => {
-   //    dispatch(authenticateUser())
-   // }, [])
-  
-   // const user = useSelector((state) => state.session.user)
-   // console.log(project)
-
-   // if (user) {
-   //    setUserId(user.id)
-   //    let key = 'user_id';
-   //    setProject({...project, [key]: userId})
-   // }
+   const [stepCount, setStepCount] = useState(0)
+   const [stepState, setStepState] = useState({})
+   const [table, setTable] = useState('projects')
 
    let form = (
       <ProjectIntro project={project} setProject={setProject}/>
@@ -40,12 +25,32 @@ const CreateProject = () => {
       )
    }
 
-   if (project['intro_img']) {
+   if (project['intro_imgs']) {
       form = (
-         <StepForm project={project} setProject={setProject}/>
+         <IntroText project={project} setProject={setProject}
+         table={table} setTable={setTable}/>
       )
    }
 
+   if (table === 'steps') {
+      form = (
+         <StepMedia 
+         project={project} setProject={setProject} 
+         stepCount={stepCount} setStepCount={setStepCount}
+         stepState={stepState} setStepState={setStepState}
+         table={table} setTable={setTable} />
+      )
+   }
+
+    if (Object.keys(stepState).includes('step_imgs')) {
+      form = (
+         <StepForm 
+         project={project} setProject={setProject}
+         table={table} setTable={setTable} 
+         stepState={stepState} setStepState={setStepState} 
+         stepCount={stepCount} setStepCount={setStepCount}/>
+      )
+   }
 
    return (
       <div>

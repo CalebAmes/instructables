@@ -29,7 +29,7 @@ def upload_intro_image():
 
       db.session.add(image)
       db.session.commit()
-      return {"url": upload}
+      return {"url": upload, "user_id": current_user.id}
 
 @image_routes.route("/steps", methods=["POST"])
 @login_required
@@ -40,7 +40,8 @@ def upload_step_image():
          image = request.files['step_img']
          image.filename = get_unique_filename(image.filename)
                
-         upload = upload_file_to_s3(image)
+         upload = upload_file_to_s3(image
+         )
          if "url" not in upload:
             return upload, 400
          

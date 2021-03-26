@@ -14,7 +14,7 @@ import Projects from "./components/AllProjectsPage";
 import Project from "./components/SingleProjectPage";
 import {authenticateUser} from './store/session'
 import ProjectIntro from './components/ProjectCreationPage/ProjectIntro'
-import StepForm from './components/ProjectCreationPage/Step'
+// import StepForm from './components/Step/StepForm'
 import IntroMedia from './components/ProjectCreationPage/IntroMedia'
 import CreateProject from './components/ProjectCreationPage'
 import Category from "./components/UniqueCategoryPage";

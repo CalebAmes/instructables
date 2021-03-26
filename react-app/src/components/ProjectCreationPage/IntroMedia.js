@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
-import ProjectIntro from './ProjectIntro'
 
 const IntroMedia = ({project, setProject}) => {
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
     const [introImg, setIntroImg] = useState('')
+    const [userId, setUserId] = useState(1)
 
     const moveOn = (e) => {
-        console.log(introImg)
-
-        // setProject({...project, ...json})
+        setProject({...project, 'intro_imgs': introImg})
     }
 
     const uploadImage = async (e) => {
@@ -17,7 +15,6 @@ const IntroMedia = ({project, setProject}) => {
         const formData = new FormData();
         formData.append("intro_img", image);
         setImageLoading(true);
-
         const res = await fetch('/api/images/intro', {
             method: "POST",
             body: formData,
@@ -27,8 +24,10 @@ const IntroMedia = ({project, setProject}) => {
             const json = await res.json();
             setImageLoading(false);
             await setIntroImg(json.url)
-            await setProject({...project, ...json})
-            console.log(project)
+            await setUserId(json.user_id)
+            console.log(json.url, 'json.url')
+            console.log(json.user_id, 'json.user_id')
+            await setProject({...project, 'user_id': userId, 'intro_imgs': introImg})
         }
         else {
             setImageLoading(false);
@@ -64,11 +63,10 @@ const IntroMedia = ({project, setProject}) => {
                     </div>
                 </form>
             </div>
-            <button type='button' onClick={moveOn}>Move On to Steps</button>
+            <button type='button' onClick={moveOn}>Move onto Intro</button>
         </div>
     )
 }
-
 
 
 export default IntroMedia

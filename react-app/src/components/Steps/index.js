@@ -1,8 +1,9 @@
 import React from 'react'
 
-function Steps() {
+const Steps= () => {
   return (
-    <h1>These are my steps</h1>
+    <h1>Steps</h1>
+  
   )
 }
 

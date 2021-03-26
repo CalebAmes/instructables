@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import {Redirect, Link} from 'react-router-dom';
-import StepForm from './Step'
+
+
 const ProjectIntro = ({project, setProject}) => {
 
     const [title, setTitle] = useState('');
-    // const [project, setProject] = useState({});
 
 
     const handleSubmit = (e) => {

@@ -5,13 +5,15 @@ import comment from './comment';
 import category from './category';
 import user from './user';
 import session from './session';
+import step from './step';
 
 const rootReducer = combineReducers({
   project,
   comment,
   category,
   user,
-  session
+  session,
+  step
 })
 
 const logger = require('redux-logger').default;
