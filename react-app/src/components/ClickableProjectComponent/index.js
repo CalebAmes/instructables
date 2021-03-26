@@ -47,7 +47,7 @@ function ClickProject() {
                         </div>
                         <div className='favorites'>
                           <span className='justforflex'>
-                          {/* <RandomFeatured /> */}
+                          <RandomFeatured />
                           </span>
                           <span className='favorite'>
                             <i class="fas fa-heart" />
