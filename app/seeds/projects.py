@@ -13,7 +13,7 @@ def seed_projects():
                        "cool projects", "awesome projects"], intro_imgs=["https://content.instructables.com/ORIG/FNA/5E35/KMJ66ZYS/FNA5E35KMJ66ZYS.jpg", "img-url-2"], intro="This is a really cool porject I made that makes a robot")
     project5 = Project(user_id=13, title="Heart Bird Feeder", category_id=6, keywords=[
                        "cool projects", "awesome projects"], intro_imgs=["https://content.instructables.com/ORIG/F7B/5TFH/KM963O1T/F7B5TFHKM963O1T.jpg", "img-url-2"], intro="This is a really cool porject I made that makes a robot")
-    project6 = Project(user_id=4, title="", category_id=6, keywords=[
+    project6 = Project(user_id=4, title="Really Awesome Creation", category_id=6, keywords=[
                        "cool projects", "awesome projects"], intro_imgs=["https://content.instructables.com/ORIG/F2K/UREE/KM963N07/F2KUREEKM963N07.jpg", "img-url-2"], intro="This is a really cool porject I made that makes a robot")
     project7 = Project(user_id=5, title="A Really Cool Project", category_id=6, keywords=[
                        "cool projects", "awesome projects"], intro_imgs=["https://content.instructables.com/ORIG/F1L/XCMB/KM20W9U5/F1LXCMBKM20W9U5.jpg", "img-url-2"], intro="This is a really cool porject I made that makes a robot")

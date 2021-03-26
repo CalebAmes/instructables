@@ -8,48 +8,70 @@ from app.models import db, User
 def seed_users():
 
     demo = User(username='Demoa', email='demo@demo.com',
+                avatar='https://instructables2.s3.amazonaws.com/robots.jpg',
                 password='password')
     demo1 = User(username='Spaskisaspwesep', email="schneider.maye@thompson.biz",
+                avatar='https://instructables2.s3.amazonaws.com/robots.jpg',
                 password='password')
     demo2 = User(username='lindseycakez8t', email="czemlak@bauch.com",
+                avatar='https://instructables2.s3.amazonaws.com/robots.jpg',
                 password='password')
     demo3 = User(username='scoooooobixi', email="lexi21@kunze.com",
+                avatar='https://instructables2.s3.amazonaws.com/robots.jpg',
                 password='password')
     demo4 = User(username='zvezanega8k', email="daphney.volkman@gmail.com",
+                avatar='https://instructables2.s3.amazonaws.com/robots.jpg',
                 password='password')
     demo5 = User(username='Cisiec2e', email="edyth.franecki@mante.com",
+                avatar='https://instructables2.s3.amazonaws.com/robots.jpg',
                 password='password')
     demo6 = User(username='estuyajuan3c', email="greichel@gmail.com",
+                avatar='https://instructables2.s3.amazonaws.com/robots.jpg',
                 password='password')
     demo7 = User(username='kadaravouu', email="melisa.ankunding@hotmail.com",
+                avatar='https://instructables2.s3.amazonaws.com/robots.jpg',
                 password='password')
     demo8 = User(username='teteh24', email="schulist.emmalee@yahoo.com",
+                avatar='https://instructables2.s3.amazonaws.com/robots.jpg',
                 password='password')
     demo9 = User(username='Tovarurodiao9', email="angela.labadie@gmail.com",
+                avatar='https://instructables2.s3.amazonaws.com/robots.jpg',
                 password='password')
     demo10 = User(username='objectifreach', email="mylene.pfannerstill@yahoo.com",
+                avatar='https://instructables2.s3.amazonaws.com/robots.jpg',
                 password='password')
     demo11 = User(username='Gwalia27', email="lesch.serenity@williamson.org",
+                avatar='https://instructables2.s3.amazonaws.com/robots.jpg',
                 password='password')
     demo12 = User(username='examinandtd', email="keshawn.oberbrunner@casper.com",
+                avatar='https://instructables2.s3.amazonaws.com/robots.jpg',
                 password='password')
     demo13 = User(username='Armottics', email="ipollich@nolan.com",
+                avatar='https://instructables2.s3.amazonaws.com/robots.jpg',
                 password='password')
     demo14 = User(username='fousserr104d', email="mayert.lucas@haley.biz",
+                avatar='https://instructables2.s3.amazonaws.com/robots.jpg',
                 password='password')
     demo15 = User(username='Salehieval0', email="imelda.windler@koelpin.info",
+                avatar='https://instructables2.s3.amazonaws.com/robots.jpg',
                 password='password')
     demo16 = User(username='contrepointl1', email="harber.audrey@yahoo.com",
+                avatar='https://instructables2.s3.amazonaws.com/robots.jpg',
                 password='password')
     demo17 = User(username='ramblog0w', email="drew.bednar@hotmail.com",
+                avatar='https://instructables2.s3.amazonaws.com/robots.jpg',
                 password='password')
     demo18 = User(username='torraindx', email="allan48@yahoo.com",
+                avatar='https://instructables2.s3.amazonaws.com/robots.jpg',
                 password='password')
     demo19 = User(username='divkaes', email="julius73@torphy.biz",
+                avatar='https://instructables2.s3.amazonaws.com/robots.jpg',
                 password='password')
     demo20 = User(username='Sandgrundd7', email="anahi27@kuhn.com",
+                avatar='https://instructables2.s3.amazonaws.com/robots.jpg',
                 password='password')
     demo21 = User(username='mascluda9r', email="akub@gmail.com",
+                avatar='https://instructables2.s3.amazonaws.com/robots.jpg',
                 password='password')
 
     db.session.add(demo)

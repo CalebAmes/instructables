@@ -18,7 +18,7 @@ const removeFavorite = () => ({
 })
 
 export const getFavorite = () => async(dispatch) => {
-  const res = await fetch(`/api/user/favorites`)
+  const res = await fetch('/api/user/favorites')
   const data = await res.json()
   dispatch(setFavorite(data.favorite))
   return res
