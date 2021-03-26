@@ -24,11 +24,11 @@ export const getComments = (projectId) => async (dispatch) => {
 }
 
 export const createComment = (comment) => async (dispatch) => {
-  const { user_id, comment, upvotes, project_id } = comment;
-  const res = await fetch('/api/comments', {
+  const { userId, comment, upvotes, projectId } = comment;
+  const res = await fetch(`/api/comments/${userId}/${projectId}`, {
     method: 'POST',
     body: JSON.stringify({
-      user_id, comment, upvotes, project_id,
+      comment, upvotes
     }),
   });
   const data = await res.json();

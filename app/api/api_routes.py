@@ -197,13 +197,13 @@ def api_remove_user_build(userId, projectId):
         return "success"
 
 
-@ api_routes.route('/user/builds/<int:userId>', methods=['GET'])
+@api_routes.route('/user/builds/<int:userId>', methods=['GET'])
 def api_get_build_for_user(userId):
     builds = Build.query.filter_by(user_id=userId)
     return {"builds": [build.to_dict() for build in builds]}
 
 
-@ api_routes.route('/project/builds/<int:projectId>', methods=['GET'])
+@api_routes.route('/project/builds/<int:projectId>', methods=['GET'])
 def api_get_project_builds(projectId):
     builds = Build.query.filter_by(project_id=projectId)
     return {"builds": [build.to_dict() for build in builds]}
