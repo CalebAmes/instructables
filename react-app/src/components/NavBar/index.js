@@ -84,8 +84,10 @@ export function NavComment(props) {
 
 export function Dropdown({setAuthenticated}) {
   const dispatch = useDispatch();
-  const projectItems = useSelector((state) => state.project);
-  
+  const projectItems = useSelector((state) => state?.project);
+  const userItems = useSelector((state) => state?.single)
+
+  const user = userItems?.user
   const [ activeMenu, setActiveMenu ] = useState('main');
   const [ menuHeight, setMenuHeight ] = useState(null);
 
@@ -191,7 +193,7 @@ export function Dropdown({setAuthenticated}) {
             </Link>
           </div>
           <div className='profileGrid'>
-            <Link to={`/users/`} 
+            <Link to={`/profile/${user?.id}`} 
               className='pGridItem profile' 
               id='profile'>
                 Profile

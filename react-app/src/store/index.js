@@ -7,6 +7,7 @@ import user from './user';
 import favorite from './favorite'
 import steps from './step';
 import currentUser from './currentUser';
+import singleUser from '../services/auth';
 
 const rootReducer = combineReducers({
   project,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   favorite,
   steps,
   currentUser,
+  singleUser,
 })
 
 const logger = require('redux-logger').default;
