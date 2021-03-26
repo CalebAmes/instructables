@@ -25,7 +25,7 @@ export const getComments = (projectId) => async (dispatch) => {
 
 export const createComment = (comment) => async (dispatch) => {
   const { user_id, comment, upvotes, project_id } = comment;
-  const res = await fetch('/api/comment', {
+  const res = await fetch('/api/comments', {
     method: 'POST',
     body: JSON.stringify({
       user_id, comment, upvotes, project_id,
@@ -34,6 +34,10 @@ export const createComment = (comment) => async (dispatch) => {
   const data = await res.json();
   dispatch(addComment(data.comment));
   return res;
+}
+
+export const deleteCommentStore = (commentId) => async (dispatch) => {
+  await fetch(`/api/comments/${commentId}`, { method: 'delete' })
 }
 
 

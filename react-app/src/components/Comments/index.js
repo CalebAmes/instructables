@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getComments } from '../../store/comment';
+import { getComments, deleteCommentStore } from '../../store/comment';
 import { CommentBreak } from '../Break'
 import './Comments.css'
 
@@ -12,6 +12,9 @@ function Comments() {
   comments.forEach(() => {
     commentsNum++;
   })
+
+  // STILL NEED TO CHANGE THE GETCOMMENTS DISPATCH TO ACCEPT THE CURRENT PROJECTID
+
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getComments(1))
@@ -20,7 +23,8 @@ function Comments() {
     return "EmollientSpy1"
   }
   const deleteComment = (commentId) => {
-    console.log("deleted", commentId)
+    dispatch(deleteCommentStore(commentId))
+    dispatch(getComments(1))
   }
   return (
     <div className="comment-section">
@@ -52,7 +56,7 @@ function Comments() {
           </div>
         ))}
       </div>
-    </div >
+    </div>
   )
 }
 
