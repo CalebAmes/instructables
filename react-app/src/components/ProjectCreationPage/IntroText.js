@@ -22,7 +22,7 @@ const IntroText = ({project, setProject, table, setTable}) => {
    return (
       <div>
          <h1>{project.title}</h1>
-         <img src={project.intro_imgs} alt={project.title}/>
+         <img src={project.image} alt={project.title}/>
          <form onSubmit={handleSubmit}>
             <div>
                <textarea

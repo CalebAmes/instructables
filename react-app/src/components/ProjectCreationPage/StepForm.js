@@ -19,11 +19,11 @@ const StepForm = ({project, stepCount, stepState, setStepState}) => {
    return (
       <div>
          <h1>{project.title}</h1>
-         {stepState.step_imgs.includes('amazonaws.com') && (
-            <img src={stepState.step_imgs} alt='step image'/>
+         {stepState.image.includes('amazonaws.com') && (
+            <img src={stepState.image} alt='step image'/>
          )}
-         {!stepState.step_imgs.includes('amazonaws.com') && stepState.step_imgs (
-            <Video embedId={stepState.step_imgs} />
+         {!stepState.image.includes('amazonaws.com') && stepState.image (
+            <Video embedId={stepState.image} />
          )}
          <form onSubmit={handleSubmit}>
             <div>

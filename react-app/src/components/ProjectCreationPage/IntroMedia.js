@@ -7,7 +7,7 @@ const IntroMedia = ({project, setProject}) => {
     const [userId, setUserId] = useState(1)
 
     const moveOn = (e) => {
-        setProject({...project, 'intro_imgs': introImg})
+        setProject({...project, 'user_id': userId, 'intro_imgs': image, 'image': introImg})
     }
 
     const uploadImage = async (e) => {
@@ -27,7 +27,7 @@ const IntroMedia = ({project, setProject}) => {
             await setUserId(json.user_id)
             console.log(json.url, 'json.url')
             console.log(json.user_id, 'json.user_id')
-            await setProject({...project, 'user_id': userId, 'intro_imgs': introImg})
+            // await setProject({...project, 'user_id': userId, 'intro_imgs': image})
         }
         else {
             setImageLoading(false);
@@ -50,7 +50,7 @@ const IntroMedia = ({project, setProject}) => {
                         type="file"
                         accept="image/*"
                         onChange={updateImage}
-                        // multiple
+                        multiple
                         />
                     </div>
                     <button type="submit">Upload Photo</button>

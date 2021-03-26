@@ -19,13 +19,13 @@ const StepMedia = ({project, stepCount, setStepCount, stepState, setStepState}) 
     const moveOn = (e) => {
         e.preventDefault()
         if (image) {
-            setStepState({ ...stepState, 'step_count': stepCount, 'project_id':100, 'step_imgs': stepImg})
+            setStepState({ ...stepState, 'step_count': stepCount, 'project_id':100, 'step_imgs': image, 'image': stepImg})
         }
         else if (video) {
-            setStepState({ ...stepState, 'step_count': stepCount, 'project_id':100, 'step_imgs': video})
+            setStepState({ ...stepState, 'step_count': stepCount, 'project_id':100, 'step_imgs': video, 'image': video})
         }
         else {
-            setStepState({ ...stepState, 'step_count': stepCount, 'project_id':100, 'step_imgs': null})
+            setStepState({ ...stepState, 'step_count': stepCount, 'project_id':100, 'step_imgs': null, 'image': null})
         }
     }
 

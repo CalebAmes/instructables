@@ -46,51 +46,52 @@ def api_projects_steps(projectId):
     return {"steps": [step.to_dict() for step in steps]}
 
 
-# @api_routes.route('/projects', methods=['POST'])
-# @login_required
-# def api_create_project():
-#     form = ProjectForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-
-#     if form.validate_on_submit():
-        
-#         if 'intro_imgs' not in request.files:
-#             return {'errors': 'intro image required'}, 400
-        
-#         # intro_images = request.files['intro_imgs']
-#         # for intro_image in intro_images:
-#         #     intro_image.filename = get_unique_filename(intro_image.filename)
-            
-#         # uploads = [upload_file_to_s3(intro_image) for intro_image in intro_images]
-#         # for upload in uploads:
-#         #     if upload['url']:
-#         #         upload = upload['url']
-
-#         project = Project(
-#             user_id=form.data['userId'], 
-#             title=form.data['title'], 
-#             category_id=form.data['category_id'],
-#             keywords=form.data['keywords'], 
-#             # intro_imgs=uploads,
-#             intro_imgs=form.data['intro_imgs'] 
-#             intro=form.data['intro'])
-
-#         db.session.add(project)
-#         db.session.commit()
-
-#         return project.to_dict()
-
-
 @api_routes.route('/projects', methods=['POST'])
 @login_required
 def api_create_project():
-    data = request.get_json()
-    project = Project(user_id=current_user.id, title=data['title'], category_id=data['category_id'],
-                      keywords=data['keywords'], intro_imgs=data['intro_imgs'], intro=data['intro'])
-    db.session.add(project)
-    db.session.commit()
+    form = ProjectForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
 
-    return project.to_dict()
+    if form.validate_on_submit():
+        
+        if 'intro_imgs' not in request.files:
+            return {'errors': 'intro image required'}, 400
+        
+        intro_images = request.files['intro_imgs']
+        for intro_image in intro_images:
+            intro_image.filename = get_unique_filename(intro_image.filename)
+            
+        uploads = [upload_file_to_s3(intro_image) for intro_image in intro_images]
+        for upload in uploads:
+            if upload['url']:
+                upload = upload['url']
+
+        project = Project(
+            user_id=form.data['userId'], 
+            title=form.data['title'], 
+            category_id=form.data['category_id'],
+            keywords=form.data['keywords'], 
+            intro_imgs=uploads,
+            # intro_imgs=form.data['intro_imgs'] 
+            intro=form.data['intro']
+        )
+
+        db.session.add(project)
+        db.session.commit()
+
+        return project.to_dict()
+
+
+# @api_routes.route('/projects', methods=['POST'])
+# @login_required
+# def api_create_project():
+#     data = request.get_json()
+#     project = Project(user_id=current_user.id, title=data['title'], category_id=data['category_id'],
+#                       keywords=data['keywords'], intro_imgs=data['intro_imgs'], intro=data['intro'])
+#     db.session.add(project)
+#     db.session.commit()
+
+#     return project.to_dict()
 
 
 # @api_routes.route('/steps/<int:projectId>', methods=['POST'])
