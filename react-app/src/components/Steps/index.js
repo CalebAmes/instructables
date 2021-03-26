@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { OneImage, TwoImages, ThreeImages } from '../StepImages'
+import { StepBreak } from '../Break'
 import './steps.css'
 
 function Steps() {
@@ -40,6 +41,7 @@ function Steps() {
               <i class="fa fa-comments" aria-hidden="true"><a className="tooltip-text">  Comment</a></i>
             </div>
           </div>
+          <StepBreak />
         </div>
       ))
       }

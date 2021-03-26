@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import project from './project';
-import comment from './comment';
+import comments from './comment';
 import category from './category';
 import user from './user';
 import favorite from './favorite'
@@ -11,7 +11,7 @@ import singleUser from '../services/auth';
 
 const rootReducer = combineReducers({
   project,
-  comment,
+  comments,
   category,
   user,
   favorite,

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getProjects } from "../../store/project"
 
 
-function RandomFeatured(){
+function RandomFeatured() {
   const dispatch = useDispatch()
 
   const projectItems = useSelector((state) => state.project)
@@ -13,16 +13,14 @@ function RandomFeatured(){
   useEffect(async () => {
     await dispatch(getProjects())
   }, [dispatch])
-  
+
   let count = 0
 
   let randomNum = Math.floor(Math.random() * 10)
-  
-  
   return (
     <>
       {projects.map((project) => {
-        if(project.id === randomNum) {
+        if (project.id === randomNum) {
           return (
             <>
               <span className='featured'>
@@ -30,9 +28,9 @@ function RandomFeatured(){
               </span>
             </>
           )
-        } 
+        }
       })}
-  </>
+    </>
   )
 }
 

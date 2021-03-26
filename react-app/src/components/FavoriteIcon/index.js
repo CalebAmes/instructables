@@ -7,7 +7,7 @@ import { getUsers } from '../../store/user'
 
 function AddFavorite() {
   const dispatch = useDispatch()
-  
+
   const projectItems = useSelector((state) => state.project)
   const userItems = useSelector((state) => state.user)
   const favoriteItems = useSelector((state) => state.favorite)
@@ -15,7 +15,7 @@ function AddFavorite() {
   const projects = Object.values(projectItems)
   const users = Object.values(userItems)
   const favorites = Object.values(favoriteItems)
-  console.log(favorites)
+
 
   // useEffect(() => {
   //   users.forEach((user) => {
