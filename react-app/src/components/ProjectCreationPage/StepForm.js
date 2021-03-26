@@ -14,6 +14,7 @@ const StepForm = ({project, stepCount, stepState, setStepState}) => {
       setStepState({...stepState, 'step_title': title, 'step': step})
       console.log(stepState, 'stepState')
       dispatch(addAStep(stepState))
+      setStepState({})
    }
 
    return (

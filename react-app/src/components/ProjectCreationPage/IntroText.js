@@ -7,12 +7,13 @@ const IntroText = ({project, setProject, table, setTable}) => {
    const[intro, setIntro] = useState('')
    const dispatch = useDispatch()
 
-   const handleSubmit = (e) => {
+   const handleSubmit = async (e) => {
       e.preventDefault()
-      setProject({...project, 'intro': intro})
+      await setProject({...project, 'intro': intro})
       setTable('steps')
-      dispatch(createProject(project))
-      return project
+      const newProject = await dispatch(createProject(project))
+      // setProject(newProject)
+      console.log(newProject, ' new project')
    }
 
    const updateIntro = (e) => {
@@ -22,7 +23,7 @@ const IntroText = ({project, setProject, table, setTable}) => {
    return (
       <div>
          <h1>{project.title}</h1>
-         <img src={project.image} alt={project.title}/>
+         <img src={project.intro_imgs} alt={project.title}/>
          <form onSubmit={handleSubmit}>
             <div>
                <textarea

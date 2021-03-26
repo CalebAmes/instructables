@@ -11,8 +11,8 @@ const addStep = (step) => ({
   payload: step
 })
 
-export const addAStep = (step) => async (dispatch) => {
-  const {project_id, step_count, step_title, step_imgs, step} = step
+export const addAStep = (stepState) => async (dispatch) => {
+  const {project_id, step_count, step_title, step_imgs, step} = stepState
   const formData = new FormData();
   formData.append('project_id', project_id)
   formData.append('step_title', step_title)

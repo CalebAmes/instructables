@@ -7,7 +7,7 @@ const IntroMedia = ({project, setProject}) => {
     const [userId, setUserId] = useState(1)
 
     const moveOn = (e) => {
-        setProject({...project, 'user_id': userId, 'intro_imgs': image, 'image': introImg})
+        setProject({...project, 'user_id': userId, 'intro_imgs': introImg, 'image': image})
     }
 
     const uploadImage = async (e) => {
@@ -25,8 +25,8 @@ const IntroMedia = ({project, setProject}) => {
             setImageLoading(false);
             await setIntroImg(json.url)
             await setUserId(json.user_id)
-            console.log(json.url, 'json.url')
-            console.log(json.user_id, 'json.user_id')
+            // console.log(json.url, 'json.url')
+            // console.log(json.user_id, 'json.user_id')
             // await setProject({...project, 'user_id': userId, 'intro_imgs': image})
         }
         else {
