@@ -16,16 +16,16 @@ const removeComment = () => ({
   type: REMOVE_COMMENT,
 })
 
-export const getComment = () => async (dispatch) => {
-  const res = await fetch('/api/comment');
+export const getComments = (projectId) => async (dispatch) => {
+  const res = await fetch(`/api/comments/${projectId}`);
   const data = await res.json();
-  dispatch(setComment(data.comment));
+  dispatch(setComment(data.comments));
   return res;
 }
 
 export const createComment = (comment) => async (dispatch) => {
   const { user_id, comment, upvotes, project_id } = comment;
-  const res = await fetch('/api/comment', {
+  const res = await fetch('/api/comments', {
     method: 'POST',
     body: JSON.stringify({
       user_id, comment, upvotes, project_id,
@@ -35,6 +35,12 @@ export const createComment = (comment) => async (dispatch) => {
   dispatch(addComment(data.comment));
   return res;
 }
+
+export const deleteCommentStore = (commentId) => async (dispatch) => {
+  await fetch(`/api/comments/${commentId}`, { method: 'delete' })
+}
+
+
 
 function reducer(state = {}, action) {
   let newState;

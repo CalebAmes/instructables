@@ -12,8 +12,7 @@
 }
 
 body {
-  font-family: "Poppins", sans-serif;
-  /* overflow: hidden; */
+  font-family: 'Poppins', sans-serif;
 }
 
 ul,
@@ -25,5 +24,9 @@ li {
 
 a {
   color: inherit;
+  text-decoration: none;
+}
+
+link, div {
   text-decoration: none;
 }

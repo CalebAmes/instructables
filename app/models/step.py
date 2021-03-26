@@ -17,6 +17,7 @@ class Step(db.Model):
         return {
             'id': self.id,
             'step_count': self.step_count,
+            'step_title': self.step_title,
             'project_id': self.project_id,
             'step_imgs': self.step_imgs,
             'step': self.step,

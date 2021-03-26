@@ -18,6 +18,7 @@ import ProjectIntro from './components/ProjectCreationPage/ProjectIntro'
 import IntroMedia from './components/ProjectCreationPage/IntroMedia'
 import CreateProject from './components/ProjectCreationPage'
 import Category from "./components/UniqueCategoryPage";
+import UserProfilePage from "./components/UserProfilePage";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -51,6 +52,9 @@ function App() {
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />
+        </Route>
+        <Route path='/profile/:id'>
+          <UserProfilePage/>
         </Route>
         <Route exact path='/'>
           <SplashPage/>

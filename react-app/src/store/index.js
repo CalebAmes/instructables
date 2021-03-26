@@ -1,19 +1,23 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import project from './project';
-import comment from './comment';
+import comments from './comment';
 import category from './category';
 import user from './user';
-import session from './session';
-import step from './step';
+import favorite from './favorite'
+import steps from './step';
+import currentUser from './currentUser';
+import singleUser from '../services/auth';
 
 const rootReducer = combineReducers({
   project,
-  comment,
+  comments,
   category,
   user,
-  session,
-  step
+  favorite,
+  steps,
+  currentUser,
+  singleUser,
 })
 
 const logger = require('redux-logger').default;

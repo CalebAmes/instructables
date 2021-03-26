@@ -10,23 +10,27 @@ class Project(db.Model):
     title = db.Column(db.String(255))
     category_id = db.Column(db.Integer, db.ForeignKey(
         "categories.id"))
+
     keywords = db.Column(postgresql.ARRAY(db.String(30)))
     intro_imgs = db.Column(postgresql.ARRAY(db.Text))
     intro = db.Column(db.Text)
 
     steps = db.relationship("Step")
-    # , back_populates="projects", cascade="all, delete", passive_deletes=True
+
     comments = db.relationship("Comment")
 
-    # users = db.relationship(
-    #     "User", secondary=user_favorites, back_populates="projects")
+    builds = db.relationship("Build")
+    favorites = db.relationship("Favorite")
 
     def to_dict(self):
         return {
             "id": self.id,
             "user_id": self.user_id,
             "title": self.title,
+            "category_id": self.category_id,
             "keywords": self.keywords,
             "intro_imgs": self.intro_imgs,
-            "intro": self.intro
+            "intro": self.intro,
+            # "favoriteIds": [project.id for project in self.favorites],
+            # "builds": [project.id for project in self.builds]
         }

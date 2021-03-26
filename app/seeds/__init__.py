@@ -4,6 +4,7 @@ from .categories import seed_categories, undo_categories
 from .projects import seed_projects, undo_projects
 from .steps import seed_steps, undo_steps
 from .comments import seed_comments, undo_comments
+from .favorites import seed_favorites
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -18,7 +19,7 @@ def seed():
     seed_categories()
     seed_projects()
     seed_steps()
-    # seed_favorites()
+    seed_favorites()
     seed_comments()
     # Add other seed functions here
 
