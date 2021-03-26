@@ -10,12 +10,13 @@ function RandomFeatured() {
 
   const projects = Object.values(projectItems)
 
-  useEffect(() => {
-    dispatch(getProjects())
+  useEffect(async () => {
+    await dispatch(getProjects())
   }, [dispatch])
 
-  let randomNum = Math.floor(Math.random() * 10)
+  let count = 0
 
+  let randomNum = Math.floor(Math.random() * 10)
   return (
     <>
       {projects.map((project) => {

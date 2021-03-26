@@ -14,6 +14,7 @@ import Projects from "./components/AllProjectsPage";
 import Project from "./components/SingleProjectPage";
 import {authenticateUser} from './store/session'
 import Category from "./components/UniqueCategoryPage";
+import UserProfilePage from "./components/UserProfilePage";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -64,6 +65,9 @@ function App() {
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />
+        </Route>
+        <Route path='/profile/:id'>
+          <UserProfilePage/>
         </Route>
         <Route exact path='/'>
           <SplashPage/>

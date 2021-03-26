@@ -9,9 +9,8 @@ class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False, unique=True)
     titles = db.Column(postgresql.ARRAY(db.String(50)))
-    imgs = db.Column(postgresql.ARRAY(db.String(50)))
+    imgs = db.Column(postgresql.ARRAY(db.String(300)))
     description = db.Column(db.Text)
-
     categories = db.relationship("Project")
 
     def to_dict(self):
