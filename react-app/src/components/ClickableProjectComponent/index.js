@@ -7,7 +7,7 @@ import { getCategory } from '../../store/category'
 import './ClickableProject.css'
 import RandomFeatured from '../FeaturedIcon'
 
-function ClickProject() {
+function ClickProject({ project, user, category }) {
   const dispatch = useDispatch()
 
   const projectItems = useSelector((state) => state.project)
@@ -28,12 +28,11 @@ function ClickProject() {
 
   return (
     <>
-      {projects.map((project) => (
-        <div key={project.id}>
+        <div key={project?.id}>
           {users.map((user) => (
-            <div key={user.id}>
-              {categories.map((category) => {
-                if (user.id === project.user_id && project.category_id === category.id) {
+            <div key={user?.id}>
+              {categories?.map((category) => {
+                if (user?.id === project?.user_id && project?.category_id === category?.id) {
                   return (
                     <>
                     <div key={category.id} className='clickableP'>
@@ -61,7 +60,6 @@ function ClickProject() {
             </div>
           ))}
         </div>
-      ))}
     </>
   )
 }

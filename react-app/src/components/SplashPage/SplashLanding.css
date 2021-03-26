@@ -1,0 +1,24 @@
+.imageDiv {
+  max-height: 512px;
+  border: var(--border);
+  max-width: 110%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.divImage {
+  min-width: 100%;
+  max-height: 200%;
+  min-height: 100%;
+  max-height: 200%;
+  z-index: 0;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+
