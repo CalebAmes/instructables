@@ -44,10 +44,8 @@ export const Carousel = ({ images }) => {
   return (
     <>
       <div className='carouselText'>
-        <hr/>
         <h1>YOURS FOR THE MAKING</h1>
         <h3>Instructables is a community for people who like to make things.<br/>Come explore, share, and make your next project with us!</h3>
-        <hr/>
       </div>
       <div className='imageDiv'>
         <Images one={<One/>} two={<Two/>} three={<Three/>} />

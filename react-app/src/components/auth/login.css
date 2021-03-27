@@ -1,0 +1,92 @@
+.login {
+  height: 1146px;
+  width: 105%;
+  transform: translateX(-2.5%)
+}
+
+.formDiv {
+  height: 1146px;
+  box-sizing: border-box;
+  transform: translateX(30%);
+  width: 400px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  padding-top: 100px;
+  padding-right: 50px;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  z-index: 10;
+}
+
+textarea {
+  font-family: inherit;
+  margin: inherit;
+}
+
+/* .inputButton {
+  width: 300px;
+  height: 40px;
+  padding: 0px;
+  margin: 0px;
+  border-radius: var(--border-radius);
+  margin: 0px 20px 8px 25px;
+} */
+
+.input {
+  font-size: 16px;
+  width: 355px;
+  height: 40px;
+  background: #e8f0fe;
+  border-radius: 3px;
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  margin: 11px auto;
+}
+
+.button {
+  color: white;
+  font-weight: 100;
+  background: #faac18;
+  text-align: center;
+  font-size: 17.5px;
+  border-radius: 3px;
+  box-shadow: none;
+  border: 1px solid rgba(0,0,0,0.3);
+  line-height: 16px;
+  height: 44px;
+  width: 360px;
+  margin: 11px auto;
+}
+
+.button:hover {
+  background: #f65858
+}
+
+.footer {
+  height: 246px;
+  width: 110%;
+  background: #555;
+  transform: translateX(-5%);
+  margin-bottom: 10px; 
+}
+
+.uploadDiv{
+  color: white;
+  font-family: inherit;
+  font-size: 17.5px;
+  margin: 11px auto;
+}
+
+.upload {
+  font-family: inherit;
+  color: white;
+}
+/* .labels {
+  margin: 6px 16px 6px 16px ;
+  font-weight: lighter;
+  font-size: 13px;
+} */
