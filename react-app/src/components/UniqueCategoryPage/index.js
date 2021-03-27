@@ -34,11 +34,10 @@ function Category(){
     return (
       <>
       
-        <div className='grid'>
        {loaded  &&
          <Carousel images={category.imgs}/>
        }
-        {/* <div>{categories.imgs}</div> */}
+        <div className='grid'>
         <div className='categories'>
           <div className='inner-categories'>
           {projects.map((project) => (

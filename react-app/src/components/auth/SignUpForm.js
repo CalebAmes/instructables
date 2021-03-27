@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Redirect, useHistory } from 'react-router-dom';
-import {useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux';
 import { signUp } from '../../services/auth';
+import './login.css';
+import workshop from '../../icons/workshop.jpeg'
 
 const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [username, setUsername] = useState("");
@@ -52,63 +54,78 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
+    <>
+    <div className='login' style={{background:'url('+workshop+') no-repeat center center fixed', backgroundSize: 'cover', height: '1148px'}}>
+    <div className='formDiv'>
+    <form className='loginForm' onSubmit={onSignUp}>
       <div>
-        <label>User Name</label>
         <input
+          className='input inputButton'
           type="text"
           name="username"
           onChange={updateUsername}
+          placeholder="Username"
           value={username}
         ></input>
       </div>
       <div>
-        <label>Email</label>
         <input
+          className='input inputButton'
           type="text"
           name="email"
           onChange={updateEmail}
+          placeholder="Email"
           value={email}
         ></input>
       </div>
-      <div>
-        <label>Avatar</label>
+      <div className='uploadDiv'>
+        <label>Upload an avatar:</label>
         <input
+          className='upload'
           type="file"
           name="avatar"
           accept="image/*"
+          placeholder="Avatar"
           onChange={updateAvatar}
         ></input>
       </div>
       <div>
-        <label>Biography</label>
         <textarea
+          className='input inputButton'
           name="bio"
           onChange={updateBio}
+          placeholder="Biography"
           value={bio}
         ></textarea>
       </div>
       <div>
-        <label>Password</label>
         <input
+          className='input inputButton'
           type="password"
           name="password"
           onChange={updatePassword}
+          placeholder="Password"
           value={password}
         ></input>
       </div>
       <div>
-        <label>Repeat Password</label>
         <input
+          className='input inputButton'
           type="password"
           name="repeat_password"
           onChange={updateRepeatPassword}
           value={repeatPassword}
+          placeholder="Repeat Password"
           required={true}
         ></input>
       </div>
-      <button type="submit">Sign Up</button>
+      <button className='button' type="submit">Sign Up</button>
     </form>
+    </div>
+    </div>
+    <div className='footer'>
+    </div>
+    </>
   );
 };
 
