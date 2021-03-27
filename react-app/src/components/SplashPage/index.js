@@ -1,12 +1,18 @@
 import React,{ useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { setCurrentUser } from '../../store/currentUser'
 import './SplashLanding.css'
 import badDog from '../../icons/badDog.jpeg'
 import goodDog from '../../icons/goodDog.jpeg'
 import dogTrouble from '../../icons/dogTrouble.png'
-import { CSSTransition } from 'react-transition-group'
+import ClickProject from '../ClickableProjectComponent'
 
 
 function SplashPage(){
+  const dispatch = useDispatch()
+  useEffect(async () => {
+    await dispatch(setCurrentUser())
+  })
   const images = [ badDog, goodDog, dogTrouble ];
   
   return(
