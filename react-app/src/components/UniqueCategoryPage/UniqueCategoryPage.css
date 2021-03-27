@@ -1,18 +1,21 @@
 .grid{
   display: grid;
   grid-template-rows: 15% 80% 5%;
-
+  grid-template-areas: 
+  '';
 }
 
 .carousel{
   height: 512px;
   background-color: blue;
+  grid-area: carousel;
 }
 
 .categories{
   z-index: 100;
   margin-left: 4%;
   margin-right: 4%;
+  grid-area: carousel;
 }
 
 .inner-categories{

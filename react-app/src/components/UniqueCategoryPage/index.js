@@ -33,22 +33,21 @@ function Category(){
  
     return (
       <>
-      
         <div className='grid'>
-       {loaded  &&
-         <Carousel images={category.imgs}/>
-       }
-        {/* <div>{categories.imgs}</div> */}
-        <div className='categories'>
-          <div className='inner-categories'>
-          {projects.map((project) => (
-            (project?.category_id == id ? (
-              <ClickProject key={project.id} project={project} user={userItems[project.user_id]} category={categoryItems[project.category_id]}/>
-              ): null) 
-              ))}
+          {loaded  &&
+          <Carousel className='carousel' images={category.imgs}/>
+          }
+          <div className='categories'>
+           <div className='inner-categories'>
+            {projects.map((project) => (
+              (project?.category_id == id ? (
+               <ClickProject key={project.id} project={project} user={userItems[project.user_id]} category={categoryItems[project.category_id]}/>
+                ): null) 
+                ))}
             </div>
+        <div className='contests'></div>
         </div>
-              </div>
+        </div>
       </>
   )
 }
