@@ -83,6 +83,7 @@ def api_create_all_steps(projectId):
 @api_routes.route('/comments/<int:userId>/<int:projectId>', methods=['POST'])
 def api_create_comment(userId, projectId):
     data = request.get_json()
+    print(data)
     comment = Comment(
         comment=data['comment'], upvotes=data['upvotes'], user_id=userId, project_id=projectId)
     db.session.add(comment)

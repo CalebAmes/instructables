@@ -64,8 +64,6 @@ function Comments() {
 
                 <div className="comment">
                   {comment.comment}
-                  {comment.user.id}
-                  {console.log(comment.user)}
                 </div>
 
                 <CommentBreak />

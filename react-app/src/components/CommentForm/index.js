@@ -1,20 +1,38 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { closeForm } from '../../store/commentPostState';
 import { setCurrentUser } from '../../store/currentUser';
+import { useParams } from "react-router-dom";
 import './commentForm.css';
+import { createComment } from '../../store/comment';
 
 
 export default function CommentForm() {
   const dispatch = useDispatch()
   const [text, setText] = useState("")
-  const handleSubmit = (e) => {
-    e.preventDefault()
 
+  const currentUser = useSelector((state) => state.currentUser.user)
+  let { id } = useParams()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const comment = {
+      userId: currentUser.id,
+      comment: text,
+      upvotes: 0,
+      projectId: id,
+    }
+    // setTimeout(() => {
+
+    // })
+    await dispatch(createComment(comment))
+    setText("")
     dispatch(closeForm())
   }
+
   useEffect(async () => {
     await dispatch(setCurrentUser())
+
   }, [dispatch])
   return (
     <div className="post-comment-box">
