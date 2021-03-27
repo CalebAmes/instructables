@@ -22,12 +22,12 @@ function Projects() {
   // const usersArray = Object.values(userItems)
 
 
-  useEffect(() => {
-    dispatch(getProjects());
-    dispatch(getCategory());
-    // dispatch(getComment());
-    // dispatch(getUsers())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(getProjects());
+  //   dispatch(getCategory());
+  //   // dispatch(getComment());
+  //   dispatch(getUsers())
+  // }, [dispatch])
 
 
   return (

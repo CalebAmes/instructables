@@ -1,0 +1,52 @@
+.imageDiv {
+  max-height: 512px;
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  padding: 0px;
+}
+
+.divImage {
+  min-width: 105%;
+  max-height: 200%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: 'cover';
+  transition: all var(--speed);
+}
+
+@keyframes animatedBackground {
+  from { background-position: 0 0; }
+	to { background-position: 100% 0; }
+}
+
+.imageOne, .imageTwo, .imageThree {
+  background-position: 0px 0px;
+	background-repeat: repeat-x;
+
+	animation: animatedBackground 40s linear infinite;
+}
+
+.carouselText {
+  z-index: 6;
+  position: fixed;
+  transform: translateX(100px) translateY(100px);
+  color: white;
+}
+
+.carouselText > h1 {
+  font-size: 60px;
+  font-weight: 200;
+}
+
+.carouselText > h3 {
+  font-size: 18px;
+  padding-bottom: 20px;
+}
+
+.carouselText > p {
+  text-decoration: underline;
+}
