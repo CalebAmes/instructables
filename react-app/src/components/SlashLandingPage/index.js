@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { setCurrentUser } from '../../store/currentUser'
 
 
-function SplashPage(){
+function SplashPage() {
+  const dispatch = useDispatch()
+  useEffect(async () => {
+    await dispatch(setCurrentUser())
+  })
   return <h1>This is the SplashPage</h1>
 }
 

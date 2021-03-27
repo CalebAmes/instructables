@@ -1,11 +1,16 @@
 const SET_USER = "currentUser/setCurrentUser"
 
 
-export const setCurrentUser = (user) => ({
+const setUser = (user) => ({
   type: SET_USER,
   user
 })
 
+export const setCurrentUser = () => async (dispatch) => {
+  const res = await fetch('/api/auth/');
+  const user = await res.json();
+  dispatch(setUser(user))
+}
 
 
 function reducer(state = {}, action) {
@@ -13,7 +18,7 @@ function reducer(state = {}, action) {
   switch (action.type) {
     case SET_USER:
       newState = {};
-      newState['currentUser'] = action.user
+      newState['user'] = action.user
       return newState;
     default:
       return state;

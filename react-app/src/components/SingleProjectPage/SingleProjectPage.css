@@ -12,6 +12,22 @@
   margin-top: 50px;
 }
 
+.project-title {
+  font-size: 30px;
+  margin: 32px, 0, 35px;
+  line-height: 20px;
+  letter-spacing: normal;
+  text-align: center;
+  color: #333333;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 550;
+  text-decoration: none solid rgb(51, 51, 51);
+}
+
+.space {
+  height: 16px;
+}
+
 .step-title {
   font-size: 24px;
   margin: 32px, 0, 15px;
