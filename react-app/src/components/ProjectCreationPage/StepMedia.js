@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {useSelector} from 'react-redux'
 import Video from '../Video'
 import StepForm from "./StepForm";
-import c from './ProjectCreation.module.css'
+import './ProjectCreation.css'
 // import {useDispatch} from 'react-redux'
 
 const StepMedia = ({project, stepCount, setStepCount, stepState, setStepState}) => {
@@ -91,15 +91,15 @@ const StepMedia = ({project, stepCount, setStepCount, stepState, setStepState}) 
     return (
         <div>
             <h1>Add Step</h1>
-            <div className={c.upload}>
-                <div className={c.uploadNav}>
-                    <div className={c.imageUpload}>  
+            <div className='upload'>
+                <div className='uploadNav'>
+                    <div className='imageUpload'>  
                         <h4 
                         onClick={() => setType('image')}>
                         Upload Photos
                         </h4>
                     </div>
-                    <div className={c.embedVideo}>
+                    <div className='embedVideo'>
                         <h4 onClick={() => setType('video')}>
                         Embed a Video
                         </h4>

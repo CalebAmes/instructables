@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {Redirect, Link} from 'react-router-dom';
-import c from './ProjectCreation.module.css'
+import './ProjectCreation.css'
 
 const ProjectIntro = ({project, setProject}) => {
 
@@ -14,13 +14,13 @@ const ProjectIntro = ({project, setProject}) => {
     }
 
     return (
-    <div className={c.introForm}>
+    <div className='introForm'>
         <h1>What do you want to share?</h1>
         <div>
             <h3>I made a project called:</h3>
         </div>
             <form onSubmit = {handleSubmit}>
-                <div className= {c.projectTitle}>
+                <div className='projectTitle'>
                 <input 
                 type='text'
                 name='title'

@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Component } from "react";
 import {useDispatch} from 'react-redux'
 import Video from '../Video'
 import {addAStep} from '../../store/step'
 import {Redirect} from 'react-router-dom'
-import c from './ProjectCreation.module.css'
+import './ProjectCreation.css'
+import TextEditor from '../TextEditor'
 
 const StepForm = ({project, stepCount, setStepCount, stepState, setStepState}) => {
    
@@ -52,12 +53,17 @@ const StepForm = ({project, stepCount, setStepCount, stepState, setStepState}) =
                />
             </div>
             <div>
-               <textarea
+               <TextEditor
+               onChange={(e) =>setStep(e.target.value)}
+               value={step}
+               data="<p>{`step ${stepCount} body`}</p>"
+               />
+               {/* <textarea
                name='step' 
                value={step}
                onChange={(e) => setStep(e.target.value)} 
                placeholder={`step ${stepCount} body`}
-               />
+               /> */}
             </div>
             <div>
                <button type='submit'>Add Step</button>

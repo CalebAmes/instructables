@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import {useDispatch} from 'react-redux'
 import {createProject} from '../../store/project'
+import TextEditor from "../TextEditor";
 import Video from '../Video'
-import c from './ProjectCreation.module.css'
+import './ProjectCreation.css'
 
 const IntroText = ({project, setProject, table, setTable}) => {
    const [intro, setIntro] = useState('')
@@ -31,11 +32,16 @@ const IntroText = ({project, setProject, table, setTable}) => {
          <img src={project.intro_imgs} alt={project.title}/>
          <form onSubmit={handleSubmit}>
             <div>
-               <textarea
+               {/* <textarea
                name='intro' 
                value={intro}
                onChange={(e) => setIntro(e.target.value)}
                placeholder = 'add an intro'
+               /> */}
+               <TextEditor 
+               data='<p>Add Intro here</p>'
+               value={intro}
+               onChange={(e) => setIntro(e.target.value)}
                />
             </div>
             <div>

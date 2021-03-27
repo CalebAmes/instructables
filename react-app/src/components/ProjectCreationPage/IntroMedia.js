@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import c from './ProjectCreation.module.css'
+import './ProjectCreation.css'
 
 const IntroMedia = ({project, setProject}) => {
     const [image, setImage] = useState(null);
@@ -58,7 +58,7 @@ const IntroMedia = ({project, setProject}) => {
     return (
         <div className='upload'>
             <h4>Upload Photos</h4>
-            <div className={c.imageUpload}>
+            <div className='imageUplaod'>
                 <form onSubmit={uploadImage}>
                     <div>
                         <input
