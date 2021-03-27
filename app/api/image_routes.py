@@ -35,24 +35,23 @@ def upload_intro_image():
 @login_required
 def upload_step_image():
       if 'step_img' not in request.files:
-            upload = ''
+            upload = None
       else:  
          image = request.files['step_img']
          image.filename = get_unique_filename(image.filename)
                
-         upload = upload_file_to_s3(image
-         )
+         upload = upload_file_to_s3(image)
          if "url" not in upload:
             return upload, 400
          
          upload = upload['url']
     
-      image = Image(
-         user_id=current_user.id, 
-         type='step',
-         url=upload
-         )
+         image = Image(
+            user_id=current_user.id, 
+            type='step',
+            url=upload
+            )
 
-      db.session.add(image)
-      db.session.commit()
-      return {"url": upload}
+         db.session.add(image)
+         db.session.commit()
+         return {"url": upload}

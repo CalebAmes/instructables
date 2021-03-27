@@ -10,12 +10,13 @@ const StepForm = ({project, stepCount, setStepCount, stepState, setStepState}) =
    const dispatch = useDispatch()
    const [step, setStep] = useState('')
    const [title, setTitle] = useState('')
-
+   console.log(project, 'project in stepform')
    const handleSubmit = async (e) => {
       e.preventDefault()
-      setStepState({...stepState, 'step_title': title, 'step': step})
+      const newStep = {...stepState, 'step_title': title, 'step': step}
+      setStepState(newStep)
       console.log(stepState, 'stepState')
-      await dispatch(addAStep(stepState))
+      dispatch(addAStep(newStep))
       setStepState({})
       setStepCount(stepCount + 1)
    }

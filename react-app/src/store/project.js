@@ -27,31 +27,6 @@ export const getProjects = () => async (dispatch) => {
 }
 
 
-// export const createProject = (project) => async (dispatch) => {
-//   const { user_id, title, category_id, keywords, intro_imgs, intro } = project;
-//   const formData = new FormData();
-//   formData.append('user_id', user_id)
-//   formData.append('title', title)
-//   formData.append('category_id', category_id)
-//   formData.append('keywords', keywords)
-//   formData.append('intro', intro)
-
-//   for (let i = 0; i < intro_imgs.length; i++) {
-//     formData.append('intro_imgs', intro_imgs[i]);
-//   }
-//   console.log(formData.values(), 'formData')
-//   const res = await fetch('/api/project', {
-//     method: 'POST',
-//     body: formData
-//   });
-//   console.log(res)
-//   if (res.ok) {
-//     const data = await res.json();
-//     dispatch(addProject(data.projects));
-//     return res;
-//   }
-// };
-
 export const createProject = (project) => async (dispatch) => {
     const { user_id, title, category_id, keywords, intro_imgs, intro } = project;
     const res = await fetch('/api/projects', {
@@ -87,7 +62,7 @@ function reducer(state = {}, action) {
   switch (action.type) {
     case ADD_PROJECT:
       newState = { ...state };
-      newState[action.project.id] = action.project;
+      newState['project'] = action.project;
       return newState;
     case SET_PROJECT:
       newState = {};

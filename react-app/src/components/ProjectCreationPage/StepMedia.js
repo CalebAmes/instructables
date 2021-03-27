@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {useSelector} from 'react-redux'
 import Video from '../Video'
 import StepForm from "./StepForm";
 import c from './ProjectCreation.module.css'
@@ -13,6 +14,13 @@ const StepMedia = ({project, stepCount, setStepCount, stepState, setStepState}) 
     const [stepImg, setStepImg] = useState('')
     // const dispatch = useDispatch()
 
+    const currentProject = useSelector((state) => state.project)
+    
+    
+    console.log(currentProject)
+
+
+
     const addStep = (i, j, img ) => {
         setStepCount(stepCount + 1)
         return setStepState({ ...stepState, 'step_count': i, 'project_id':j, 'step_imgs': img})
@@ -22,17 +30,17 @@ const StepMedia = ({project, stepCount, setStepCount, stepState, setStepState}) 
         e.preventDefault()
         if (image) {
             // setStepState({ ...stepState, 'step_count': stepCount, 'project_id':100, 'step_imgs': stepImg, 'image': image})
-            setStepState({ ...stepState, 'step_count': stepCount, 'project_id':100, 'step_imgs': stepImg})
+            setStepState({ ...stepState, 'step_count': stepCount, 'project_id': project.id, 'step_imgs': stepImg})
             setStepCount(stepCount + 1)
         }
         else if (video) {
             // setStepState({ ...stepState, 'step_count': stepCount, 'project_id':100, 'step_imgs': video, 'image': video})
-            setStepState({ ...stepState, 'step_count': stepCount, 'project_id':100, 'step_imgs': video})
+            setStepState({ ...stepState, 'step_count': stepCount, 'project_id':project.id, 'step_imgs': video})
             setStepCount(stepCount + 1)
         }
         else {
             // setStepState({ ...stepState, 'step_count': stepCount, 'project_id':100, 'step_imgs': null, 'image': null})
-            setStepState({ ...stepState, 'step_count': stepCount, 'project_id':100})
+            setStepState({ ...stepState, 'step_count': stepCount, 'project_id':project.id})
             setStepCount(stepCount + 1)
         }
         return (

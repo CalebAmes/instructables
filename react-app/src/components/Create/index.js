@@ -22,20 +22,21 @@ const Create = () => {
   
   return (
     <div className='create'>
+      {/* <div className='background-image'></div> */}
       <div className='top'>
-      <h1>SHARE WHAT YOU MAKE WITH INSTRUCTABLES</h1>
-      <p>Instructables is a platform for you to share what you make through words, photos, video and files.</p>
-      <p>From a one step recipe to a 100 step jet engine build, everyone has something to share.</p>
-      <p>Join the biggest DIY community on the web.</p>
-      <div className='new-btn'>
-       <Link to='/create/new'>New Instructable</Link>
-      </div>
-      <div>
-        <h2>Here's how it works:</h2>
-        <div className='video'>
-          <Video embedId='iStxkeZlZjc'/>
+        <h1>SHARE WHAT YOU MAKE WITH INSTRUCTABLES</h1>
+        <p>Instructables is a platform for you to share what you make through words, photos, video and files.</p>
+        <p>From a one step recipe to a 100 step jet engine build, everyone has something to share.</p>
+        <p>Join the biggest DIY community on the web.</p>
+        <div className='new-btn'>
+          <Link to='/create/new'>New Instructable</Link>
         </div>
-      </div>
+        <div>
+          <h2>Here's how it works:</h2>
+          <div className='video'>
+            <Video embedId='iStxkeZlZjc'/>
+          </div>
+        </div>
       </div>
       <div>
         <h1>WHY PUBLISH AN INSTRUCTABLE?</h1>

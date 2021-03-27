@@ -12,13 +12,13 @@ const IntroText = ({project, setProject, table, setTable}) => {
 
    const handleSubmit = async (e) => {
       e.preventDefault()
-      setProject({...project, 'category_id': categoryId, 'keywords': keywords, 'intro': intro})
-      console.log(project)
-      dispatch(createProject(project))
-      .then(() => (
-         setTable('steps')
-      ))
-
+      const newProject = {...project, 'category_id': categoryId, 'keywords': keywords, 'intro': intro};
+      setProject(newProject)
+      // setProject({...project, 'category_id': categoryId, 'keywords': keywords, 'intro': intro})
+      console.log(newProject)
+      const res = await dispatch(createProject(newProject))
+      await console.log(res)
+      await setTable('steps')
    }
 
    // const updateIntro = (e) => {
