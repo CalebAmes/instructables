@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
@@ -8,15 +8,13 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./services/auth";
-import SplashPage from "./components/SlashLandingPage";
+import SplashPage from "./components/SplashPage";
 import Create from "./components/Create";
 import Projects from "./components/AllProjectsPage";
 import Project from "./components/SingleProjectPage";
-import {authenticateUser} from './store/session'
-import ProjectIntro from './components/ProjectCreationPage/ProjectIntro'
-// import StepForm from './components/Step/StepForm'
-import IntroMedia from './components/ProjectCreationPage/IntroMedia'
 import CreateProject from './components/ProjectCreationPage'
+import { authenticateUser } from './store/session'
+
 import Category from "./components/UniqueCategoryPage";
 import UserProfilePage from "./components/UserProfilePage";
 
@@ -24,7 +22,6 @@ function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch()
-
 
   useEffect(() => {
     (async () => {
@@ -45,7 +42,7 @@ function App() {
       <NavBar setAuthenticated={setAuthenticated} />
       <Switch>
         <Route exact path='/'>
-          <SplashPage/>
+          <SplashPage />
         </Route>
         <Route path="/login" exact={true}>
           <LoginForm
@@ -54,10 +51,10 @@ function App() {
           />
         </Route>
         <Route path='/profile/:id'>
-          <UserProfilePage/>
+          <UserProfilePage />
         </Route>
         <Route exact path='/'>
-          <SplashPage/>
+          <SplashPage />
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
@@ -78,10 +75,10 @@ function App() {
           <Projects />
         </Route>
         <Route path='/project/:id' exact={true}>
-          <Project/>
+          <Project />
         </Route>
         <Route path='/category/:id'>
-          <Category/>
+          <Category />
         </Route>
       </Switch>
     </BrowserRouter>

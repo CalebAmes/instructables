@@ -1,0 +1,44 @@
+.container {
+  border: 0;
+  position: relative;
+  overflow: hidden;
+  width: 900px;
+}
+
+.container1{
+  width: 300px;
+  position: relative;
+  height: 150px;
+}
+
+.arrow1,
+.arrow2 {
+  text-shadow: 1px 1px 1px #fff;
+  z-index: 100;
+  line-height: 150px;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  width: 10%;
+  font-size: 3em;
+  cursor: pointer;
+  user-select: none; 
+}
+
+.dot {
+  font-size: 1.5em;
+  cursor: pointer;
+  text-shadow: 1px 1px 1px #fff;
+  user-select: none;
+}
+
+.dots {
+  text-align: center;
+  width: 300px;
+  z-index: 100;
+}
+
+.category-img{
+  width: 300px;
+  height: 150px;
+}

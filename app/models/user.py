@@ -37,5 +37,6 @@ class User(db.Model, UserMixin):
             "username": self.username,
             "email": self.email,
             # "favoriteIds": [project.id for project in self.favorites],
-            "builds": [project.id for project in self.builds]
+            "builds": [project.id for project in self.builds],
+            "avatar": self.avatar,
         }

@@ -89,6 +89,7 @@ def api_create_all_steps(projectId):
 @api_routes.route('/comments/<int:userId>/<int:projectId>', methods=['POST'])
 def api_create_comment(userId, projectId):
     data = request.get_json()
+    print(data)
     comment = Comment(
         comment=data['comment'], upvotes=data['upvotes'], user_id=userId, project_id=projectId)
     db.session.add(comment)
@@ -203,13 +204,13 @@ def api_remove_user_build(userId, projectId):
         return "success"
 
 
-@ api_routes.route('/user/builds/<int:userId>', methods=['GET'])
+@api_routes.route('/user/builds/<int:userId>', methods=['GET'])
 def api_get_build_for_user(userId):
     builds = Build.query.filter_by(user_id=userId)
     return {"builds": [build.to_dict() for build in builds]}
 
 
-@ api_routes.route('/project/builds/<int:projectId>', methods=['GET'])
+@api_routes.route('/project/builds/<int:projectId>', methods=['GET'])
 def api_get_project_builds(projectId):
     builds = Build.query.filter_by(project_id=projectId)
     return {"builds": [build.to_dict() for build in builds]}

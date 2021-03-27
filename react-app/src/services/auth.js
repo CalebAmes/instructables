@@ -1,3 +1,5 @@
+import setCurrentUser from '../store/currentUser'
+
 const SET_USER = 'user';
 
 const setUser = (user) => ({
@@ -5,13 +7,15 @@ const setUser = (user) => ({
   user,
 })
 
-export const authenticate = async () => {
+export const authenticate = () => async (dispatch) => {
   const response = await fetch('/api/auth/', {
     headers: {
       'Content-Type': 'application/json'
     }
   });
-  return await response.json();
+  const data = await response.json();
+  await dispatch(setUser(data))
+  return data;
 }
 
 export const login = (email, password) => async (dispatch) => {
@@ -25,10 +29,10 @@ export const login = (email, password) => async (dispatch) => {
       password
     })
   });
-  const data = await response.json();
-  dispatch(setUser(data));
-
-  return data;
+  // const data = await response.json();
+  // dispatch(setUser(data));
+  // return data;
+  return await response.json();
 }
 
 function reducer(state = {}, action) {
