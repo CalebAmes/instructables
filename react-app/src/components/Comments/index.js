@@ -1,61 +1,82 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getComments, deleteCommentStore } from '../../store/comment';
+import { closeForm, openForm } from '../../store/commentPostState';
+import { getUserById } from '../../store/user'
 import { CommentBreak } from '../Break'
+import CommentForm from '../CommentForm';
+import { useParams } from "react-router-dom";
+import { setCurrentUser } from '../../store/currentUser';
+import { StepBreak } from '../Break';
 import './Comments.css'
 
 function Comments() {
+  const dispatch = useDispatch()
+  const [isLoaded, setIsLoaded] = useState(false)
   const commentsObj = useSelector((state) => state.comments)
   const comments = Object.values(commentsObj)
-  console.log(comments)
+  const commentFormState = useSelector((state) => state.commentFormState.open)
+  const currentUser = useSelector((state) => state.currentUser.user)
+
   let commentsNum = 0
   comments.forEach(() => {
     commentsNum++;
   })
+  let { id } = useParams()
 
-  // STILL NEED TO CHANGE THE GETCOMMENTS DISPATCH TO ACCEPT THE CURRENT PROJECTID
+  const deleteComment = async (commentId) => {
+    await dispatch(deleteCommentStore(commentId))
+    await dispatch(getComments(id))
+  }
 
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(getComments(1))
-  }, [])
-  const getUser = () => {
-    return "EmollientSpy1"
-  }
-  const deleteComment = (commentId) => {
-    dispatch(deleteCommentStore(commentId))
-    dispatch(getComments(1))
-  }
+  useEffect(async () => {
+    await dispatch(getComments(id))
+    await dispatch(setCurrentUser())
+    setIsLoaded(true)
+  }, [dispatch])
+
   return (
     <div className="comment-section">
-      <h2 className="comments-header">{commentsNum} Comments</h2>
-      <CommentBreak />
-      <div className="comments">
-        {comments.map((comment) => (
-          <div>
+      {isLoaded && (
+        <>
+          <h2 className="comments-header">{commentsNum} Comments</h2>
+          <CommentBreak />
+          <div className="comments">
+            {comments.map((comment) => (
+              <div>
 
-            <div className="comment-toolbox">
-              <div className="comments-user-header">
-                <img className="profile-img-comments" src="https://www.hashatit.com/images/uploads/users/61602/profile_picture/3F6B966D00000578-4428630-image-m-80_1492690622006.jpg" />
-                <div className="profile-name-comments">{getUser()}</div>
+                <div className="comment-toolbox">
+                  <div className="comments-user-header">
+                    <img className="profile-img-comments" src={comment.user.avatar} />
+                    <div className="profile-name-comments">{comment.user.username}</div>
+                  </div>
+                  <div className="toolbox-right">
+                    {comment.user.id == currentUser.id && (
+                      <>
+                        <a className="delete-btn-comments" onClick={() => { }}>Edit</a>
+                        <a className="delete-btn-comments" onClick={() => { deleteComment(comment.id) }}>Delete</a>
+                      </>
+                    )}
+                    <button className="reply-btn">Reply</button>
+                    <button className="upvote-btn"><div className="upvote-arrow">▲</div> <div className="upvote-text">Upvote</div></button>
+                  </div>
+                </div>
+
+                <div className="comment">
+                  {comment.comment}
+                </div>
+
+                <CommentBreak />
               </div>
-              <div className="toolbox-right">
-                <a className="delete-btn-comments" onClick={() => { }}>Edit</a>
-                <a className="delete-btn-comments" onClick={() => { deleteComment(comment.id) }}>Delete {comment.id}</a>
-                <button className="reply-btn">Reply</button>
-                <button className="upvote-btn"><div className="upvote-arrow">▲</div> <div className="upvote-text">Upvote</div></button>
-              </div>
+            ))}
+            <div className="post-comment">
+              <button onClick={() => { dispatch(openForm()) }} className="post-comment-btn">Post Comment</button>
+              {commentFormState && <CommentForm />}
             </div>
-
-            <div className="comment">
-              {comment.comment}
-            </div>
-
-            <CommentBreak />
-
+            <StepBreak />
           </div>
-        ))}
-      </div>
+        </>
+      )}
     </div>
   )
 }

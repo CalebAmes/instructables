@@ -8,6 +8,7 @@ import favorite from './favorite'
 import steps from './step';
 import currentUser from './currentUser';
 import singleUser from '../services/auth';
+import commentFormState from './commentPostState';
 
 const rootReducer = combineReducers({
   project,
@@ -16,8 +17,9 @@ const rootReducer = combineReducers({
   user,
   favorite,
   steps,
-  currentUser,
   singleUser,
+  commentFormState,
+  currentUser,
 })
 
 const logger = require('redux-logger').default;
