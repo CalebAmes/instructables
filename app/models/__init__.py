@@ -6,3 +6,5 @@ from .user import User
 from .project import Project
 from .build import Build
 from .favorite import Favorite
+from .image import Image
+

@@ -9,12 +9,14 @@ class Project(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     title = db.Column(db.String(255))
     category_id = db.Column(db.Integer, db.ForeignKey(
-        "categories.id"), nullable=False)
+        "categories.id"))
+
     keywords = db.Column(postgresql.ARRAY(db.String(30)))
     intro_imgs = db.Column(postgresql.ARRAY(db.Text))
     intro = db.Column(db.Text)
 
     steps = db.relationship("Step")
+
     comments = db.relationship("Comment")
 
     builds = db.relationship("Build")

@@ -28,22 +28,26 @@ export const getProjects = () => async (dispatch) => {
 
 
 export const createProject = (project) => async (dispatch) => {
-  const { user_id, title, category_id, keywords, intro_img, intro } = project;
-  const res = await fetch('/api/project', {
+    const { user_id, title, category_id, keywords, intro_imgs, intro } = project;
+    const res = await fetch('/api/projects', {
     method: 'POST',
+    headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
-      user_id,
-      title,
-      category_id,
-      keywords,
-      intro_img,
-      intro,
-    }),
+      user_id, 
+      title, 
+      category_id, 
+      keywords, 
+      intro_imgs, 
+      intro
+    })
   });
-  const data = await res.json();
-  dispatch(addProject(data.projects));
-  return res;
-};
+  if (res.ok) {
+    const data = await res.json()
+    dispatch(addProject(data.project))
+    return res
+  }
+}
+
 
 export const deleteProject = () => async (dispatch) => {
   const res = await fetch('/api/project', {
@@ -58,7 +62,7 @@ function reducer(state = {}, action) {
   switch (action.type) {
     case ADD_PROJECT:
       newState = { ...state };
-      newState[action.project.id] = action.project;
+      newState['project'] = action.project;
       return newState;
     case SET_PROJECT:
       newState = {};

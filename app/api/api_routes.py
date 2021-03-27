@@ -1,7 +1,12 @@
 from flask import Blueprint, request
 from app.models.db import db
-from app.models import Comment, Category, Step, User, Project, Favorite, Build
 
+from app.models import Comment, Category, Step, User, Project, Favorite, Build
+# from app.models.user import User, Project, user_favorites
+from app.helpers import *
+from app.forms.project_form import ProjectForm
+from app.forms.step_form import StepForm
+from flask_login import current_user, login_required
 
 api_routes = Blueprint('/api', __name__)
 
@@ -43,10 +48,11 @@ def api_projects_steps(projectId):
     return {"steps": [step.to_dict() for step in steps]}
 
 
-@api_routes.route('/projects/<int:userId>/<int:categoryId>', methods=['POST'])
-def api_create_project(userId, categoryId):
+@api_routes.route('/projects', methods=['POST'])
+@login_required
+def api_create_project():
     data = request.get_json()
-    project = Project(user_id=userId, title=data['title'], category_id=categoryId,
+    project = Project(user_id=current_user.id, title=data['title'], category_id=data['category_id'],
                       keywords=data['keywords'], intro_imgs=data['intro_imgs'], intro=data['intro'])
     db.session.add(project)
     db.session.commit()
@@ -54,11 +60,11 @@ def api_create_project(userId, categoryId):
     return project.to_dict()
 
 
-@api_routes.route('/steps/<int:projectId>', methods=['POST'])
-def api_create_one_step(projectId):
+@api_routes.route('/steps', methods=['POST'])
+def api_create_one_step():
     data = request.get_json()
     step = Step(step_count=data['step_count'],
-                project_id=projectId, step_imgs=data['step_imgs'], step=data['step'])
+                project_id=data['project_id'], step_imgs=data['step_imgs'], step=data['step'])
     db.session.add(step)
     db.session.commit()
     return step.to_dict()

@@ -12,7 +12,9 @@ import SplashPage from "./components/SplashPage";
 import Create from "./components/Create";
 import Projects from "./components/AllProjectsPage";
 import Project from "./components/SingleProjectPage";
+import CreateProject from './components/ProjectCreationPage'
 import { authenticateUser } from './store/session'
+
 import Category from "./components/UniqueCategoryPage";
 import UserProfilePage from "./components/UserProfilePage";
 
@@ -20,24 +22,6 @@ function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch()
-
-  // useEffect(() => {
-  //   (async() => {
-  //     const res = await dispatch(auth.authenticateUser());
-  //     if (res.ok) {
-  //       setAuthenticated(true)
-  //     }
-  //     setLoaded(true)
-  //     })();
-  //   }, []);
-
-  //   if (!loaded) {
-  //       return null;
-  // }
-
-  // if
-  //   })dispatch(auth.authenticateUser()).then(() => setLoaded(true)).then(() => setAuthenticated(true));
-  // }, [dispatch]);
 
   useEffect(() => {
     (async () => {
@@ -81,9 +65,9 @@ function App() {
         <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
           <User />
         </ProtectedRoute>
-        {/* <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-          <h1>My Home Page</h1>
-        </ProtectedRoute> */}
+        <ProtectedRoute path='/create/new' authenticated={authenticated}>
+          <CreateProject/>
+        </ProtectedRoute>
         <Route path='/create'>
           <Create />
         </Route>
