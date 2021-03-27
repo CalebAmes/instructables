@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router';
 import { getCategory } from '../../store/category';
 import { getProjects } from '../../store/project'
-// import ProjectCarousel from '../ProjectCarousel';
+import { Carousel } from '../SplashPage' 
 import ClickProject from '../ClickableProjectComponent';
 import './UniqueCategoryPage.css'
 
@@ -15,21 +15,30 @@ function Category(){
   const categoryItems = useSelector((state) => state.category)
   const projectItems = useSelector((state) => state.project)
   const userItems = useSelector((state) => state.user)
-
-  const projects = Object.values(projectItems)
+  const [ loaded, setLoaded ] = useState(false)
 
   let { id } = useParams()
+  
+
+  const projects = Object.values(projectItems)
+  const category = categoryItems[id]
+  console.log(category)
 
   useEffect(async () => {
     await dispatch(getCategory())
     await dispatch(getProjects(id))
-  
+    setLoaded(true)
   }, [dispatch])
+
  
     return (
       <>
+      
         <div className='grid'>
-        <div className='carousel'>here is where the carousel will go</div>
+       {loaded  &&
+         <Carousel images={category.imgs}/>
+       }
+        {/* <div>{categories.imgs}</div> */}
         <div className='categories'>
           <div className='inner-categories'>
           {projects.map((project) => (
