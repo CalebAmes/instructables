@@ -1,13 +1,15 @@
 .grid{
   display: grid;
-  grid-template-rows: 15% 80% 5%;
+  grid-template-rows: 15% 75% 10%;
   grid-template-areas: 
-  '';
+  'carousel' 
+  'categories'
+  'contests'
+  'footer'
+  ;
 }
 
 .carousel{
-  height: 512px;
-  background-color: blue;
   grid-area: carousel;
 }
 
@@ -15,7 +17,7 @@
   z-index: 100;
   margin-left: 4%;
   margin-right: 4%;
-  grid-area: carousel;
+  grid-area: categories;
 }
 
 .inner-categories{
@@ -26,4 +28,12 @@
  display: flex;
  flex-wrap: wrap;
  justify-content: center;
+}
+
+.contests{
+  grid-area: contests;
+}
+
+.footer {
+  grid-area: footer;
 }

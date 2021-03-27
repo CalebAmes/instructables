@@ -6,6 +6,7 @@ import { getProjects } from '../../store/project'
 import { Carousel } from '../SplashPage' 
 import ClickProject from '../ClickableProjectComponent';
 import './UniqueCategoryPage.css'
+import Footer from '../Footer';
 
 
 
@@ -34,19 +35,24 @@ function Category(){
     return (
       <>
         <div className='grid'>
-          {loaded  &&
-          <Carousel className='carousel' images={category.imgs}/>
-          }
+          <div className= 'carousel'>
+            {loaded  &&
+              <Carousel className='carousel' images={category.imgs}/>
+            }
+          </div>
           <div className='categories'>
-           <div className='inner-categories'>
-            {projects.map((project) => (
-              (project?.category_id == id ? (
-               <ClickProject key={project.id} project={project} user={userItems[project.user_id]} category={categoryItems[project.category_id]}/>
-                ): null) 
-                ))}
-            </div>
-        <div className='contests'></div>
-        </div>
+            <div className='inner-categories'>
+              {projects.map((project) => (
+                (project?.category_id == id ? (
+                  <ClickProject key={project.id} project={project} user={userItems[project.user_id]} category={categoryItems[project.category_id]}/>
+                  ): null) 
+                  ))}
+              </div>
+          <div className='contests'></div>
+          </div>
+          <div className='footer'>
+            <Footer />
+          </div>
         </div>
       </>
   )

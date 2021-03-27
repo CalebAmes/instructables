@@ -1,0 +1,67 @@
+.footer-container {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: rgb(85, 85, 85);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.inner-cont{
+  margin: 50px;
+  display: flex;
+
+}
+
+.cat-foot {
+  height: 132px;
+  width: 413px ;
+  display: grid;
+  grid-template-columns: 40% 20% 40%;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+  grid-template-areas: 
+  '. . . '
+  'one . five'
+  'two . six'
+  'three . .'
+  'four . .';
+}
+
+.category-1{
+  grid-area: one;
+  color: rgb(187, 187, 187)
+}
+
+.fa-microchip,
+.fa-wrench,
+.fa-cut,
+.fa-utensils,
+.fa-home,
+.fa-bicycle,
+.fa-home {
+  color: rgb(187, 187, 187)
+}
+
+.category-2{
+  grid-area: two;
+  color: rgb(187, 187, 187)
+}
+
+.category-3 {
+  grid-area: three;
+  color: rgb(187, 187, 187)
+}
+.category-4 {
+  grid-area: four;
+  color: rgb(187, 187, 187)
+}
+
+.category-5 {
+  grid-area: five;
+  color: rgb(187, 187, 187)
+}
+
+.category-6 {
+  grid-area: six;
+  color: rgb(187, 187, 187)
+}
