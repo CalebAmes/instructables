@@ -5,16 +5,17 @@ import IntroMedia from './IntroMedia'
 import IntroText from './IntroText'
 import StepMedia from "./StepMedia";
 import StepForm from './StepForm'
+// import c from './ProjectCreation.module.css'
 import {useSelector, useDispatch} from 'react-redux'
 
 const CreateProject = () => {
    const [userId, setUserId] = useState(1)
    const [project, setProject] = useState({})
-   const dispatch = useDispatch()
    const [stepCount, setStepCount] = useState(0)
    const [stepState, setStepState] = useState({})
    const [table, setTable] = useState('projects')
-
+   const dispatch = useDispatch()
+   
    let form = (
       <ProjectIntro project={project} setProject={setProject}/>
    );
@@ -27,7 +28,8 @@ const CreateProject = () => {
 
    if (project['intro_imgs']) {
       form = (
-         <IntroText project={project} setProject={setProject}
+         <IntroText 
+         project={project} setProject={setProject}
          table={table} setTable={setTable}/>
       )
    }

@@ -9,6 +9,7 @@ import img1 from '../../images/how-1.jpg'
 import img2 from '../../images/how-2.jpg'
 import img3 from '../../images/how-3.jpg'
 import bg from '../../images/create-makesomething.jpg'
+import './create.css'
 
 const howImgs = [img1, img2, img3]
 const howTxts= [
@@ -20,7 +21,8 @@ const howTxts= [
 const Create = () => {
   
   return (
-    <div>
+    <div className='create'>
+      <div className='top'>
       <h1>SHARE WHAT YOU MAKE WITH INSTRUCTABLES</h1>
       <p>Instructables is a platform for you to share what you make through words, photos, video and files.</p>
       <p>From a one step recipe to a 100 step jet engine build, everyone has something to share.</p>
@@ -33,6 +35,7 @@ const Create = () => {
         <div className='video'>
           <Video embedId='iStxkeZlZjc'/>
         </div>
+      </div>
       </div>
       <div>
         <h1>WHY PUBLISH AN INSTRUCTABLE?</h1>
@@ -70,11 +73,11 @@ const Create = () => {
         <div className='video-link'>
           <p>Watch the Video</p>
         </div>
-        <div className='how-imgs' style={{display: 'flex'}}>
+        <div className='how-imgs' style={{display: 'flex', justifyContent: 'space-around', flexDirection: 'row'}}>
           {howImgs.map((img, i) => (
           <div>
                 <img src={img} key={`img${i}`} alt='how' />
-                <p>{howTxts[i]}</p>
+                <p className='how-text'>{howTxts[i]}</p>
           </div>
           ))}
         </div>

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Video from '../Video'
+import StepForm from "./StepForm";
+import c from './ProjectCreation.module.css'
 // import {useDispatch} from 'react-redux'
 
 const StepMedia = ({project, stepCount, setStepCount, stepState, setStepState}) => {
@@ -8,7 +10,7 @@ const StepMedia = ({project, stepCount, setStepCount, stepState, setStepState}) 
     const [video, setVideo] = useState('');
     const [imageLoading, setImageLoading] = useState(false);
     const [code, setCode] = useState('')
-    const [stepImg, setStepImg] = useState(null)
+    const [stepImg, setStepImg] = useState('')
     // const dispatch = useDispatch()
 
     const addStep = (i, j, img ) => {
@@ -19,14 +21,27 @@ const StepMedia = ({project, stepCount, setStepCount, stepState, setStepState}) 
     const moveOn = (e) => {
         e.preventDefault()
         if (image) {
-            setStepState({ ...stepState, 'step_count': stepCount, 'project_id':100, 'step_imgs': image, 'image': stepImg})
+            // setStepState({ ...stepState, 'step_count': stepCount, 'project_id':100, 'step_imgs': stepImg, 'image': image})
+            setStepState({ ...stepState, 'step_count': stepCount, 'project_id':100, 'step_imgs': stepImg})
+            setStepCount(stepCount + 1)
         }
         else if (video) {
-            setStepState({ ...stepState, 'step_count': stepCount, 'project_id':100, 'step_imgs': video, 'image': video})
+            // setStepState({ ...stepState, 'step_count': stepCount, 'project_id':100, 'step_imgs': video, 'image': video})
+            setStepState({ ...stepState, 'step_count': stepCount, 'project_id':100, 'step_imgs': video})
+            setStepCount(stepCount + 1)
         }
         else {
-            setStepState({ ...stepState, 'step_count': stepCount, 'project_id':100, 'step_imgs': null, 'image': null})
+            // setStepState({ ...stepState, 'step_count': stepCount, 'project_id':100, 'step_imgs': null, 'image': null})
+            setStepState({ ...stepState, 'step_count': stepCount, 'project_id':100})
+            setStepCount(stepCount + 1)
         }
+        return (
+        <StepForm 
+        project={project} 
+        stepCount={stepCount} setStepCount={setStepCount} 
+        stepState={stepState} setStepState={setStepState}
+        />
+        )
     }
 
     const uploadImage = async (e) => {
@@ -54,6 +69,9 @@ const StepMedia = ({project, stepCount, setStepCount, stepState, setStepState}) 
 
     const embedVideo = (e) => {
         e.preventDefault()
+        const array = video.split('/')
+        const embedCode = array[array.length - 1]
+        setCode(embedCode)
     }
 
 
@@ -62,26 +80,18 @@ const StepMedia = ({project, stepCount, setStepCount, stepState, setStepState}) 
         setImage(file);
     }
 
-
-    const updateVideo = (e) => {
-        const url = e.target.value;
-        const array = url.split('/')
-        const code = array[array.length - 1]
-         setVideo(code)
-    }
-
     return (
         <div>
             <h1>Add Step</h1>
-            <div className='upload'>
-                <div className='uploadNav'>
-                    <div className='imageUpload'>  
+            <div className={c.upload}>
+                <div className={c.uploadNav}>
+                    <div className={c.imageUpload}>  
                         <h4 
                         onClick={() => setType('image')}>
                         Upload Photos
                         </h4>
                     </div>
-                    <div className='embedVideo'>
+                    <div className={c.embedVideo}>
                         <h4 onClick={() => setType('video')}>
                         Embed a Video
                         </h4>
@@ -114,7 +124,7 @@ const StepMedia = ({project, stepCount, setStepCount, stepState, setStepState}) 
                             <input
                             name='video'
                             type='url'
-                            onChange={updateVideo}
+                            onChange={(e) => setVideo(e.target.value)}
                             value={video}
                             />
                         </div>

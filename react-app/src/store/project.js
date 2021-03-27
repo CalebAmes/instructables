@@ -56,6 +56,7 @@ export const createProject = (project) => async (dispatch) => {
     const { user_id, title, category_id, keywords, intro_imgs, intro } = project;
     const res = await fetch('/api/projects', {
     method: 'POST',
+    headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
       user_id, 
       title, 

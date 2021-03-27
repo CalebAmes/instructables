@@ -11,47 +11,48 @@ const addStep = (step) => ({
   payload: step
 })
 
-export const addAStep = (stepState) => async (dispatch) => {
-  const {project_id, step_count, step_title, step_imgs, step} = stepState
-  const formData = new FormData();
-  formData.append('project_id', project_id)
-  formData.append('step_title', step_title)
-  formData.append('step_count', step_count)
-  formData.append('step', step)
+// export const addAStep = (stepState) => async (dispatch) => {
+//   const {project_id, step_count, step_title, step_imgs, step} = stepState
+//   const formData = new FormData();
+//   formData.append('project_id', project_id)
+//   formData.append('step_title', step_title)
+//   formData.append('step_count', step_count)
+//   formData.append('step', step)
 
-  for (let i = 0; i < step_imgs.length; i++) {
-    formData.append('step_imgs', step_imgs[i]);
-  }
+//   for (let i = 0; i < step_imgs.length; i++) {
+//     formData.append('step_imgs', step_imgs[i]);
+//   }
 
-  const res = await fetch('/api/step', {
-    method: 'POST',
-    body: formData
-  });
-  if (res.ok) {
-    const data = await res.json();
-    dispatch(addStep(data.step));
-    return res;
-  }
-}
-
-
-// export const addAStep = (step) => async (dispatch) => {
-//   const {project_id, step_count, step_title, step_imgs, step} = step
-//   const res = await fetch('/api/steps', {
-//   method: 'POST',
-//   body: JSON.stringify(
-//     {project_id, 
-//       step_count, 
-//       step_title, 
-//       step_imgs, 
-//       step})
-//   })
+//   const res = await fetch('/api/step', {
+//     method: 'POST',
+//     body: formData
+//   });
 //   if (res.ok) {
 //     const data = await res.json();
-//     dispatch(addStep(data.step))
-//     return res
+//     dispatch(addStep(data.step));
+//     return res;
 //   }
 // }
+
+
+export const addAStep = (stepState) => async (dispatch) => {
+  const {project_id, step_count, step_title, step_imgs, step} = stepState
+  const res = await fetch('/api/steps', {
+  method: 'POST',
+  headers: {'Content-Type': 'application/json'},
+  body: JSON.stringify(
+    {project_id, 
+      step_count, 
+      step_title, 
+      step_imgs, 
+      step})
+  })
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(addStep(data.step))
+    return res
+  }
+}
 
 export const getCurrentSteps = (projectId) => async (dispatch) => {
   const res = await fetch(`/api/steps/${projectId}`);

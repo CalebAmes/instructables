@@ -2,29 +2,44 @@ import React, { useEffect, useState } from "react";
 import {useDispatch} from 'react-redux'
 import Video from '../Video'
 import {addAStep} from '../../store/step'
+import {Redirect} from 'react-router-dom'
+import c from './ProjectCreation.module.css'
 
-const StepForm = ({project, stepCount, stepState, setStepState}) => {
+const StepForm = ({project, stepCount, setStepCount, stepState, setStepState}) => {
    
    const dispatch = useDispatch()
    const [step, setStep] = useState('')
    const [title, setTitle] = useState('')
 
-   const handleSubmit = (e) => {
+   const handleSubmit = async (e) => {
       e.preventDefault()
       setStepState({...stepState, 'step_title': title, 'step': step})
       console.log(stepState, 'stepState')
-      dispatch(addAStep(stepState))
+      await dispatch(addAStep(stepState))
       setStepState({})
+      setStepCount(stepCount + 1)
+   }
+
+   const done = () => {
+      return (
+         <Redirect to='/publish' />
+      )
+   }
+
+   const getCode = () => {
+      const array = stepState.step_imgs.split('/')
+      const embedCode = array[array.length - 1]
+      return embedCode
    }
 
    return (
       <div>
          <h1>{project.title}</h1>
-         {stepState.image.includes('amazonaws.com') && (
-            <img src={stepState.image} alt='step image'/>
+         {stepState.step_imgs.includes('amazonaws.com') && (
+            <img src={stepState.step_imgs} alt='step image'/>
          )}
-         {!stepState.image.includes('amazonaws.com') && stepState.image (
-            <Video embedId={stepState.image} />
+         {!stepState.step_imgs.includes('amazonaws.com') && (
+            <Video embedId={getCode()} />
          )}
          <form onSubmit={handleSubmit}>
             <div>
@@ -32,6 +47,7 @@ const StepForm = ({project, stepCount, stepState, setStepState}) => {
                type='text'
                value={title}
                onChange={(e) => setTitle(e.target.value)}
+               placeholder={`step ${stepCount} title`}
                />
             </div>
             <div>
@@ -39,12 +55,14 @@ const StepForm = ({project, stepCount, stepState, setStepState}) => {
                name='step' 
                value={step}
                onChange={(e) => setStep(e.target.value)} 
+               placeholder={`step ${stepCount} body`}
                />
             </div>
             <div>
                <button type='submit'>Add Step</button>
             </div>
          </form>
+         <button type='button' onClick={done}>That's enough steps, I'm ready to publish!</button>
       </div>
    )
 }

@@ -9,3 +9,35 @@
   color: white;
   padding: 5px;
 }
+
+.create {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.how-text {
+  width: 70%;
+  justify-content: space-around;
+}
+
+.create div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.avatar img p {
+  flex-direction: row;
+}
+
+a {
+  color: orange;
+}
+
+/* .top {
+  background: center url("../../images/5.jpg");
+  width: 100%;
+} */

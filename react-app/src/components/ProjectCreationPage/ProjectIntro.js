@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {Redirect, Link} from 'react-router-dom';
-
+import c from './ProjectCreation.module.css'
 
 const ProjectIntro = ({project, setProject}) => {
 
@@ -14,13 +14,13 @@ const ProjectIntro = ({project, setProject}) => {
     }
 
     return (
-    <div>
+    <div className={c.introForm}>
         <h1>What do you want to share?</h1>
         <div>
             <h3>I made a project called:</h3>
         </div>
             <form onSubmit = {handleSubmit}>
-                <div className='projectTitle'>
+                <div className= {c.projectTitle}>
                 <input 
                 type='text'
                 name='title'
@@ -31,7 +31,7 @@ const ProjectIntro = ({project, setProject}) => {
                 <div>
                    {/* <Link to='/create/intro'>Start Instructable</Link> */}
                    <button type='submit'>Start Instructable</button>
-                </div>
+                </div> 
             </form>
         </div>
         )
