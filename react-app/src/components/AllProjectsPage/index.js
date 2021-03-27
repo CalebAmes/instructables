@@ -26,7 +26,6 @@ function Projects() {
     dispatch(getUsers())
   }, [dispatch])
 
-  
   return (
     <>
     <h1>All projects page</h1>

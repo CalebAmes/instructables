@@ -4,7 +4,8 @@ import { getCurrentSteps } from "../../store/step"
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import Steps from '../Steps'
-
+import Comments from '../Comments'
+import Intro from '../ProjectIntro'
 import './SingleProjectPage.css'
 
 function Project() {
@@ -17,20 +18,25 @@ function Project() {
   let { id } = useParams()
 
   const [loaded, setLoaded] = useState(false)
-
+  const project = projects[id - 1]
   useEffect(async () => {
     await dispatch(getProjects())
     await dispatch(getCurrentSteps(id))
     setLoaded(true)
   }, [dispatch])
 
+
+
   return (
     <div>
       {loaded && (
-        <h1>Intro</h1>
+        <Intro project={project} />
       )}
       {loaded && (
         <Steps />
+      )}
+      {loaded && (
+        <Comments />
       )}
     </div>
   )

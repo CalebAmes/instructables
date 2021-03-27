@@ -1,0 +1,133 @@
+.comments-header {
+  color: #333333;
+  margin-bottom: 0;
+}
+
+.comment {
+  font-size: 16px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: left;
+  line-height: 24px;
+  margin-bottom: 20px;
+  padding-left: 25px;
+  width: 728px;
+}
+
+.commment-break {
+  font-size: 16px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: lightgray;
+}
+
+.comment-toolbox {
+  margin: 20px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px 0px 20px;
+}
+
+.profile-img-comments {
+  cursor: pointer;
+  object-fit: scale-down cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.comments-user-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-name-comments {
+  margin-left: 8px;
+  color: #da7300;
+  line-height: 24px;
+}
+
+.profile-name-comments:hover {
+  cursor: pointer;
+  color: #914e02;
+  line-height: 24px;
+  text-decoration: underline;
+}
+
+.reply-btn {
+  margin-left: 10px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid rgb(180, 180, 180);
+  color: #333333;
+}
+
+.reply-btn:hover {
+  background-color: rgb(220, 220, 220);
+  cursor: pointer;
+}
+
+.upvote-btn {
+  display: flex;
+  margin-left: 10px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid rgb(180, 180, 180);
+}
+
+.upvote-btn:hover {
+  background-color: rgb(220, 220, 220);
+  cursor: pointer;
+}
+
+.upvote-text {
+  color: #333333;
+}
+
+.upvote-arrow {
+  color: #808080;
+}
+
+.toolbox-right {
+  display: flex;
+  align-items: center;
+}
+
+.edit-btn-comments {
+  font-size: 14px;
+}
+
+.edit-btn-comments:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.delete-btn-comments {
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.delete-btn-comments:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.post-comment-btn {
+  background-color: #faac18;
+  cursor: pointer;
+  color: #ffffff;
+  line-height: 20px;
+  font-size: 19px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
+  border-radius: 4px;
+  border: 1px solid lightgray;
+  padding: 12px 17px;
+  margin: 20px 0px;
+}
+
+.post-comment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

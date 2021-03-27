@@ -11,11 +11,13 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     project_id = db.Column(db.Integer, db.ForeignKey("projects.id"))
 
+    user = db.relationship("User")
+
     def to_dict(self):
         return {
             'id': self.id,
             'comment': self.comment,
             'upvotes': self.upvotes,
-            'user_id': self.user_id,
+            'user': self.user.to_dict(),
             'project_id': self.project_id,
         }
