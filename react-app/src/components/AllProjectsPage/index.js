@@ -11,23 +11,23 @@ import AddFavorite from "../FavoriteIcon";
 function Projects() {
   const dispatch = useDispatch();
 
-  const projectItems = useSelector((state) => state.project)
-  const categoryItems = useSelector((state) => state.category)
-  const commentItems = useSelector((state) => state.comment)
-  const userItems = useSelector((state) => state.user)
+  // const projectItems = useSelector((state) => state.project)
+  // const categoryItems = useSelector((state) => state.category)
+  // const commentItems = useSelector((state) => state.comment)
+  // const userItems = useSelector((state) => state.user)
 
-  const projectArray = Object.values(projectItems)
-  const categoryArray = Object.values(categoryItems)
-  const commentArray = Object.values(commentItems)
-  const usersArray = Object.values(userItems)
+  // const projectArray = Object.values(projectItems)
+  // const categoryArray = Object.values(categoryItems)
+  // const commentArray = Object.values(commentItems)
+  // const usersArray = Object.values(userItems)
 
 
-  useEffect(() => {
-    dispatch(getProjects());
-    dispatch(getCategory());
-    // dispatch(getComment());
-    dispatch(getUsers())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(getProjects());
+  //   dispatch(getCategory());
+  //   // dispatch(getComment());
+  //   dispatch(getUsers())
+  // }, [dispatch])
 
 
   return (
@@ -42,7 +42,7 @@ function Projects() {
         userObject[project.userId].name = demoa
 
       )
-      <ClickProject />
+      {/* <ClickProject /> */}
     </>
   )
 }

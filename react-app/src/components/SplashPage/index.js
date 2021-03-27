@@ -3,23 +3,52 @@ import './SplashLanding.css'
 import badDog from '../../icons/badDog.jpeg'
 import goodDog from '../../icons/goodDog.jpeg'
 import dogTrouble from '../../icons/dogTrouble.png'
+import { CSSTransition } from 'react-transition-group'
 
 
 function SplashPage(){
-  const images = [ badDog, goodDog, dogTrouble ]
-
-  return (
-    <div className='imageDiv'>
-      <Images 
-        one={<img className='divImage' src={images[0]}/>} 
-        two={<img className='divImage' src={images[1]}/>} 
-        three={<img className='divImage' src={images[2]}/>}
-         />
-      {/* <IntervalExample /> */}
-    </div>
+  const images = [ badDog, goodDog, dogTrouble ];
+  
+  return(
+    <Carousel images={ images } />
   )
 }
-  
+
+
+export const Carousel = ({ images }) => {
+
+  const One = () => (
+    <div 
+      className='divImage imageOne' 
+      style={{ background:'url('+images[0]+') no-repeat center center fixed', backgroundSize: 'cover', height: '535px'}}/>
+  )
+
+  const Two = () => (
+    <div 
+    className='divImage imageTwo' 
+    style={{ background:'url('+images[1]+') no-repeat center center fixed', backgroundSize: 'cover', height: '535px'}}/>
+  )
+
+  const Three = () => (
+    <div 
+      className='divImage imageThree' 
+      style={{ background:'url('+images[2]+') no-repeat center center fixed', backgroundSize: 'cover', height: '535px'}}/>
+  )
+
+  return (
+    <>
+      <div className='carouselText'>
+        <hr/>
+        <h1>YOURS FOR THE MAKING</h1>
+        <h3>Instructables is a community for people who like to make things.<br/>Come explore, share, and make your next project with us!</h3>
+        <hr/>
+      </div>
+      <div className='imageDiv'>
+        <Images one={<One/>} two={<Two/>} three={<Three/>} />
+      </div>
+    </>
+  )
+}
   export function Images (props) {
     const [ imageOne, setImageOne ] = useState(true);
     const [ imageTwo, setImageTwo ] = useState(false);
