@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 29f9577eb8ce
+Revision ID: 7f980b566134
 Revises: 
-Create Date: 2021-03-26 08:53:48.520532
+Create Date: 2021-03-26 15:57:56.370036
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
-revision = '29f9577eb8ce'
+revision = '7f980b566134'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -38,11 +38,19 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
+    op.create_table('images',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('type', sa.String(length=30), nullable=False),
+    sa.Column('url', sa.Text(), nullable=False),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
     op.create_table('projects',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=255), nullable=True),
-    sa.Column('category_id', sa.Integer(), nullable=False),
+    sa.Column('category_id', sa.Integer(), nullable=True),
     sa.Column('keywords', postgresql.ARRAY(sa.String(length=30)), nullable=True),
     sa.Column('intro_imgs', postgresql.ARRAY(sa.Text()), nullable=True),
     sa.Column('intro', sa.Text(), nullable=True),
@@ -96,6 +104,7 @@ def downgrade():
     op.drop_table('comments')
     op.drop_table('builds')
     op.drop_table('projects')
+    op.drop_table('images')
     op.drop_table('users')
     op.drop_table('categories')
     # ### end Alembic commands ###

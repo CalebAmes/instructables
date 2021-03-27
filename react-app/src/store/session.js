@@ -37,10 +37,10 @@ export const logoutUser = () => async (dispatch) => {
 
 
 export const authenticateUser = () => async (dispatch) => {
-    const res = await fetch(`/api/auth`);
+    const res = await fetch(`/api/auth/`);
     if (res.ok) {
-        const sessionUser = await res.json();
-        dispatch(setUser(sessionUser.user));
+        const data = await res.json();
+        dispatch(setUser(data.user));
         return res;
     }
 }
@@ -51,7 +51,6 @@ export const signUpUser = (user) => async (dispatch) => {
     formData.append("username", username);
     formData.append("email", email);
     formData.append("bio", bio)
-    // formData.append('type', type)
     formData.append("password", password);
     if (avatar) formData.append("avatar", avatar)
 
@@ -59,9 +58,6 @@ export const signUpUser = (user) => async (dispatch) => {
 
     const res = await fetch(`/api/auth/signup`, {
         method: "POST",
-        // headers: {
-        //     "Content-Type": "multipart/form-data",
-        // },
         body: formData,
     });
     if (res.ok) {
@@ -72,7 +68,7 @@ export const signUpUser = (user) => async (dispatch) => {
 };
 
 
-export default function sessionReducer(state = { user: null }, action) {
+export default function reducer(state = { user: null }, action) {
     let newState;
     switch (action.type) {
         case SET_USER:
@@ -88,7 +84,5 @@ export default function sessionReducer(state = { user: null }, action) {
         default: return state;
     }
 }
-
-
 
 
