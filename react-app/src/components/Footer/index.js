@@ -46,7 +46,7 @@ const Footer = ({ category }) => {
                 <div><i class="fas fa-utensils fa-sm"/> cooking</div>
               </div>
             </Link>
-            <div></div>
+            <div>' '</div>
             <Link to={ `/category/5` } className='category-5'>
               <div className='cat-5'>                
                 <div><i class="fas fa-home fa-sm"/> living</div>
