@@ -16,6 +16,7 @@ import CreateProject from './components/ProjectCreationPage'
 import { authenticateUser } from './store/session'
 import Category from "./components/UniqueCategoryPage";
 import UserProfilePage from "./components/UserProfilePage";
+import Footer from "./components/Footer";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -80,6 +81,7 @@ function App() {
           <Category />
         </Route>
       </Switch>
+      {/* <Footer/> */}
     </BrowserRouter>
   );
 }

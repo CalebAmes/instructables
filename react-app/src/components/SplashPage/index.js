@@ -127,7 +127,6 @@ export const Carousel = ({ images }) => {
     const [ imageOne, setImageOne ] = useState(true);
     const [ imageTwo, setImageTwo ] = useState(false);
     const [ imageThree, setImageThree ] = useState(false);
-    const [seconds, setSeconds] = useState(0);
     
     const stateSwitcherOne = () => {
       if(imageOne){
