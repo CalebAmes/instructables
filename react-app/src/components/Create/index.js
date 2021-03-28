@@ -10,6 +10,7 @@ import img2 from '../../images/how-2.jpg'
 import img3 from '../../images/how-3.jpg'
 import bg from '../../images/create-makesomething.jpg'
 import './create.css'
+import Footer from '../Footer';
 
 const howImgs = [img1, img2, img3]
 const howTxts= [
