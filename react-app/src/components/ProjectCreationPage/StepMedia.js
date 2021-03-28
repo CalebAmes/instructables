@@ -5,52 +5,33 @@ import StepForm from "./StepForm";
 import './ProjectCreation.css'
 // import {useDispatch} from 'react-redux'
 
-const StepMedia = ({project, stepCount, setStepCount, stepState, setStepState}) => {
+const StepMedia = ({project, stepCount, setStepCount, stepState, setStepState, publish, setPublish}) => {
     const [type, setType] = useState('image')
     const [image, setImage] = useState(null);
     const [video, setVideo] = useState('');
     const [imageLoading, setImageLoading] = useState(false);
     const [code, setCode] = useState('')
     const [stepImg, setStepImg] = useState('')
-    // const dispatch = useDispatch()
 
-    const currentProject = useSelector((state) => state.project)
-    
-    
-    console.log(currentProject)
+     console.log(project, 'project in stepmedia')
 
-
-
-    const addStep = (i, j, img ) => {
-        setStepCount(stepCount + 1)
-        return setStepState({ ...stepState, 'step_count': i, 'project_id':j, 'step_imgs': img})
-    }
 
     const moveOn = (e) => {
         e.preventDefault()
         if (image) {
-            // setStepState({ ...stepState, 'step_count': stepCount, 'project_id':100, 'step_imgs': stepImg, 'image': image})
-            setStepState({ ...stepState, 'step_count': stepCount, 'project_id': project.id, 'step_imgs': stepImg})
-            setStepCount(stepCount + 1)
+            setStepState({ ...stepState, 'step_count': stepCount, 'project_id': project.res.id, 'step_imgs': stepImg})
         }
         else if (video) {
-            // setStepState({ ...stepState, 'step_count': stepCount, 'project_id':100, 'step_imgs': video, 'image': video})
-            setStepState({ ...stepState, 'step_count': stepCount, 'project_id':project.id, 'step_imgs': video})
-            setStepCount(stepCount + 1)
+            setStepState({ ...stepState, 'step_count': stepCount, 'project_id': project.res.id, 'step_imgs': video})
         }
         else {
-            // setStepState({ ...stepState, 'step_count': stepCount, 'project_id':100, 'step_imgs': null, 'image': null})
-            setStepState({ ...stepState, 'step_count': stepCount, 'project_id':project.id})
-            setStepCount(stepCount + 1)
+            setStepState({ ...stepState, 'step_count': stepCount, 'project_id': project.res.id})
         }
-        return (
-        <StepForm 
-        project={project} 
-        stepCount={stepCount} setStepCount={setStepCount} 
-        stepState={stepState} setStepState={setStepState}
-        />
-        )
     }
+
+//     const done = () => {
+//       setPublish(true)
+//    }
 
     const uploadImage = async (e) => {
             e.preventDefault();
@@ -113,7 +94,7 @@ const StepMedia = ({project, stepCount, setStepCount, stepState, setStepState}) 
                             type="file"
                             accept="image/*"
                             onChange={updateImage}
-                            multiple
+                            // multiple
                             />
                         </div>
                         <button type="submit">Upload Photo</button>
@@ -148,6 +129,7 @@ const StepMedia = ({project, stepCount, setStepCount, stepState, setStepState}) 
                     )}
                 </div>
                 <button type="button" onClick={moveOn}>Done</button>
+                {/* <button type="button" onClick={publish}>That's enough steps. Let's publish!</button> */}
                 </div>
             </div>
         )
