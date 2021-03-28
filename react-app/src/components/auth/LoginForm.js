@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import { login } from "../../services/auth";
 import { useDispatch } from 'react-redux';
 import './login.css';
-import workshop from '../../icons/workshop.jpeg'
+import workshop from '../../icons/workshop2.jpeg'
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);

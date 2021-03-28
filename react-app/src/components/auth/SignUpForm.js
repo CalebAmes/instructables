@@ -3,7 +3,7 @@ import { Redirect, useHistory } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import { signUp } from '../../services/auth';
 import './login.css';
-import workshop from '../../icons/workshop.jpeg'
+import workshop from '../../icons/workshop2.jpeg'
 
 const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [username, setUsername] = useState("");

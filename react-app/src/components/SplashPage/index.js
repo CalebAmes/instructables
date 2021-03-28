@@ -2,9 +2,9 @@ import React,{ useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setCurrentUser } from '../../store/currentUser'
 import './SplashLanding.css'
-import badDog from '../../icons/badDog.jpeg'
-import goodDog from '../../icons/goodDog.jpeg'
-import dogTrouble from '../../icons/dogTrouble.png'
+import badDog from '../../icons/leatherTools.jpeg'
+import goodDog from '../../icons/cooking2.jpeg'
+import dogTrouble from '../../icons/3dprinter.jpeg'
 import ClickProject from '../ClickableProjectComponent'
 
 
@@ -37,6 +37,18 @@ function SplashPage(){
   )
 }
 
+// export const categoryHolder = () => {
+//   return (
+//     <>
+//       <h1>{category.name}</h1>
+//       <div>
+//         {
+//           <ClickProject />
+//         }
+//       </div>
+//     </>`
+//   )
+// }
 
 export const Carousel = ({ images }) => {
 
