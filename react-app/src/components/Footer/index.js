@@ -24,7 +24,8 @@ const Footer = ({ category }) => {
       <div className='footer-container'>
         <div className='inner-cont'>
           <img className='img' src={main} />
-          <div className='cat-foot'>Categories
+          <div className='cat-foot'>
+            <span className='cat'>Categories</span>
             <Link to={'/category/1'} className='category-1'>
               <div className='cat-1'>
                 <div><i class="fas fa-microchip fa-sm"/> circuits</div>
@@ -45,6 +46,7 @@ const Footer = ({ category }) => {
                 <div><i class="fas fa-utensils fa-sm"/> cooking</div>
               </div>
             </Link>
+            <div></div>
             <Link to={ `/category/5` } className='category-5'>
               <div className='cat-5'>                
                 <div><i class="fas fa-home fa-sm"/> living</div>
@@ -56,28 +58,33 @@ const Footer = ({ category }) => {
               </div>
             </Link>
           </div>
-          <div className='about-us'>About Us
-            <Link to='/'>Who We Are</Link>
-            <Link to='/Create'>Why Publish?</Link>
-            <Link to='/'>Jobs</Link>
+          <div className='about-us'>
+            <span className='about'> About Us </span>
+            <Link className='who' to='/'>Who We Are</Link>
+            <Link className='why' to='/Create'>Why Publish?</Link>
+            <Link className='jobs' to='/'>Jobs</Link>
           </div>
-          <div className='resources'>Resources</div>
-            <Link to='/'>Sitemap</Link>
-            <Link to='/'>Help</Link>
-            <Link to='/'>Contact</Link>
-          <div className='find-us'>Find Us</div>
-            <Link to='/'>
+          <div className='resources'>
+            <span className='resource'>Resources</span>
+            <Link className='map' to='/'>Sitemap</Link>
+            <Link className='help1' to='/'>Help</Link>
+            <Link className='contact' to='/'>Contact</Link>
+          </div>
+          <div className='find-us'>
+            <span className='find'> Find Us </span>
+            <Link className='insta' to='/'>
               <i class="fab fa-instagram-square"></i>
             </Link>
-            <Link to='/'>
-              <i class="fab fa-facebook-square"></i>
-            </Link>
-            <Link to='/'>
-              <i class="fab fa-twitter-square"></i>
-            </Link>
-            <Link to='/'>
+            <Link className='pinterest' to='/'>
               <i class="fab fa-pinterest-square"></i>
             </Link>
+            <Link className='face' to='/'>
+              <i class="fab fa-facebook-square"></i>
+            </Link>
+            <Link className='twitter' to='/'>
+              <i class="fab fa-twitter-square"></i>
+            </Link>
+          </div>
         </div>
       </div>
     </>

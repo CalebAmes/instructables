@@ -1,12 +1,19 @@
 .footer-container {
+  box-sizing: border-box;
   margin-top: 1rem;
   padding: 1rem;
   background-color: rgb(85, 85, 85);
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  position: relative;
+  padding: 30px 2.5vw 10px;
 }
-
+.img {
+  height: 130px;
+  width: 150px;
+  margin-right: 10px;
+}
 .inner-cont{
   margin: 50px;
   display: flex;
@@ -15,20 +22,21 @@
 
 .cat-foot {
   height: 132px;
-  width: 413px ;
-  display: grid;
-  grid-template-columns: 40% 20% 40%;
-  grid-template-rows: 20% 20% 20% 20% 20%;
-  grid-template-areas: 
-  '. . . '
-  'one . five'
-  'two . six'
-  'three . .'
-  'four . .';
+  width: 413px;
+  display: flex;
+  flex-flow: column wrap;
 }
 
+.cat,
+.about,
+.resource,
+.find {
+  font-size: 20px;
+  font-weight: bolder;
+  color: rgb(187, 187, 187)
+  
+}
 .category-1{
-  grid-area: one;
   color: rgb(187, 187, 187)
 }
 
@@ -43,25 +51,93 @@
 }
 
 .category-2{
-  grid-area: two;
   color: rgb(187, 187, 187)
 }
 
 .category-3 {
-  grid-area: three;
+
   color: rgb(187, 187, 187)
 }
 .category-4 {
-  grid-area: four;
+
   color: rgb(187, 187, 187)
 }
 
 .category-5 {
-  grid-area: five;
+
   color: rgb(187, 187, 187)
 }
 
 .category-6 {
-  grid-area: six;
+
   color: rgb(187, 187, 187)
+}
+
+.about-us{
+  display: flex;
+  flex-direction: column;
+  color: rgb(187, 187, 187)
+}
+
+.who,
+.why,
+.jobs {
+  color: rgb(187, 187, 187)
+}
+
+.resources{
+  display: flex;
+  flex-direction: column;
+  color: rgb(187, 187, 187)
+}
+
+.map,
+.help1,
+.contact {
+  color: rgb(187, 187, 187)
+}
+
+
+.find-us {
+  display: grid;
+  grid-template-areas: 
+  'find find find find'
+  'insta face twitter pin';
+  color: rgb(187, 187, 187)
+}
+
+.find{
+  grid-area: find;
+  color: rgb(187, 187, 187)
+}
+
+.insta{
+  grid-area: insta;
+  color: rgb(187, 187, 187);
+  margin: 10px;
+}
+
+.face {
+  grid-area: face;
+  color: rgb(187, 187, 187);
+  margin: 10px;
+}
+
+.twitter {
+  grid-area: twitter;
+  color: rgb(187, 187, 187);
+  margin: 10px;
+}
+
+.pinterest {
+  grid-area: pin;
+  color: rgb(187, 187, 187);
+  margin: 10px;
+}
+
+.fa-instagram-square,
+.fa-facebook-square,
+.fa-pinterest-square,
+.fa-twitter-square {
+  font-size: 40px;
 }
