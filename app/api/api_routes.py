@@ -52,8 +52,9 @@ def api_projects_steps(projectId):
 @login_required
 def api_create_project():
     data = request.get_json()
+    img = [data['intro_imgs']]
     project = Project(user_id=current_user.id, title=data['title'], category_id=data['category_id'],
-                      keywords=data['keywords'], intro_imgs=data['intro_imgs'], intro=data['intro'])
+                      keywords=data['keywords'], intro_imgs=img, intro=data['intro'])
     db.session.add(project)
     db.session.commit()
 
@@ -63,8 +64,9 @@ def api_create_project():
 @api_routes.route('/steps', methods=['POST'])
 def api_create_one_step():
     data = request.get_json()
+    img = [data['step_imgs']]
     step = Step(step_count=data['step_count'],
-                project_id=data['project_id'], step_imgs=data['step_imgs'], step=data['step'])
+                project_id=data['project_id'], step_imgs=img, step=data['step'])
     db.session.add(step)
     db.session.commit()
     return step.to_dict()

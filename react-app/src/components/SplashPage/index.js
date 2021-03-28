@@ -16,7 +16,24 @@ function SplashPage(){
   const images = [ badDog, goodDog, dogTrouble ];
   
   return(
+    <>
     <Carousel images={ images } />
+    <div className='welcomeDiv'>
+    <div className='holder'>
+      <h1>STEP-BY-STEP</h1>
+      <h3>We make it easy to learn how to make anything, one step at a time. From the stovetop to the workshop, you are sure to be inspired by the awesome projects that are shared everyday.</h3>
+    </div>
+    <div className='holder'>
+      <h1>MADE BY YOU</h1>
+      <h3>Instructables are created by you. No matter who you are, we all have secret skills to share. Come join our community of curious makers, innovators, teachers, and life long learners who love to share what they make.</h3>
+    </div>
+    <div className='holder'>
+      <h1>A HAPPY PLACE</h1>
+      <h3>Making things makes people happy. We can't prove it, but we know it to be true. Find your happy place, and join one of the friendliest online communities anywhere.</h3>
+    </div>
+    </div>
+    <h1 id='explore'>EXPLORE PROJECTS</h1>
+    </>
   )
 }
 

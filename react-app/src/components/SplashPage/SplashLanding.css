@@ -1,11 +1,11 @@
+
 .imageDiv {
-  max-height: 512px;
+  max-height: 535px;
   min-width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0px;
-  padding: 0px;
 }
 
 .divImage {
@@ -53,6 +53,43 @@
   text-decoration: underline;
 }
 
-.carouselText > hr {
+.carouselText {
   z-index: 0;
+}
+
+.welcomeDiv {
+  width: 80%;
+  height: 311px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  flex-direction: row;
+  margin: auto;
+  margin-top: 50px;
+  border-bottom: 1px solid #333;
+  color: #333;
+}
+
+.holder{
+  width:33.3%;
+  padding: 0px 15px;
+}
+
+.holder > h1 {
+  font-weight: 200;
+  font-size: 34px;
+  font-stretch: condensed;
+}
+
+.holder > h3 {
+  font-weight: 400;
+  font-size: 15px;
+}
+
+#explore {
+  font-weight: 100;
+  font-size: 34px;
+  font-stretch: condensed;
+  color: #333;
+  padding-left: 11%;
 }

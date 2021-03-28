@@ -14,14 +14,14 @@
 }
 
 .categories{
-  z-index: 100;
+  z-index: 20;
   margin-left: 4%;
   margin-right: 4%;
   grid-area: categories;
 }
 
 .inner-categories{
- z-index: 100;
+ z-index: 20;
  margin-left: 10%;
  margin-right: 10%;
  height: 100%;

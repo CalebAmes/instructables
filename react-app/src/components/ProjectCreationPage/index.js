@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
-import Video from '../Video'
 import ProjectIntro from './ProjectIntro'
 import IntroMedia from './IntroMedia'
 import IntroText from './IntroText'
 import StepMedia from "./StepMedia";
 import StepForm from './StepForm'
-// import c from './ProjectCreation.module.css'
+import Publish from './Publish'
 import {useSelector, useDispatch} from 'react-redux'
 
 const CreateProject = () => {
    const [userId, setUserId] = useState(1)
    const [project, setProject] = useState({})
-   const [stepCount, setStepCount] = useState(0)
+   const [stepCount, setStepCount] = useState(1)
    const [stepState, setStepState] = useState({})
    const [table, setTable] = useState('projects')
+   const [steps, setSteps] = useState([])
+   const [publish, setPublish] = useState(false)
    const dispatch = useDispatch()
    
    let form = (
@@ -30,7 +31,8 @@ const CreateProject = () => {
       form = (
          <IntroText 
          project={project} setProject={setProject}
-         table={table} setTable={setTable}/>
+         table={table} setTable={setTable}
+         stepState={stepState} setStepState={setStepState}/>
       )
    }
 
@@ -40,7 +42,8 @@ const CreateProject = () => {
          project={project} setProject={setProject} 
          stepCount={stepCount} setStepCount={setStepCount}
          stepState={stepState} setStepState={setStepState}
-         table={table} setTable={setTable} />
+         table={table} setTable={setTable}
+         publish={publish} setPublish={setPublish} />
       )
    }
 
@@ -50,7 +53,15 @@ const CreateProject = () => {
          project={project} setProject={setProject}
          table={table} setTable={setTable} 
          stepState={stepState} setStepState={setStepState} 
-         stepCount={stepCount} setStepCount={setStepCount}/>
+         stepCount={stepCount} setStepCount={setStepCount}
+         steps={steps} setSteps={setSteps}
+         publish={publish} setPublish={setPublish}/>
+      )
+   }
+
+   if (publish === true) {
+      form = (
+         <Publish project={project} steps={steps} />
       )
    }
 
