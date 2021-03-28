@@ -28,7 +28,7 @@ const IntroText = ({project, setProject, table, setTable, setStepState, stepStat
    
 
    return (
-      <div>
+      <div className='project-form'>
          <h1>{project.title}</h1>
          <img src={project.intro_imgs} alt={project.title}/>
          <form onSubmit={handleSubmit}>

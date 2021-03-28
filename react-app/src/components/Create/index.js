@@ -25,9 +25,9 @@ const Create = () => {
       {/* <div className='background-image'></div> */}
       <div className='top'>
         <h1>SHARE WHAT YOU MAKE WITH INSTRUCTABLES</h1>
-        <p>Instructables is a platform for you to share what you make through words, photos, video and files.</p>
-        <p>From a one step recipe to a 100 step jet engine build, everyone has something to share.</p>
-        <p>Join the biggest DIY community on the web.</p>
+        <p>Instructables is a platform for you to share what you make through words, photos, video and files.<br/>
+          From a one step recipe to a 100 step jet engine build, everyone has something to share.<br/>       
+          Join the biggest DIY community on the web.</p>
         <div className='new-btn'>
           <Link to='/create/new'>New Instructable</Link>
         </div>
@@ -43,7 +43,7 @@ const Create = () => {
         <div>
           <img src={create} alt='robots'/>
         </div>
-        <div>
+        <div className='share'>
           <h2>Everyone has something to share</h2>
           <p>We all have secret skills. Whether it's a special recipe for the best hot chocolate or the perfect way to drive a nail, even the simplest ideas are worth sharing. What's your secret?</p>
         </div>
@@ -51,18 +51,18 @@ const Create = () => {
       <div className = 'avatar'>
         <img src={avatars} alt='avatars' />
       </div>
-      <div>
+      <div className='join'>
         <h2>Join the community</h2>
         <p>The instructables community is one of the most welcoming and supportive DIY communities out there. Connect with other makers and get involved! You might be surprised how good you'll feel.</p>
       </div>
-      <div>
+      <div className='press'>
         <img src={press} alt='as seen on'/>
         <h2>As seen on...</h2>
         <p>Instructables has a huge reach. Our top authors have been featured across major online and traditional media channels. Businesses have been born, and true callings found.</p>
         <p>Who knows what might happen when you put your creative ideas out there?</p>
         <Link to='/community'>Instructables success stories</Link>
       </div>
-      <div>
+      <div className='contest'>
         <img src={prize} alt='robot prizes'/>
         <h2>Win amazing prizes</h2>
         <p>Contests are a great way to participate and get inspired. We give away thousands of dollars' worth of prizes every month, including big ticket items like laser cutters, 3D printers, and more.</p>
@@ -82,7 +82,7 @@ const Create = () => {
           </div>
           ))}
         </div>
-        <div>
+        <div className='how-to'>
           <h2>There's a class for that!</h2>
           <p>Want more information about how to create an instructable? Learn more from jessyratfink, who published her first instructable nearly 10 years ago and now has over 500 instructables under her belt!</p>
           <Link to='/how-to'>How to Write an Instructable Class</Link>

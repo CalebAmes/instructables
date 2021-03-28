@@ -1,14 +1,28 @@
 import React, {useState, useEffect} from 'react';
 import Video from '../Video'
+import {Redirect} from 'react-router-dom'
 
-const Publish = ({project, steps}) => {
+const Publish = ({project, steps, setTable}) => {
 
   const getCode = () => {
       const array = steps.step_imgs[0].split('/')
       const embedCode = array[array.length - 1]
       return embedCode
    }
+
+   const showProjects = (e) => {
+      return (
+         <Redirect to='/projects'/>
+      )
+   }
    console.log(project, 'project in publish', steps, 'steps in publish')
+
+
+   const goBack = (e) => {
+      setTable('project')
+   }   
+
+
 
    return (
       <div>
@@ -29,7 +43,8 @@ const Publish = ({project, steps}) => {
             </div>
          ))}
          <div>
-            {/* <p>{project.res.keywords}</p> */}
+           <button type='button' onClick={showProjects}>Genius!</button>
+           {/* <button type='button' onClick={goBack}>Hmmm....needs some work</button> */}
          </div>
 
       </div>

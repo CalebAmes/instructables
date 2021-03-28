@@ -5,10 +5,9 @@ const IntroMedia = ({project, setProject}) => {
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
     const [introImg, setIntroImg] = useState(null)
-    const [userId, setUserId] = useState(1)
+    const [userId, setUserId] = useState(0)
 
     const moveOn = (e) => {
-        // setProject({...project, 'user_id': userId, 'intro_imgs': introImg, 'image': image})
         setProject({...project, 'user_id': userId, 'intro_imgs': introImg})
     }
 
@@ -35,9 +34,6 @@ const IntroMedia = ({project, setProject}) => {
             setImageLoading(false);
             await setIntroImg(json.url)
             await setUserId(json.user_id)
-            // console.log(json.url, 'json.url')
-            // console.log(json.user_id, 'json.user_id')
-            // await setProject({...project, 'user_id': userId, 'intro_imgs': image})
         }
         else {
             setImageLoading(false);
@@ -56,30 +52,36 @@ const IntroMedia = ({project, setProject}) => {
       }
     
     return (
-        <div className='upload'>
-            <h4>Upload Photo</h4>
-            <div className='imageUplaod'>
+        <div className='media-form'>
+            <div className='new-media'>
+                <h1>UPLOAD INTRO IMAGE</h1>
                 <form onSubmit={uploadImage}>
-                    <div>
+                    <div className='file-input'>
+                        <label>
                         <input
-                        type="file"
-                        accept="image/*"
-                        onChange={updateImage}
-                        // multiple
-                        />
+                            type="file"
+                            accept="image/*"
+                            onChange={updateImage}
+                            />
+                        Upload an Image
+                        </label>
+                        {(imageLoading)&& <p>Loading...</p>}
+                        <div className='image'>
+                            <img 
+                            src={introImg}
+                            style={{width: '500px'}} 
+                            />
+                        </div>
                     </div>
-                    <button type="submit">Upload Photo</button>
-                    {(imageLoading)&& <p>Loading...</p>}
                     <div>
-                        <img 
-                        src={introImg}
-                        style={{width: '500px'}} 
-                        />
+                        <button type="submit">Upload Photo</button>
                     </div>
                 </form>
+                <div className='submit-btns'>
+                    <button type='button' onClick={moveOn}>Move onto Intro</button>
+                    <button type='button' onClick={cancel}>Cancel</button>
+                </div>
             </div>
-            <button type='button' onClick={moveOn}>Move onto Intro</button>
-            <button type='button' onClick={cancel}>Cancel</button>
         </div>
     )
 }

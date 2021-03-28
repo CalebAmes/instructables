@@ -86,7 +86,7 @@ const StepMedia = ({project, stepCount, setStepCount, stepState, setStepState, p
                         </h4>
                     </div>
                 </div>
-                <div>
+                <div className='project-form'>
                     {type === 'image' && (
                     <form onSubmit={uploadImage}>
                         <div>
