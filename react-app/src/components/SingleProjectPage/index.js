@@ -7,6 +7,7 @@ import Steps from '../Steps'
 import Comments from '../Comments'
 import Intro from '../ProjectIntro'
 import './SingleProjectPage.css'
+import Footer from '../Footer'
 
 function Project() {
   const dispatch = useDispatch()

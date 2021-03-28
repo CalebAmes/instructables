@@ -1,0 +1,154 @@
+.footer-container {
+  box-sizing: border-box;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: rgb(85, 85, 85);
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  position: relative;
+  padding: 30px 2.5vw 10px;
+  height: 225px;
+  width: 100vw;
+  margin-left: -10px;
+  margin-bottom: -10px;
+}
+.img {
+  height: 130px;
+  width: 150px;
+  margin-right: 10px;
+}
+.inner-cont{
+  display: flex;
+}
+
+.cat-foot {
+  height: 132px;
+  width: 300px;
+  display: flex;
+  flex-flow: column wrap;
+  margin-right: 50px;
+}
+
+.cat,
+.about,
+.resource,
+.find {
+  font-size: 18px;
+  display: inline-block;
+  margin-bottom: 12px;
+  font-weight: bolder;
+  letter-spacing: 0.5px;
+  color: rgb(254, 254, 254)
+}
+.cat{
+ position: relative;
+}
+.category-1,
+.category-2,
+.category-3,
+.category-4,
+.category-5,
+.category-6 {
+  color: rgb(187, 187, 187);
+  width: 100px
+}
+.category-4{
+  margin-top: 40px;
+}
+
+.category-1:hover,
+.category-2:hover,
+.category-3:hover,
+.category-4:hover,
+.category-5:hover,
+.category-6:hover,
+.who:hover,
+.why:hover,
+.jobs:hover,
+.resource:hover,
+.map:hover,
+.help1:hover,
+.contact:hover {
+  color: rgb(254, 254, 254)
+}
+.cat-div{
+  width: 100px;
+}
+
+.about-us{
+  display: flex;
+  flex-direction: column;
+  color: rgb(187, 187, 187);
+  width: 150px;
+  padding-left: 100px;
+}
+
+.resources{
+  display: flex;
+  flex-direction: column;
+  color: rgb(187, 187, 187);
+  width: 150px;
+}
+
+.find-us {
+  display: grid;
+  grid-template-areas: 
+  'find find find find'
+  'insta face twitter pin';
+  color: rgb(187, 187, 187);
+  width: 200px;
+  height: 100px;
+}
+
+.find{
+  grid-area: find;
+}
+
+.insta{
+  grid-area: insta;
+  color: rgb(187, 187, 187);
+  margin: 10px;
+}
+
+.face {
+  grid-area: face;
+  color: rgb(187, 187, 187);
+  margin: 10px;
+}
+
+.twitter {
+  grid-area: twitter;
+  color: rgb(187, 187, 187);
+  margin: 10px;
+}
+
+.pinterest {
+  grid-area: pin;
+  color: rgb(187, 187, 187);
+  margin: 10px;
+}
+
+.fa-instagram-square,
+.fa-facebook-square,
+.fa-pinterest-square,
+.fa-twitter-square {
+  font-size: 40px;
+}
+
+hr,
+.break {
+  width: 100%;
+}
+
+.footer-bottom{
+  display: flex;
+  color:rgb(187, 187, 187);
+  width: 100%;
+  justify-content: center;
+}
+
+.terms{
+  margin-left: 10px;
+  margin-right: 10px;
+}
