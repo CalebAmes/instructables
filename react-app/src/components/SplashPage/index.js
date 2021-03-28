@@ -37,19 +37,6 @@ function SplashPage(){
   )
 }
 
-// export const categoryHolder = () => {
-//   return (
-//     <>
-//       <h1>{category.name}</h1>
-//       <div>
-//         {
-//           <ClickProject />
-//         }
-//       </div>
-//     </>`
-//   )
-// }
-
 export const Carousel = ({ images }) => {
 
   const One = () => (
@@ -86,7 +73,6 @@ export const Carousel = ({ images }) => {
     const [ imageOne, setImageOne ] = useState(true);
     const [ imageTwo, setImageTwo ] = useState(false);
     const [ imageThree, setImageThree ] = useState(false);
-    const [seconds, setSeconds] = useState(0);
     
     const stateSwitcherOne = () => {
       if(imageOne){
