@@ -8,6 +8,7 @@
   align-items: center;
   position: relative;
   padding: 30px 2.5vw 10px;
+  height: 225px;
 }
 .img {
   height: 130px;
@@ -15,100 +16,90 @@
   margin-right: 10px;
 }
 .inner-cont{
-  margin: 50px;
   display: flex;
-
 }
 
 .cat-foot {
   height: 132px;
-  width: 413px;
+  width: 300px;
   display: flex;
   flex-flow: column wrap;
+  margin-right: 50px;
 }
 
 .cat,
 .about,
 .resource,
 .find {
-  font-size: 20px;
+  font-size: 18px;
+  display: inline-block;
+  margin-bottom: 12px;
   font-weight: bolder;
-  color: rgb(187, 187, 187)
-  
+  letter-spacing: 0.5px;
+  color: rgb(254, 254, 254)
 }
-.category-1{
-  color: rgb(187, 187, 187)
+.cat{
+ position: relative;
 }
-
-.fa-microchip,
-.fa-wrench,
-.fa-cut,
-.fa-utensils,
-.fa-home,
-.fa-bicycle,
-.fa-home {
-  color: rgb(187, 187, 187)
-}
-
-.category-2{
-  color: rgb(187, 187, 187)
-}
-
-.category-3 {
-
-  color: rgb(187, 187, 187)
-}
-.category-4 {
-
-  color: rgb(187, 187, 187)
-}
-
-.category-5 {
-
-  color: rgb(187, 187, 187)
-}
-
+.category-1,
+.category-2,
+.category-3,
+.category-4,
+.category-5,
 .category-6 {
+  color: rgb(187, 187, 187);
+  width: 100px
+}
+.category-4{
+  margin-top: 40px;
+}
 
-  color: rgb(187, 187, 187)
+.category-1:hover,
+.category-2:hover,
+.category-3:hover,
+.category-4:hover,
+.category-5:hover,
+.category-6:hover,
+.who:hover,
+.why:hover,
+.jobs:hover,
+.resource:hover,
+.map:hover,
+.help1:hover,
+.contact:hover {
+  color: rgb(254, 254, 254)
+}
+.cat-div{
+  width: 100px;
 }
 
 .about-us{
   display: flex;
   flex-direction: column;
-  color: rgb(187, 187, 187)
-}
-
-.who,
-.why,
-.jobs {
-  color: rgb(187, 187, 187)
+  color: rgb(187, 187, 187);
+  width: 150px;
+  padding-left: 100px;
 }
 
 .resources{
   display: flex;
   flex-direction: column;
-  color: rgb(187, 187, 187)
+  color: rgb(187, 187, 187);
+  width: 150px;
 }
-
-.map,
-.help1,
-.contact {
-  color: rgb(187, 187, 187)
-}
-
 
 .find-us {
   display: grid;
   grid-template-areas: 
   'find find find find'
   'insta face twitter pin';
-  color: rgb(187, 187, 187)
+  color: rgb(187, 187, 187);
+  width: 200px;
+  height: 100px;
 }
 
 .find{
   grid-area: find;
-  color: rgb(187, 187, 187)
 }
 
 .insta{
@@ -140,4 +131,21 @@
 .fa-pinterest-square,
 .fa-twitter-square {
   font-size: 40px;
+}
+
+hr,
+.break {
+  width: 100%;
+}
+
+.footer-bottom{
+  display: flex;
+  color:rgb(187, 187, 187);
+  width: 100%;
+  justify-content: center;
+}
+
+.terms{
+  margin-left: 10px;
+  margin-right: 10px;
 }

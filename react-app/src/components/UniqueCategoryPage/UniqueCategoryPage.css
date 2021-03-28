@@ -1,20 +1,27 @@
 .grid{
-  display: grid;
-  grid-template-rows: 15% 75% 10%;
-  grid-template-areas: 
-  'carousel' 
-  'categories'
-  'contests'
-  'footer'
-  ;
+  display: flex;
+  flex-flow: column wrap;
 }
 
-.carousel{
-  grid-area: carousel;
-}
-
-.categories{
+.title1{
+  height: 90px;
+  font-size: 70px;
   z-index: 20;
+  display: flex;
+  justify-content: center;
+}
+.description1{
+  display: flex;
+  justify-content: center;
+
+}
+.description{
+  font-size: 20px;
+  width: 600px;
+  text-align: center;
+}
+.categories{
+  z-index: 10;
   margin-left: 4%;
   margin-right: 4%;
   grid-area: categories;
@@ -22,18 +29,22 @@
 
 .inner-categories{
  z-index: 20;
- margin-left: 10%;
- margin-right: 10%;
+ /* margin-right: 10%;
+ margin-left: 10%; */
  height: 100%;
  display: flex;
  flex-wrap: wrap;
  justify-content: center;
 }
 
-.contests{
-  grid-area: contests;
+.break1{
+  width: 90%;
+  margin-left: 5%;
+  margin-bottom: 2%;
 }
 
-.footer {
-  grid-area: footer;
+.break2{
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 1%;
 }

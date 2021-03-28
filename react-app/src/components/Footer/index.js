@@ -25,36 +25,35 @@ const Footer = ({ category }) => {
         <div className='inner-cont'>
           <img className='img' src={main} />
           <div className='cat-foot'>
-            <span className='cat'>Categories</span>
+            <span className='cat'>Categories</span>           
             <Link to={'/category/1'} className='category-1'>
               <div className='cat-1'>
-                <div><i class="fas fa-microchip fa-sm"/> circuits</div>
+                <div className='cat-div'><i class="fas fa-microchip fa-sm"/> circuits</div>
               </div>
             </Link>
             <Link to={'/category/2'} className='category-2'>
               <div className='cat-2'>
-                <div><i class="fas fa-wrench fa-sm"/> workshop</div>
+                <div className='cat-div'><i class="fas fa-wrench fa-sm"/> workshop</div>
               </div>
             </Link>
             <Link to={ `/category/3` } className='category-3'>
               <div className='cat-3'>                
-                <div><i class="fas fa-cut fa-sm"/> crafts</div>
+                <div className='cat-div'><i class="fas fa-cut fa-sm"/> crafts</div>
               </div>
             </Link>
             <Link to={ `/category/4` } className='category-4'>
               <div className='cat-4'>                
-                <div><i class="fas fa-utensils fa-sm"/> cooking</div>
+                <div className='cat-div'><i class="fas fa-utensils fa-sm"/> cooking</div>
               </div>
             </Link>
-            <div>' '</div>
             <Link to={ `/category/5` } className='category-5'>
               <div className='cat-5'>                
-                <div><i class="fas fa-home fa-sm"/> living</div>
+                <div className='cat-div'><i class="fas fa-home fa-sm"/> living</div>
               </div>
             </Link>
             <Link to={ `/category/6` } className='category-6'>
               <div className='cat-6'>       
-                <div><i class="fas fa-bicycle fa-sm"/> outdoors</div>
+                <div className='cat-div'><i class="fas fa-bicycle fa-sm"/> outdoors</div>
               </div>
             </Link>
           </div>
@@ -85,7 +84,19 @@ const Footer = ({ category }) => {
               <i class="fab fa-twitter-square"></i>
             </Link>
           </div>
-        </div>
+          </div>
+          <span className='break'>
+            <hr />
+          </span>
+          <div className='footer-bottom'>
+            <div className='terms'> Terms of Service</div>
+            <span className='divide'>|</span>
+            <div className='terms'> Privacy Statement</div>
+            <span className='divide'>|</span>
+            <div className='terms'> Privacy settings</div>
+            <span className='divide'>|</span>
+            <div className='terms'> Legal Notices & Trademarks</div>
+          </div>
       </div>
     </>
   )

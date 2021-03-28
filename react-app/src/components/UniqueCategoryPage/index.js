@@ -6,9 +6,6 @@ import { getProjects } from '../../store/project'
 import { Carousel } from '../SplashPage' 
 import ClickProject from '../ClickableProjectComponent';
 import './UniqueCategoryPage.css'
-import Footer from '../Footer';
-
-
 
 function Category(){
   const dispatch = useDispatch();
@@ -23,7 +20,6 @@ function Category(){
 
   const projects = Object.values(projectItems)
   const category = categoryItems[id]
-  console.log(category)
 
   useEffect(async () => {
     await dispatch(getCategory())
@@ -34,26 +30,34 @@ function Category(){
  
     return (
       <>
-        <div className='grid'>
           <div className= 'carousel'>
             {loaded  &&
               <Carousel className='carousel' images={category.imgs}/>
             }
           </div>
-          <div className='categories'>
-            <div className='inner-categories'>
-              {projects.map((project) => (
-                (project?.category_id == id ? (
-                  <ClickProject key={project.id} project={project} user={userItems[project.user_id]} category={categoryItems[project.category_id]}/>
-                  ): null) 
-                  ))}
+          <div className='grid'>
+            <span className='break2'>
+              <hr/>
+            </span>
+            <div >{loaded && 
+            <span className='title1'>{category.name} </span>
+            }</div>
+            <div className='description1'>{loaded && 
+            <span className='description'>{category.description}.</span> }</div>
+            <span className='break1'>
+              <hr/>
+            </span>
+            <div className='categories'>
+              <div className='inner-categories'>
+                {projects.map((project) => (
+                  (project?.category_id == id ? (
+                    <ClickProject key={project.id} project={project} user={userItems[project.user_id]} category={categoryItems[project.category_id]}/>
+                    ): null) 
+                   ))}
               </div>
-          <div className='contests'></div>
+            <div className='contests'></div>
+            </div>
           </div>
-          <div className='footer'>
-            <Footer />
-          </div>
-        </div>
       </>
   )
 }
