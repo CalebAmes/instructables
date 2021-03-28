@@ -1,6 +1,8 @@
 import React,{ useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector} from 'react-redux'
 import { setCurrentUser } from '../../store/currentUser'
+import { getProjects } from '../../store/project';
+import { getCategory } from '../../store/category';
 import './SplashLanding.css'
 import badDog from '../../icons/leatherTools.jpeg'
 import goodDog from '../../icons/cooking2.jpeg'
@@ -8,14 +10,61 @@ import dogTrouble from '../../icons/3dprinter.jpeg'
 import ClickProject from '../ClickableProjectComponent'
 
 
+
 function SplashPage(){
   const dispatch = useDispatch()
+  const projectItems = useSelector((state) => state?.project);
+  const categoryItems = useSelector((state) => state.category);
+  const userItems = useSelector((state) => state.user);
+  const [data, setData] = useState(false);
+  const [isSplashLoaded, setIsSplashLoaded] = useState(false)
+
+  const projectArray = Object.values(projectItems);
+  const categoryArray = Object.values(categoryItems);
+
+  
   useEffect(async () => {
+    await dispatch(getProjects())
     await dispatch(setCurrentUser())
-  })
+    await dispatch(getCategory())
+    await setIsSplashLoaded(true)
+    
+      let categoryOne = projectArray.filter(project => project.category_id == 1)
+      let categoryTwo = projectArray.filter(project => project.category_id == 2)
+      let categoryThree = projectArray.filter(project => project.category_id == 3)
+      let categoryFour = projectArray.filter(project => project.category_id == 4)
+      let categoryFive = projectArray.filter(project => project.category_id == 5)
+      let categorySix = projectArray.filter(project => project.category_id == 6)
+  
+      setData([ categoryOne, categoryTwo, categoryThree, categoryFour, categoryFive, categorySix ])
+    // await catData()
+  }, [dispatch])
+
+  
+  //formatting the data for Carousel to take in as an array of three images
+  console.log(data)
+  //formatting the data for CategoryHolder to take in as in array of 4 projects
+  //update, using splice to limit the array length in jsx so can take in an array of
+  // any length
+  
   const images = [ badDog, goodDog, dogTrouble ];
   
+  const CategoryHolder = ({array}) => {
+    let newArray = array?.splice(0, 5)
+    return(
+      <>
+        {newArray?.map((project) => (
+          (
+            <ClickProject key={project.id} project={project} user={userItems[project.user_id]} category={categoryItems[project.category_id]}/>
+          ) 
+        ))}
+      </>
+    )
+  }
+
   return(
+    <>
+    { isSplashLoaded && (
     <>
     <Carousel images={ images } />
     <div className='welcomeDiv'>
@@ -34,22 +83,14 @@ function SplashPage(){
     </div>
     <h1 id='explore'>EXPLORE PROJECTS</h1>
     </>
+    )}
+    </>
   )
 }
 
-// export const categoryHolder = () => {
-//   return (
-//     <>
-//       <h1>{category.name}</h1>
-//       <div>
-//         {
-//           <ClickProject />
-//         }
-//       </div>
-//     </>`
-//   )
-// }
+//made to take in an array of 4 objects. Each object should be the first 4 projects in each category
 
+//made to take in an array of three images
 export const Carousel = ({ images }) => {
 
   const One = () => (
