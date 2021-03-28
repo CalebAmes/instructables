@@ -50,7 +50,8 @@ function reducer(state = {}, action) {
       // newState['steps'] = action.steps
       return newState;
     case ADD_STEP:
-      newState[action.payload.step_count] = action.payload
+      newState = {...state}
+      newState['step'] = action.payload
       console.log(newState)
       return newState;
     default:

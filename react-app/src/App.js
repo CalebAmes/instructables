@@ -14,7 +14,6 @@ import Projects from "./components/AllProjectsPage";
 import Project from "./components/SingleProjectPage";
 import CreateProject from './components/ProjectCreationPage'
 import { authenticateUser } from './store/session'
-
 import Category from "./components/UniqueCategoryPage";
 import UserProfilePage from "./components/UserProfilePage";
 
