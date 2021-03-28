@@ -6,7 +6,7 @@
   /* padding: 0px 1rem; */
   width: 100%;
   position: fixed;
-  z-index: 9;
+  z-index: 300;
   /* color: var(--text-color-1); */
   transform: translateX(-8px) translateY(-8px);
 }
@@ -100,7 +100,7 @@ justify-content: flex-start;
 
 .nav-item svg{
   position:fixed;
-  z-index: 10;
+  z-index: 1000;
   width: 32px;
   height: 32px;
   transform: translateX(10px);
@@ -121,24 +121,25 @@ justify-content: flex-start;
 }
 
 .dropdown {
-  position: absolute;
-  z-index:10;
+  position: fixed;
+  z-index:400;
 }
 
 .dd {
-    position: absolute;
-    top: 48px;
-    width: 300px;
-    transform: translateX(-8px);
-    color: black;
-    background-color: var(--bg);
-    border: var(--border);
-    overflow: scroll;
-    z-index: 10;
-    transition: height var(--speed) ease;
-    overflow: hidden;
-    font-size: 18px;
-    font-weight: 400;
+  position: absolute;
+  width: 300px;
+  top: 48px;
+  transform: translateX(-0px);
+  color: black;
+  background-color: var(--bg);
+  border: var(--border);
+  overflow: scroll;
+  z-index: 400;
+  transition: height var(--speed) ease;
+  overflow: hidden;
+  font-size: 18px;
+  font-weight: 400;
+  max-height: 792px;
 }
 
 .item {
@@ -152,8 +153,8 @@ justify-content: flex-start;
 }
 
 .menu-primary-enter {
-  /* position: absolute;
-  transform: translateX(110%); */
+  position: absolute;
+  /* transform: translateX(110%);  */
   opacity: 0;
 }
 
@@ -165,7 +166,7 @@ justify-content: flex-start;
 }
 
 .menu-primary-exit {
-  /* position: absolute; */
+  position: absolute;
   opacity: 1;
 }
 

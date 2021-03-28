@@ -33,10 +33,6 @@
   flex-direction: row;
 }
 
-a {
-  color: orange;
-}
-
 .top {
   background: center url("../../images/9.jpg");
   width: 100%;

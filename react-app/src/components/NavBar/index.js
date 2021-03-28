@@ -17,9 +17,9 @@ const NavBar = ({ setAuthenticated }, props) => {
       <nav className='NavBar'>
         <div className='NavBar-div'>
           <div className='far-els'>
-          <NavFavorite icon={<i class="fas fa-heart" />} />
+          {/* <NavFavorite icon={<i class="fas fa-heart" />} />
           <NavMade icon={<i class="fas fa-hammer" />} />
-          <NavComment icon={<i class="fas fa-comments" />} />
+          <NavComment icon={<i class="fas fa-comments" />} /> */}
           </div>
         </div>
       </nav>
@@ -144,7 +144,6 @@ export function Dropdown({setAuthenticated}) {
   }
 
   return (
-    <>
     <div className='dropdown' style={{ height: menuHeight }}>
       <CSSTransition 
         in={ activeMenu === 'main' } 
@@ -305,7 +304,6 @@ export function Dropdown({setAuthenticated}) {
         </ul>
       </CSSTransition>
     </div>
-    </>
   )
 }
 
