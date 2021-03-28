@@ -1,6 +1,7 @@
 .grid{
   display: flex;
   flex-flow: column wrap;
+  z-index: 10;
 }
 
 .title1{
@@ -41,10 +42,33 @@
   width: 90%;
   margin-left: 5%;
   margin-bottom: 2%;
+  z-index: 10;
 }
 
 .break2{
   width: 90%;
   margin-left: 5%;
   margin-top: 1%;
+  z-index: 10;
+}
+.title-cont {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.cat-img {
+  width: 330px;
+  height: 150px;
+  margin: 5px;
+  position: relative;
+}
+
+.cat-title {
+  color: white;
+  position: absolute;
+  top: 67%;
+  margin-left: 15px;
+  font-size: 10px;
+  text-decoration-line: overline;
 }

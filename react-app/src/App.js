@@ -81,7 +81,7 @@ function App() {
           <Category />
         </Route>
       </Switch>
-      <Footer/>
+      {/* <Footer/> */}
     </BrowserRouter>
   );
 }
