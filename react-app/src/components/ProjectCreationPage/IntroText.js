@@ -5,10 +5,11 @@ import TextEditor from "../TextEditor";
 import Video from '../Video'
 import './ProjectCreation.css'
 
-const IntroText = ({project, setProject, table, setTable}) => {
+const IntroText = ({project, setProject, table, setTable, setStepState, stepState}) => {
    const [intro, setIntro] = useState('')
    const [categoryId, setCategoryId] = useState(0)
    const [keywords, setKeywords] = useState([])
+   const [keyword, setKeyword] = useState('')
    const dispatch = useDispatch()
 
    const handleSubmit = async (e) => {
@@ -16,15 +17,15 @@ const IntroText = ({project, setProject, table, setTable}) => {
       const newProject = {...project, 'category_id': categoryId, 'keywords': keywords, 'intro': intro};
       setProject(newProject)
       // setProject({...project, 'category_id': categoryId, 'keywords': keywords, 'intro': intro})
-      console.log(newProject)
+      console.log(newProject, 'newProejct')
       const res = await dispatch(createProject(newProject))
-      await console.log(res)
+      await console.log(res, 'res')
+      await setStepState({'project_id': res.id})
+      await setProject({res})
       await setTable('steps')
    }
 
-   // const updateIntro = (e) => {
-   //    setIntro(e.target.value)
-   // }
+   
 
    return (
       <div>
@@ -32,17 +33,17 @@ const IntroText = ({project, setProject, table, setTable}) => {
          <img src={project.intro_imgs} alt={project.title}/>
          <form onSubmit={handleSubmit}>
             <div>
-               {/* <textarea
+               <textarea
                name='intro' 
                value={intro}
                onChange={(e) => setIntro(e.target.value)}
                placeholder = 'add an intro'
-               /> */}
-               <TextEditor 
-               data='<p>Add Intro here</p>'
-               value={intro}
-               onChange={(e) => setIntro(e.target.value)}
                />
+               {/* <TextEditor 
+               data={intro}
+               // value={intro}
+               onChange={(e) => setIntro(e.target.value)}
+               /> */}
             </div>
             <div>
                <select 
@@ -62,23 +63,25 @@ const IntroText = ({project, setProject, table, setTable}) => {
             </div>
             <div>
                <input type='text'
-               // value={keyword1}
+               // value={keywords}
                onChange={(e) => setKeywords([e.target.value])} />
             </div>
             <div>
                <input type='text'
+               // value={keywords}
                onChange={(e) => setKeywords([...keywords, e.target.value])} />
             </div>
             {keywords.length >= 2  && (
                <div>
                <input type='text'
-               // value={keyword2}
+               // value={keywords}
                onChange={(e) => setKeywords([...keywords, e.target.value])} />
                </div>
             )}
             {keywords.length >= 3 && (
                <div>
                  <input type='text'
+               //   value={keywords}
                   onChange={(e) => setKeywords([...keywords, e.target.value])} />
                </div>
             )}

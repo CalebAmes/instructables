@@ -43,8 +43,10 @@ export const createProject = (project) => async (dispatch) => {
   });
   if (res.ok) {
     const data = await res.json()
+    console.log(data, 'data from thunk')
     dispatch(addProject(data.project))
-    return res
+    console.log(res, 'res from thunk')
+    return data;
   }
 }
 

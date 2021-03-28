@@ -6,26 +6,39 @@ import {Redirect} from 'react-router-dom'
 import './ProjectCreation.css'
 import TextEditor from '../TextEditor'
 
-const StepForm = ({project, stepCount, setStepCount, stepState, setStepState}) => {
+const StepForm = ({project, stepCount, setStepCount, stepState, setStepState, publish, setPublish, steps, setSteps}) => {
    
    const dispatch = useDispatch()
    const [step, setStep] = useState('')
    const [title, setTitle] = useState('')
-   console.log(project, 'project in stepform')
+
+
+
    const handleSubmit = async (e) => {
       e.preventDefault()
       const newStep = {...stepState, 'step_title': title, 'step': step}
       setStepState(newStep)
-      console.log(stepState, 'stepState')
-      dispatch(addAStep(newStep))
-      setStepState({})
-      setStepCount(stepCount + 1)
+      console.log(newStep, 'newSTep')
+      setSteps([...steps, newStep])
+      await dispatch(addAStep(newStep))
+      const newStepState = {'project_id': project.id}
+      await setStepState(newStepState)
+      await console.log(newStepState, 'newStepState')
+      await setStepCount(stepCount + 1)
    }
 
-   const done = () => {
-      return (
-         <Redirect to='/publish' />
-      )
+   const done = async (e) => {
+      e.preventDefault()
+      const newStep = {...stepState, 'step_title': title, 'step': step}
+      setStepState(newStep)
+      console.log(newStep, 'newSTep')
+      setSteps([...steps, newStep])
+      await dispatch(addAStep(newStep))
+      const newStepState = {'project_id': project.id}
+      await setStepState(newStepState)
+      await console.log(newStepState, 'newStepState')
+      await setStepCount(stepCount + 1)
+      setPublish(true)
    }
 
    const getCode = () => {
@@ -53,17 +66,17 @@ const StepForm = ({project, stepCount, setStepCount, stepState, setStepState}) =
                />
             </div>
             <div>
-               <TextEditor
+               {/* <TextEditor
+               // value={step}
+               data={step}
                onChange={(e) =>setStep(e.target.value)}
-               value={step}
-               data="<p>{`step ${stepCount} body`}</p>"
-               />
-               {/* <textarea
+               /> */}
+               <textarea
                name='step' 
                value={step}
                onChange={(e) => setStep(e.target.value)} 
                placeholder={`step ${stepCount} body`}
-               /> */}
+               />
             </div>
             <div>
                <button type='submit'>Add Step</button>

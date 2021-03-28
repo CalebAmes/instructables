@@ -57,7 +57,7 @@ const IntroMedia = ({project, setProject}) => {
     
     return (
         <div className='upload'>
-            <h4>Upload Photos</h4>
+            <h4>Upload Photo</h4>
             <div className='imageUplaod'>
                 <form onSubmit={uploadImage}>
                     <div>
@@ -65,7 +65,7 @@ const IntroMedia = ({project, setProject}) => {
                         type="file"
                         accept="image/*"
                         onChange={updateImage}
-                        multiple
+                        // multiple
                         />
                     </div>
                     <button type="submit">Upload Photo</button>
