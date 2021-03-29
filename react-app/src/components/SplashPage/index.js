@@ -3,17 +3,19 @@ import { useDispatch, useSelector} from 'react-redux'
 import { setCurrentUser } from '../../store/currentUser'
 import { getProjects } from '../../store/project';
 import { getCategory } from '../../store/category';
+import { getUsers } from '../../store/user';
 import './SplashLanding.css'
 import badDog from '../../icons/leatherTools.jpeg'
 import goodDog from '../../icons/cooking2.jpeg'
 import dogTrouble from '../../icons/3dprinter.jpeg'
 import ClickProject from '../ClickableProjectComponent'
+import Footer from '../Footer'
 
 
 
 function SplashPage(){
   const dispatch = useDispatch()
-  const projectItems = useSelector((state) => state?.project);
+  const projectItems = useSelector((state) => state.project);
   const categoryItems = useSelector((state) => state.category);
   const userItems = useSelector((state) => state.user);
   const [data, setData] = useState(false);
@@ -28,39 +30,10 @@ function SplashPage(){
     await dispatch(setCurrentUser())
     await dispatch(getCategory())
     await setIsSplashLoaded(true)
-    
-      let categoryOne = projectArray.filter(project => project.category_id == 1)
-      let categoryTwo = projectArray.filter(project => project.category_id == 2)
-      let categoryThree = projectArray.filter(project => project.category_id == 3)
-      let categoryFour = projectArray.filter(project => project.category_id == 4)
-      let categoryFive = projectArray.filter(project => project.category_id == 5)
-      let categorySix = projectArray.filter(project => project.category_id == 6)
-  
-      setData([ categoryOne, categoryTwo, categoryThree, categoryFour, categoryFive, categorySix ])
-    // await catData()
+    // await catData(projectArray)
   }, [dispatch])
 
-  
-  //formatting the data for Carousel to take in as an array of three images
-  console.log(data)
-  //formatting the data for CategoryHolder to take in as in array of 4 projects
-  //update, using splice to limit the array length in jsx so can take in an array of
-  // any length
-  
   const images = [ badDog, goodDog, dogTrouble ];
-  
-  const CategoryHolder = ({array}) => {
-    let newArray = array?.splice(0, 5)
-    return(
-      <>
-        {newArray?.map((project) => (
-          (
-            <ClickProject key={project.id} project={project} user={userItems[project.user_id]} category={categoryItems[project.category_id]}/>
-          ) 
-        ))}
-      </>
-    )
-  }
 
   return(
     <>
@@ -68,27 +41,73 @@ function SplashPage(){
     <>
     <Carousel images={ images } />
     <div className='welcomeDiv'>
-    <div className='holder'>
-      <h1>STEP-BY-STEP</h1>
-      <h3>We make it easy to learn how to make anything, one step at a time. From the stovetop to the workshop, you are sure to be inspired by the awesome projects that are shared everyday.</h3>
+      <div className='holder'>
+        <h1>STEP-BY-STEP</h1>
+        <h3>We make it easy to learn how to make anything, one step at a time. From the stovetop to the workshop, you are sure to be inspired by the awesome projects that are shared everyday.</h3>
+      </div>
+      <div className='holder'>
+        <h1>MADE BY YOU</h1>
+        <h3>Instructables are created by you. No matter who you are, we all have secret skills to share. Come join our community of curious makers, innovators, teachers, and life long learners who love to share what they make.</h3>
+      </div>
+      <div className='holder'>
+        <h1>A HAPPY PLACE</h1>
+        <h3>Making things makes people happy. We can't prove it, but we know it to be true. Find your happy place, and join one of the friendliest online communities anywhere.</h3>
+      </div>
     </div>
-    <div className='holder'>
-      <h1>MADE BY YOU</h1>
-      <h3>Instructables are created by you. No matter who you are, we all have secret skills to share. Come join our community of curious makers, innovators, teachers, and life long learners who love to share what they make.</h3>
+    <div className='exploreDiv'>
+      <h1 id='explore'>EXPLORE PROJECTS</h1>
     </div>
-    <div className='holder'>
-      <h1>A HAPPY PLACE</h1>
-      <h3>Making things makes people happy. We can't prove it, but we know it to be true. Find your happy place, and join one of the friendliest online communities anywhere.</h3>
+    <div className='categoryHolderDiv'>
+    <CategoryHolder />
     </div>
-    </div>
-    <h1 id='explore'>EXPLORE PROJECTS</h1>
+    <div className='padding'></div>
+    <Footer/>
     </>
     )}
     </>
   )
 }
 
-//made to take in an array of 4 objects. Each object should be the first 4 projects in each category
+export const CategoryHolder = () => {
+  const projectItems = useSelector((state) => state.project)
+  const userItems = useSelector((state) => state.user)
+  const categoryItems = useSelector((state) => state.category)
+
+  useEffect(()=>{
+    getCategory()
+    getProjects()
+    getUsers()
+  }, [])
+
+  const projects = Object.values(projectItems)
+  const cat1 = projects.filter(project=>project?.category_id == 1).slice(0,4)
+  const cat2 = projects.filter(project=>project?.category_id == 2).slice(0,4)
+  const cat3 = projects.filter(project=>project?.category_id == 3).slice(0,4)
+  const cat4 = projects.filter(project=>project?.category_id == 4).slice(0,4)
+  const cat5 = projects.filter(project=>project?.category_id == 5).slice(0,4)
+  const cat6 = projects.filter(project=>project?.category_id == 6).slice(0,4)
+
+  const data = [cat1, cat2, cat3, cat4, cat5, cat6]
+
+  console.log(data)
+
+  return(
+    <div>
+      {
+        data.map(projectArray=>(
+          <div className='splashCategoryHolder'>
+            <h1>{categoryItems[projectArray[0].category_id].name}</h1>
+            <div className='splashCategoryGrid'>
+              { projectArray.map(project => (
+              <ClickProject key={project.id} project={project} user={userItems[project.user_id]} category={categoryItems[project.category_id]}/>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  )
+}
 
 //made to take in an array of three images
 export const Carousel = ({ images }) => {
@@ -156,7 +175,6 @@ export const Carousel = ({ images }) => {
     useEffect(() => {
 
       const interval = setInterval(()=>{
-        setSeconds(seconds => seconds + 3);
         stateSwitcherOne();
         stateSwitcherTwo();
         stateSwitcherThree();
