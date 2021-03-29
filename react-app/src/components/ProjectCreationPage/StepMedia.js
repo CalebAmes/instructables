@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {useSelector} from 'react-redux'
 import Video from '../Video'
 import StepForm from "./StepForm";
-import './ProjectCreation.css'
+import './Media.css'
 // import {useDispatch} from 'react-redux'
 
 const StepMedia = ({project, stepCount, setStepCount, stepState, setStepState, publish, setPublish}) => {
@@ -70,66 +70,67 @@ const StepMedia = ({project, stepCount, setStepCount, stepState, setStepState, p
     }
 
     return (
-        <div>
+        <div className='step-media'>
             <h1>Add Step</h1>
             <div className='upload'>
                 <div className='uploadNav'>
                     <div className='imageUpload'>  
-                        <h4 
+                        <p 
                         onClick={() => setType('image')}>
                         Upload Photos
-                        </h4>
+                        </p>
                     </div>
                     <div className='embedVideo'>
-                        <h4 onClick={() => setType('video')}>
+                        <p onClick={() => setType('video')}>
                         Embed a Video
-                        </h4>
+                        </p>
                     </div>
                 </div>
-                <div className='project-form'>
-                    {type === 'image' && (
-                    <form onSubmit={uploadImage}>
-                        <div>
-                            <input
-                            type="file"
-                            accept="image/*"
-                            onChange={updateImage}
-                            // multiple
-                            />
-                        </div>
-                        <button type="submit">Upload Photo</button>
-                        {(imageLoading)&& <p>Loading...</p>}
-                        <div>
-                            <img 
-                            src={stepImg}
-                            style={{width: '500px'}} 
-                            />
-                        </div>
-                    </form>
-                    )}
-                    {type === 'video' && (
-                    <form onSubmit={embedVideo}>
-                        <div>
-                            <input
-                            name='video'
-                            type='url'
-                            onChange={(e) => setVideo(e.target.value)}
-                            value={video}
-                            />
-                        </div>
-                        <div>
-                        <button type="submit">Embed Video</button>
-                        </div>
-                        {video && (
-                        <div>
-                            <Video embedId={code}/>
-                        </div>
+                <div className='media-form'>
+                    <div className='new-media'>
+                        {type === 'image' && (
+                        <form onSubmit={uploadImage}>
+                            <div className='upload-photo'>
+                                <label className='file-input'>
+                                    <input
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={updateImage}
+                                    />
+                                    Upload Image
+                                </label>
+                                <button type="submit">Done</button>
+                                {(imageLoading)&& <p>Loading...</p>}
+                                <div>
+                                    <img 
+                                    src={stepImg}
+                                    style={{width: '500px'}} 
+                                    />
+                                </div>
+                            </div>
+                        </form>
                         )}
-                    </form>
-                    )}
-                </div>
-                <button type="button" onClick={moveOn}>Done</button>
-                {/* <button type="button" onClick={publish}>That's enough steps. Let's publish!</button> */}
+                        {type === 'video' && (
+                        <form onSubmit={embedVideo}>
+                            <div className='video-input'>
+                                <input
+                                name='video'
+                                type='url'
+                                onChange={(e) => setVideo(e.target.value)}
+                                value={video}
+                                />
+                                <button type="submit">Embed Video</button>
+                                {video && (
+                                <div>
+                                    <Video embedId={code}/>
+                                </div>
+                                )}
+                            </div>
+                        </form>
+                        )}
+                        <button type="button" onClick={moveOn}>Add Step Body</button>
+                    </div>
+                    </div>
                 </div>
             </div>
         )

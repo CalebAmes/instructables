@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux'
 import {createProject} from '../../store/project'
 import TextEditor from "../TextEditor";
 import Video from '../Video'
-import './ProjectCreation.css'
+import './Text.css'
 
 const IntroText = ({project, setProject, table, setTable, setStepState, stepState}) => {
    const [intro, setIntro] = useState('')
@@ -28,7 +28,7 @@ const IntroText = ({project, setProject, table, setTable, setStepState, stepStat
    
 
    return (
-      <div className='project-form'>
+      <div className='text-form'>
          <h1>{project.title}</h1>
          <img src={project.intro_imgs} alt={project.title}/>
          <form onSubmit={handleSubmit}>
@@ -45,7 +45,7 @@ const IntroText = ({project, setProject, table, setTable, setStepState, stepStat
                onChange={(e) => setIntro(e.target.value)}
                /> */}
             </div>
-            <div>
+            <div className='category-id'>
                <select 
                value={categoryId}
                onChange={(e) => setCategoryId(e.target.value)}>
@@ -58,33 +58,33 @@ const IntroText = ({project, setProject, table, setTable, setStepState, stepStat
                   <option value='6'>Outside</option>
                </select>
             </div>
-            <div>
+            <div className='keywords'>
                <label>Add Keywords</label>
-            </div>
-            <div>
-               <input type='text'
-               // value={keywords}
-               onChange={(e) => setKeywords([e.target.value])} />
-            </div>
-            <div>
-               <input type='text'
-               // value={keywords}
-               onChange={(e) => setKeywords([...keywords, e.target.value])} />
-            </div>
-            {keywords.length >= 2  && (
-               <div>
-               <input type='text'
-               // value={keywords}
-               onChange={(e) => setKeywords([...keywords, e.target.value])} />
+               <div className='keyword'>
+                  <input type='text'
+                  // value={keywords}
+                  onChange={(e) => setKeywords([e.target.value])} />
                </div>
-            )}
-            {keywords.length >= 3 && (
                <div>
-                 <input type='text'
-               //   value={keywords}
+                  <input type='text'
+                  // value={keywords}
                   onChange={(e) => setKeywords([...keywords, e.target.value])} />
                </div>
-            )}
+               {keywords.length >= 2  && (
+                  <div>
+                  <input type='text'
+                  // value={keywords}
+                  onChange={(e) => setKeywords([...keywords, e.target.value])} />
+                  </div>
+               )}
+               {keywords.length >= 3 && (
+                  <div>
+                  <input type='text'
+                  //   value={keywords}
+                     onChange={(e) => setKeywords([...keywords, e.target.value])} />
+                  </div>
+               )}
+            </div>
             <div>
                <button type='submit'>Add Intro</button>
             </div>

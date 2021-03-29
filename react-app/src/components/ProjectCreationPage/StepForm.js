@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux'
 import Video from '../Video'
 import {addAStep} from '../../store/step'
 import {Redirect} from 'react-router-dom'
-import './ProjectCreation.css'
+import './Text.css'
 import TextEditor from '../TextEditor'
 
 const StepForm = ({project, stepCount, setStepCount, stepState, setStepState, publish, setPublish, steps, setSteps}) => {
@@ -48,7 +48,7 @@ const StepForm = ({project, stepCount, setStepCount, stepState, setStepState, pu
    }
 
    return (
-      <div className='project-form'>
+      <div className='text-form'>
          <h1>{project.title}</h1>
          {stepState.step_imgs.includes('amazonaws.com') && (
             <img src={stepState.step_imgs} alt='step image'/>

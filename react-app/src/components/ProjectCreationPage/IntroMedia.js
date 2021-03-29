@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import './ProjectCreation.css'
+import './Media.css'
 
 const IntroMedia = ({project, setProject}) => {
     const [image, setImage] = useState(null);
@@ -54,10 +54,10 @@ const IntroMedia = ({project, setProject}) => {
     return (
         <div className='media-form'>
             <div className='new-media'>
-                <h1>UPLOAD INTRO IMAGE</h1>
+                <h1>Upload Intro Image</h1>
                 <form onSubmit={uploadImage}>
-                    <div className='file-input'>
-                        <label>
+                    <div className='upload-photo'>
+                        <label className='file-input'>
                         <input
                             type="file"
                             accept="image/*"
@@ -65,6 +65,9 @@ const IntroMedia = ({project, setProject}) => {
                             />
                         Upload an Image
                         </label>
+                        <div>
+                            <button type="submit">Done</button>
+                        </div>
                         {(imageLoading)&& <p>Loading...</p>}
                         <div className='image'>
                             <img 
@@ -72,15 +75,12 @@ const IntroMedia = ({project, setProject}) => {
                             style={{width: '500px'}} 
                             />
                         </div>
-                    </div>
-                    <div>
-                        <button type="submit">Upload Photo</button>
+                        <div className='submit-btns'>
+                            <button type='button' onClick={moveOn}>Move onto Intro</button>
+                            <button type='button' onClick={cancel}>Cancel</button>
+                        </div>
                     </div>
                 </form>
-                <div className='submit-btns'>
-                    <button type='button' onClick={moveOn}>Move onto Intro</button>
-                    <button type='button' onClick={cancel}>Cancel</button>
-                </div>
             </div>
         </div>
     )

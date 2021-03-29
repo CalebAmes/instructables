@@ -1,0 +1,52 @@
+.project-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url("../../images/12.jpg") center no-repeat fixed;
+  background-size: cover;
+  height: 7000px;
+}
+
+.new-project {
+  margin-top: 40px;
+  height: 500px;
+  width: 500px;
+  text-align: center;
+  border-radius: var(--border-radius);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  box-sizing: border-box;
+}
+
+.new-project input {
+  margin: 20px;
+  font-size: 16px;
+  width: 355px;
+  height: 40px;
+  background: #e8f0fe;
+  border-radius: 3px;
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  margin: 11px auto;
+}
+
+.project-form h1 {
+  padding: 20px 0 20px 0;
+  color: white;
+}
+
+.new-project button {
+  color: white;
+  font-weight: 100;
+  background: #faac18;
+  text-align: center;
+  font-size: 17.5px;
+  border-radius: 3px;
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  line-height: 16px;
+  height: 44px;
+  width: 180px;
+  margin: 100px 11px 20px 11px;
+}

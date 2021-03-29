@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {Redirect, Link} from 'react-router-dom';
-import './ProjectCreation.css'
+import './Project.css'
 
 const ProjectIntro = ({project, setProject}) => {
 

@@ -1,4 +1,4 @@
-.project-form {
+/* .project-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,11 +11,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-size: cover; */
   background-color: var(--bg-secondary);
-  /* background: url("../../images/12.jpg") center no-repeat fixed;
-  background-size: cover;
-  height: 7000px; */
 }
 
 .media-form h1 {
@@ -24,13 +20,10 @@
 }
 
 .new-media {
-  /* margin-top: 40px; */
-  /* height: 1000px;
-  width: 1000px; */
+  margin-top: 40px;
   text-align: center;
   border-radius: var(--border-radius);
   color: white;
-  /* background-color: rgba(0, 0, 0, 0.3); */
   backdrop-filter: blur(5px);
   box-sizing: border-box;
   display: flex;
@@ -51,7 +44,7 @@
   margin: 11px auto;
 } */
 
-.new-project {
+/* .new-project {
   margin-top: 40px;
   height: 500px;
   width: 500px;
@@ -107,11 +100,19 @@
   line-height: 16px;
   height: 44px;
   width: 180px;
-  margin: 100px 11px 20px 11px;
+  margin: 20px 11px 20px 11px;
+}
+
+.submit-btns {
+  position: fixed;
+  bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .submit-btns button {
-  background-color: white;
+  background-color: var(--bg-secondary);
   text-align: center;
   font-size: 17.5px;
   border-radius: 3px;
@@ -121,22 +122,21 @@
   height: 44px;
   width: 180px;
   color: black;
-  /* margin: 30px 11px 20px 11px; */
-  margin: 11px;
+  margin: 200px 11px 11px 11px;
 }
 
 .media-form input[type="file"] {
   display: none;
 }
 
-.file-input {
+.upload-photo {
   margin-top: 40px;
   border-radius: 3px;
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.3);
   display: flex;
   /* justify-content: center; */
-  align-items: center;
+/* align-items: center;
   flex-direction: column;
   cursor: pointer;
   color: black;
@@ -149,18 +149,16 @@
   margin: 20px;
 }
 
-.file-input label {
-  padding: 50px;
-  /* margin-top: 100px; */
-  /* align-self: center;
-  vertical-align: center; */
-  /* position: absolute; */
-  /* right: 300px;
-  top: 300px; */
-}
-
-.image img {
-}
-/* .media-form label {
-  padding-top: 50px;
-} */
+.file-input {
+  background-color: var(--bg-secondary);
+  padding-top: 12px;
+  font-size: 17.5px;
+  border-radius: 3px;
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  line-height: 16px;
+  height: 44px;
+  width: 180px;
+  margin: 100px 11px 11px 11px;
+  box-sizing: border-box; */
+/*} */
