@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { login } from "../../services/auth";
 import { useDispatch } from 'react-redux';
+import Footer from '../Footer';
 import './login.css';
-import workshop from '../../icons/workshop.jpeg'
+import workshop from '../../icons/workshop.jpeg';
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
@@ -71,9 +72,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
       </form>
       </div>
     </div>
-    <div className='footer'>
-      
-    </div>
+    <Footer />
     </>
   );
 };

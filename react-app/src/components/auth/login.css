@@ -1,7 +1,7 @@
 .login {
   height: 1146px;
   width: 105%;
-  transform: translateX(-2.5%)
+  transform: translateX(-.5%)
 }
 
 .formDiv {
@@ -60,10 +60,11 @@ textarea {
   height: 44px;
   width: 360px;
   margin: 11px auto;
+  transition: filter --var(speed);
 }
 
 .button:hover {
-  background: #f65858
+  filter: brightness(1.8)
 }
 
 .footer {

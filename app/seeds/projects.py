@@ -3,45 +3,45 @@ from app.models import Project
 
 
 def seed_projects():
-    project1 = Project(user_id=1, title="Robotic Paper Octopus (with Micro:bit)", category_id=6, keywords=[
+    project1 = Project(user_id=1, title="Robotic Paper Octopus (with Micro:bit)", category_id=1, keywords=[
                        "cool projects", "awesome projects"], intro_imgs=["https://content.instructables.com/ORIG/FLK/2RKJ/KMM12M29/FLK2RKJKMM12M29.jpg?auto=webp&frame=1&width=592&height=1024&fit=bounds&md=bc55ca4ff590c9c4660d0b29b18e2f1f", "https://content.instructables.com/ORIG/FPL/4Z5M/KMDGGKZM/FPL4Z5MKMDGGKZM.jpg?auto=webp&frame=1&width=601&height=1024&fit=bounds&md=cf45c0af5ce77d97d57ff9fe87329616"], intro="Make a grumpy paper octopus that retracts its tentacles in reaction to loud noises! Supplies: Electronics: micro: bit v2 Crazy Circuits Bit Board LEGO Compatible 360 Degree Servo 2 AAA Battery Holder Other: Cardstock(3 sheets) Sewing Thread(preferably a thicker one that's more durable) Cardboard(you only need a small amount a 5\" x 5\" piece will work) Tools: Glue Scissors Sewing Needle")
-    project2 = Project(user_id=15, title="My Super Awesome Project", category_id=6, keywords=[
+    project2 = Project(user_id=15, title="My Super Awesome Project", category_id=1, keywords=[
                        "cool projects", "awesome projects"], intro_imgs=["https://content.instructables.com/ORIG/FUZ/8G5D/KMJ67IX2/FUZ8G5DKMJ67IX2.jpg"], intro="This is a really cool porject I made that makes a robot")
-    project3 = Project(user_id=2, title="DIY Outdoor Table With Fire Pit OR Cooler!", category_id=6, keywords=[
+    project3 = Project(user_id=2, title="DIY Outdoor Table With Fire Pit OR Cooler!", category_id=1, keywords=[
                        "cool projects", "awesome projects"], intro_imgs=["https://content.instructables.com/ORIG/FLI/RKA2/KMALJJ5D/FLIRKA2KMALJJ5D.jpg"], intro="This is a really cool porject I made that makes a robot")
-    project4 = Project(user_id=6, title="How to Make a Stock Tank Pool! Easy DIY Backyard Pool", category_id=6, keywords=[
+    project4 = Project(user_id=6, title="How to Make a Stock Tank Pool! Easy DIY Backyard Pool", category_id=1, keywords=[
                        "cool projects", "awesome projects"], intro_imgs=["https://content.instructables.com/ORIG/FNA/5E35/KMJ66ZYS/FNA5E35KMJ66ZYS.jpg"], intro="This is a really cool porject I made that makes a robot")
-    project5 = Project(user_id=13, title="Heart Bird Feeder", category_id=6, keywords=[
+    project5 = Project(user_id=13, title="Heart Bird Feeder", category_id=2, keywords=[
                        "cool projects", "awesome projects"], intro_imgs=["https://content.instructables.com/ORIG/F7B/5TFH/KM963O1T/F7B5TFHKM963O1T.jpg"], intro="This is a really cool porject I made that makes a robot")
-    project6 = Project(user_id=4, title="Really Awesome Creation", category_id=6, keywords=[
+    project6 = Project(user_id=4, title="Really Awesome Creation", category_id=2, keywords=[
                        "cool projects", "awesome projects"], intro_imgs=["https://content.instructables.com/ORIG/F2K/UREE/KM963N07/F2KUREEKM963N07.jpg"], intro="This is a really cool porject I made that makes a robot")
-    project7 = Project(user_id=5, title="A Really Cool Project", category_id=6, keywords=[
+    project7 = Project(user_id=5, title="A Really Cool Project", category_id=2, keywords=[
                        "cool projects", "awesome projects"], intro_imgs=["https://content.instructables.com/ORIG/F1L/XCMB/KM20W9U5/F1LXCMBKM20W9U5.jpg"], intro="This is a really cool porject I made that makes a robot")
-    project8 = Project(user_id=7, title="My Super Awesome Project", category_id=6, keywords=[
+    project8 = Project(user_id=7, title="My Super Awesome Project", category_id=2, keywords=[
                        "cool projects", "awesome projects"], intro_imgs=["https://content.instructables.com/ORIG/FRD/X3CR/KLXQKBS6/FRDX3CRKLXQKBS6.png"], intro="This is a really cool porject I made that makes a robot")
-    project9 = Project(user_id=9, title="My Super Awesome Project", category_id=6, keywords=[
+    project9 = Project(user_id=9, title="My Super Awesome Project", category_id=3, keywords=[
                        "cool projects", "awesome projects"], intro_imgs=["https://content.instructables.com/ORIG/FZM/UZ77/KLUVP1HA/FZMUZ77KLUVP1HA.jpg"], intro="This is a really cool porject I made that makes a robot")
-    project10 = Project(user_id=10, title="My Super Awesome Project", category_id=1, keywords=[
+    project10 = Project(user_id=10, title="My Super Awesome Project", category_id=3, keywords=[
         "cool projects", "awesome projects"], intro_imgs=["https://content.instructables.com/ORIG/FZM/LZMX/KLS0SDA0/FZMLZMXKLS0SDA0.png"], intro="This is a really cool porject I made that makes a robot")
-    project11 = Project(user_id=11, title="My Super Awesome Project", category_id=1, keywords=[
+    project11 = Project(user_id=11, title="My Super Awesome Project", category_id=3, keywords=[
         "cool projects", "awesome projects"], intro_imgs=["https://content.instructables.com/ORIG/FSI/MIET/KLNQLN6O/FSIMIETKLNQLN6O.jpg"], intro="This is a really cool porject I made that makes a robot")
-    project12 = Project(user_id=18, title="My Super Awesome Project", category_id=5, keywords=[
+    project12 = Project(user_id=18, title="My Super Awesome Project", category_id=3, keywords=[
         "cool projects", "awesome projects"], intro_imgs=["https://content.instructables.com/ORIG/F3U/9TIH/KLP5ZHZE/F3U9TIHKLP5ZHZE.png"], intro="This is a really cool porject I made that makes a robot")
-    project13 = Project(user_id=21, title="My Super Awesome Project", category_id=6, keywords=[
+    project13 = Project(user_id=21, title="My Super Awesome Project", category_id=4, keywords=[
         "cool projects", "awesome projects"], intro_imgs=["https://content.instructables.com/ORIG/FSC/I4F2/KLP5XUIT/FSCI4F2KLP5XUIT.jpg"], intro="This is a really cool porject I made that makes a robot")
-    project14 = Project(user_id=15, title="My Super Awesome Project", category_id=6, keywords=[
+    project14 = Project(user_id=15, title="My Super Awesome Project", category_id=4, keywords=[
         "cool projects", "awesome projects"], intro_imgs=["https://content.instructables.com/ORIG/F25/9GPL/KLP601HJ/F259GPLKLP601HJ.jpg"], intro="This is a really cool porject I made that makes a robot")
-    project15 = Project(user_id=3, title="My Super Awesome Project", category_id=6, keywords=[
+    project15 = Project(user_id=3, title="My Super Awesome Project", category_id=4, keywords=[
         "cool projects", "awesome projects"], intro_imgs=["https://content.instructables.com/ORIG/FWQ/ANPQ/KLMB25GY/FWQANPQKLMB25GY.jpg"], intro="This is a really cool porject I made that makes a robot")
-    project16 = Project(user_id=20, title="My Super Awesome Project", category_id=6, keywords=[
+    project16 = Project(user_id=20, title="My Super Awesome Project", category_id=4, keywords=[
         "cool projects", "awesome projects"], intro_imgs=["https://content.instructables.com/ORIG/FOA/Z94N/KLMB13GF/FOAZ94NKLMB13GF.jpg"], intro="This is a really cool porject I made that makes a robot")
-    project17 = Project(user_id=5, title="My Super Awesome Project", category_id=6, keywords=[
+    project17 = Project(user_id=5, title="My Super Awesome Project", category_id=5, keywords=[
         "cool projects", "awesome projects"], intro_imgs=["https://content.instructables.com/ORIG/FML/CLHY/KLMB178K/FMLCLHYKLMB178K.jpg"], intro="This is a really cool porject I made that makes a robot")
-    project18 = Project(user_id=9, title="My Super Awesome Project", category_id=6, keywords=[
+    project18 = Project(user_id=9, title="My Super Awesome Project", category_id=5, keywords=[
         "cool projects", "awesome projects"], intro_imgs=["https://content.instructables.com/ORIG/F55/X2DV/KLLA7B8O/F55X2DVKLLA7B8O.jpg"], intro="This is a really cool porject I made that makes a robot")
-    project19 = Project(user_id=19, title="My Super Awesome Project", category_id=6, keywords=[
+    project19 = Project(user_id=19, title="My Super Awesome Project", category_id=5, keywords=[
         "cool projects", "awesome projects"], intro_imgs=["https://content.instructables.com/ORIG/FKU/CNEN/KLKVM9KI/FKUCNENKLKVM9KI.jpg"], intro="This is a really cool porject I made that makes a robot")
-    project20 = Project(user_id=11, title="My Super Awesome Project", category_id=2, keywords=[
+    project20 = Project(user_id=11, title="My Super Awesome Project", category_id=5, keywords=[
         "cool projects", "awesome projects"], intro_imgs=["https://content.instructables.com/ORIG/F0I/KGMI/KLKVLGHC/F0IKGMIKLKVLGHC.jpg"], intro="This is a really cool porject I made that makes a robot")
     project21 = Project(user_id=10, title="My Super Awesome Project", category_id=6, keywords=[
         "cool projects", "awesome projects"], intro_imgs=["https://content.instructables.com/ORIG/FZ7/FLMW/KLGLBIW3/FZ7FLMWKLGLBIW3.jpg"], intro="This is a really cool porject I made that makes a robot")

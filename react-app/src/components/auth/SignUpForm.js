@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Redirect, useHistory } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import { signUp } from '../../services/auth';
+import Footer from '../Footer';
 import './login.css';
 import workshop from '../../icons/workshop.jpeg'
 
@@ -123,8 +124,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
     </form>
     </div>
     </div>
-    <div className='footer'>
-    </div>
+    <Footer />
     </>
   );
 };
