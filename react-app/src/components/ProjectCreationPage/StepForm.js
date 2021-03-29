@@ -11,19 +11,17 @@ const StepForm = ({project, stepCount, setStepCount, stepState, setStepState, pu
    const dispatch = useDispatch()
    const [step, setStep] = useState('')
    const [title, setTitle] = useState('')
-
+   // const projectName = project.title.toUpperCase()
 
 
    const handleSubmit = async (e) => {
       e.preventDefault()
       const newStep = {...stepState, 'step_title': title, 'step': step}
       setStepState(newStep)
-      console.log(newStep, 'newSTep')
       setSteps([...steps, newStep])
       await dispatch(addAStep(newStep))
       const newStepState = {'project_id': project.id}
       await setStepState(newStepState)
-      await console.log(newStepState, 'newStepState')
       await setStepCount(stepCount + 1)
    }
 
@@ -31,12 +29,10 @@ const StepForm = ({project, stepCount, setStepCount, stepState, setStepState, pu
       e.preventDefault()
       const newStep = {...stepState, 'step_title': title, 'step': step}
       setStepState(newStep)
-      console.log(newStep, 'newSTep')
       setSteps([...steps, newStep])
       await dispatch(addAStep(newStep))
       const newStepState = {'project_id': project.id}
       await setStepState(newStepState)
-      await console.log(newStepState, 'newStepState')
       await setStepCount(stepCount + 1)
       setPublish(true)
    }
@@ -82,7 +78,7 @@ const StepForm = ({project, stepCount, setStepCount, stepState, setStepState, pu
                <button type='submit'>Add Step</button>
             </div>
          </form>
-         <button type='button' onClick={done}>That's enough steps, I'm ready to publish!</button>
+         <button type='button' onClick={done}>Publish</button>
       </div>
    )
 }

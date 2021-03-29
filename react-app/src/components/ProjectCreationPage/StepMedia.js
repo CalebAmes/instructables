@@ -71,7 +71,7 @@ const StepMedia = ({project, stepCount, setStepCount, stepState, setStepState, p
 
     return (
         <div className='step-media'>
-            <h1>Add Step</h1>
+            <h1>ADD STEP</h1>
             <div className='upload'>
                 <div className='uploadNav'>
                     <div className='imageUpload'>  

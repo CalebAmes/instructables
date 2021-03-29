@@ -12,9 +12,12 @@
 .text-form textarea {
   height: 250px;
   width: 500px;
-  margin-bottom: 20px;
+  margin: 20px 0 20px 0;
   border-radius: var(--border-radius);
   border: 1px solid rgba(0, 0, 0, 0.3);
+  font-family: inherit;
+  padding: 10px;
+  font-size: 16px;
 }
 
 .text-form select {
@@ -22,21 +25,28 @@
   padding: 10px;
   border-radius: var(--border-radius);
   border: 1px solid rgba(0, 0, 0, 0.3);
+  font-family: inherit;
+  font-size: 16px;
 }
 
 .text-form h1 {
   color: black;
+  font-weight: 100;
+  font-size: 3em;
 }
 
-/* .text-form input {
+.text-form input {
   margin: 10px 0 10px 0;
-  padding: 10px 0 10px 0;
+  padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: var(--border-radius);
-} */
+  font-size: 16px;
+  font-family: inherit;
+}
 
 .text-form label {
   padding: 20px 0 20px 0;
+  font-size: 16px;
 }
 
 .category-id {
@@ -47,11 +57,13 @@
 }
 
 .keywords input {
-  margin: 10px 0 10px 0;
+  margin: 14px 0 14px 0;
   height: 30px;
   width: 160px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: var(--border-radius);
+  font-family: inherit;
+  font-size: 16px;
 }
 
 .text-form button {

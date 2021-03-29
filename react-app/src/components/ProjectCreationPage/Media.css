@@ -7,6 +7,8 @@
 
 .media-form h1 {
   color: black;
+  font-weight: 100;
+  font-size: 3em;
 }
 
 .new-media {
@@ -85,7 +87,7 @@
   border-radius: var(--border-radius);
   align-items: center;
   flex-direction: column;
-  cursor: pointer;
+  /* cursor: pointer; */
   color: black;
   font-size: 17.5px;
   height: 900px;
@@ -129,20 +131,7 @@
   cursor: pointer;
 }
 
-.imageUpload {
-  background-color: var(--bg-secondary);
-  text-align: center;
-  font-size: 17.5px;
-  border-radius: 3px;
-  box-shadow: none;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  line-height: 16px;
-  height: 44px;
-  width: 160px;
-  color: black;
-  margin: 40px 11px 11px 11px;
-}
-
+.imageUpload,
 .embedVideo {
   background-color: var(--bg-secondary);
   text-align: center;
@@ -154,13 +143,34 @@
   height: 44px;
   width: 160px;
   color: black;
+  padding-bottom: 10px;
   margin: 40px 11px 11px 11px;
+  box-sizing: border-box;
 }
+
+/* .embedVideo {
+  background-color: var(--bg-secondary);
+  text-align: center;
+  font-size: 17.5px;
+  border-radius: 3px;
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  line-height: 16px;
+  height: 44px;
+  width: 160px;
+  color: black;
+  margin: 40px 11px 11px 11px;
+} */
 
 .step-media {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.step-media h1 {
+  font-size: 3em;
+  font-weight: 100;
 }
 
 .video-input input {

@@ -59,6 +59,8 @@
 
 .top h1 {
   padding-top: 20px;
+  font-weight: 100;
+  font-size: 3em;
 }
 
 .top h2 {
@@ -108,4 +110,8 @@
 .how-to a {
   color: #faac18;
   padding-bottom: 60px;
+}
+
+.sharing h1 {
+  padding-top: 40px;
 }

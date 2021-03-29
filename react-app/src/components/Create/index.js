@@ -38,7 +38,7 @@ const Create = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div className='sharing'>
         <h1>WHY PUBLISH AN INSTRUCTABLE?</h1>
         <div>
           <img src={create} alt='robots'/>

@@ -11,6 +11,7 @@ const IntroText = ({project, setProject, table, setTable, setStepState, stepStat
    const [keywords, setKeywords] = useState([])
    const [keyword, setKeyword] = useState('')
    const dispatch = useDispatch()
+   const projectName = project.title.toUpperCase();
 
    const handleSubmit = async (e) => {
       e.preventDefault()
@@ -26,7 +27,6 @@ const IntroText = ({project, setProject, table, setTable, setStepState, stepStat
    }
 
    
-
    return (
       <div className='text-form'>
          <h1>{project.title}</h1>
