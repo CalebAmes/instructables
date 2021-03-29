@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import Video from '../Video'
-import {Redirect} from 'react-router-dom'
+import {Redirect, useHistory} from 'react-router-dom'
+import './Project.css'
 
 const Publish = ({project, steps, setTable}) => {
+
+   const history = useHistory();
 
   const getCode = () => {
       const array = steps.step_imgs[0].split('/')
@@ -11,11 +14,9 @@ const Publish = ({project, steps, setTable}) => {
    }
 
    const showProjects = (e) => {
-      return (
-         <Redirect to='/projects'/>
-      )
+     history.push('/projects')
    }
-   console.log(project, 'project in publish', steps, 'steps in publish')
+ 
 
 
    const goBack = (e) => {
@@ -25,10 +26,11 @@ const Publish = ({project, steps, setTable}) => {
 
 
    return (
-      <div>
+      <div className='publish-project'>
          <div className='intro'>
             <h1>{project.res.title}</h1>
             <img src={project.res.intro_imgs[0]} alt='intro-img' />
+            <p>{project.res.intro}</p>
          </div>
          {steps.map((step, i) => (
             <div key={step.step_count}>

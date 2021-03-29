@@ -55,3 +55,38 @@
   width: 180px;
   margin: 100px 11px 20px 11px;
 }
+
+.publish-project {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.publish-project img {
+  width: 500px;
+}
+
+.publish-project p {
+  padding: 20px;
+}
+
+.publish-project h1 {
+  font-weight: 100;
+}
+
+.publish-project button {
+  color: white;
+  font-weight: 100;
+  background: #faac18;
+  text-align: center;
+  font-weight: 100;
+  font-size: 17.5px;
+  border-radius: 3px;
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  line-height: 16px;
+  height: 44px;
+  width: 180px;
+  margin: 100px 11px 20px 11px;
+}

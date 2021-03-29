@@ -54,7 +54,7 @@ const IntroMedia = ({project, setProject}) => {
     return (
         <div className='media-form'>
             <div className='new-media'>
-                <h1>ADD AN INTRO IMAGE</h1>
+                <h1>Intro Image</h1>
                 <form onSubmit={uploadImage}>
                     <div className='upload-photo'>
                         <label className='file-input'>

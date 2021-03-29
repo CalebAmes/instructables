@@ -45,7 +45,7 @@ const StepForm = ({project, stepCount, setStepCount, stepState, setStepState, pu
 
    return (
       <div className='text-form'>
-         <h1>{project.title}</h1>
+         <h1>{`Step ${stepCount}`}</h1>
          {stepState.step_imgs.includes('amazonaws.com') && (
             <img src={stepState.step_imgs} alt='step image'/>
          )}
