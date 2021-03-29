@@ -1,20 +1,36 @@
 import React, {useState, useEffect} from 'react';
 import Video from '../Video'
+import {Redirect, useHistory} from 'react-router-dom'
+import './Project.css'
 
-const Publish = ({project, steps}) => {
+const Publish = ({project, steps, setTable}) => {
+
+   const history = useHistory();
 
   const getCode = () => {
       const array = steps.step_imgs[0].split('/')
       const embedCode = array[array.length - 1]
       return embedCode
    }
-   console.log(project, 'project in publish', steps, 'steps in publish')
+
+   const showProjects = (e) => {
+     history.push('/projects')
+   }
+ 
+
+
+   const goBack = (e) => {
+      setTable('project')
+   }   
+
+
 
    return (
-      <div>
+      <div className='publish-project'>
          <div className='intro'>
             <h1>{project.res.title}</h1>
             <img src={project.res.intro_imgs[0]} alt='intro-img' />
+            <p>{project.res.intro}</p>
          </div>
          {steps.map((step, i) => (
             <div key={step.step_count}>
@@ -29,7 +45,8 @@ const Publish = ({project, steps}) => {
             </div>
          ))}
          <div>
-            {/* <p>{project.res.keywords}</p> */}
+           <button type='button' onClick={showProjects}>Genius!</button>
+           {/* <button type='button' onClick={goBack}>Hmmm....needs some work</button> */}
          </div>
 
       </div>

@@ -61,7 +61,7 @@ const CreateProject = () => {
 
    if (publish === true) {
       form = (
-         <Publish project={project} steps={steps} />
+         <Publish project={project} steps={steps} setTable={setTable}/>
       )
    }
 
