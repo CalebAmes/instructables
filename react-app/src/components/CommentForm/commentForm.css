@@ -8,7 +8,8 @@
 
 .comment-form-box {
   resize: none;
-  width: 60vh;
+  width: 620px;
+  /* max-width: 690px; */
   height: 10vh;
   border: 1px solid lightgray;
   font-size: 15px;

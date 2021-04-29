@@ -22,9 +22,7 @@ export default function CommentForm() {
       upvotes: 0,
       projectId: id,
     }
-    // setTimeout(() => {
 
-    // })
     await dispatch(createComment(comment))
     setText("")
     dispatch(closeForm())

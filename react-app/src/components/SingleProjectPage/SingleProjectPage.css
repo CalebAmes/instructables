@@ -52,6 +52,9 @@
  font-size: 20px;
  line-height: 36px;
  margin-top: 25px;
+ max-width: 1434px;
+ /* justify-content: center;
+ text-align: center; */
 }
 
 .step-toolbox {
