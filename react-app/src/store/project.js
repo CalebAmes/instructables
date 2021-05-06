@@ -19,6 +19,7 @@ const removeProject = (project) => ({
 })
 
 
+
 export const getProjects = () => async (dispatch) => {
   const res = await fetch('/api/projects');
   const data = await res.json();
@@ -28,8 +29,15 @@ export const getProjects = () => async (dispatch) => {
 
 
 export const createProject = (project) => async (dispatch) => {
-    const { user_id, title, category_id, keywords, intro_imgs, intro } = project;
-    const res = await fetch('/api/projects', {
+    const { temp_id, user_id, title, category_id, keywords, intro_imgs, intro } = project;
+    const res = dispatch(addProject(project))
+    return res
+}
+
+
+export const publishProject = (project) => async (dispatch) => {
+  const {user_id, title, category_id, keywords, intro_imgs, intro} = project;
+   const res = await fetch('/api/projects', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
@@ -49,6 +57,7 @@ export const createProject = (project) => async (dispatch) => {
     return data;
   }
 }
+
 
 
 export const deleteProject = () => async (dispatch) => {

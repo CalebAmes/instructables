@@ -15,14 +15,15 @@ const IntroText = ({project, setProject, table, setTable, setStepState, stepStat
 
    const handleSubmit = async (e) => {
       e.preventDefault()
-      const newProject = {...project, 'category_id': categoryId, 'keywords': keywords, 'intro': intro};
+      const tempId = Math.floor(Math.random() * 1000);
+      const newProject = {...project, 'temp_id': tempId, 'category_id': categoryId, 'keywords': keywords, 'intro': intro};
       setProject(newProject)
       // setProject({...project, 'category_id': categoryId, 'keywords': keywords, 'intro': intro})
       console.log(newProject, 'newProejct')
       const res = await dispatch(createProject(newProject))
-      await console.log(res, 'res')
-      await setStepState({'project_id': res.id})
-      await setProject({res})
+      await console.log(res, 'res from introtext dispatch')
+      await setStepState({'temp_id': res.project.temp_id})
+      await setProject(res.project)
       await setTable('steps')
    }
 

@@ -13,23 +13,26 @@ const addStep = (step) => ({
 
 
 export const addAStep = (newStep) => async (dispatch) => {
-  const {project_id, step_count, step_title, step_imgs, step} = newStep
-  const res = await fetch('/api/steps', {
-  method: 'POST',
-  headers: {'Content-Type': 'application/json'},
-  body: JSON.stringify(
-    {project_id, 
-      step_count, 
-      step_title, 
-      step_imgs, 
-      step})
-  })
-  if (res.ok) {
-    const data = await res.json();
-    dispatch(addStep(data.step))
-    return res
-  }
+  // const {temp_id, step_count, step_title, step_imgs, step} = newStep
+  const res = dispatch(addStep(newStep))
+  return res.payload
+  // const res = await fetch('/api/steps', {
+  // method: 'POST',
+  // headers: {'Content-Type': 'application/json'},
+  // body: JSON.stringify(
+  //   {project_id, 
+  //     step_count, 
+  //     step_title, 
+  //     step_imgs, 
+  //     step})
+  // })
+  // if (res.ok) {
+  //   const data = await res.json();
+  //   dispatch(addStep(data.step))
+  //   return res
+  // }
 }
+
 
 export const getCurrentSteps = (projectId) => async (dispatch) => {
   const res = await fetch(`/api/steps/${projectId}`);
@@ -51,7 +54,9 @@ function reducer(state = {}, action) {
       return newState;
     case ADD_STEP:
       newState = {...state}
-      newState['step'] = action.payload
+      let count = 1;
+      newState[`step ${count}`]  = action.payload
+      count ++
       console.log(newState)
       return newState;
     default:

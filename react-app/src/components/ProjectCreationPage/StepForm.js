@@ -18,9 +18,11 @@ const StepForm = ({project, stepCount, setStepCount, stepState, setStepState, pu
       e.preventDefault()
       const newStep = {...stepState, 'step_title': title, 'step': step}
       setStepState(newStep)
+      console.log(newStep, 'step from step submit')
       setSteps([...steps, newStep])
-      await dispatch(addAStep(newStep))
-      const newStepState = {'project_id': project.id}
+      const res = await dispatch(addAStep(newStep))
+      console.log(res, 'res from step submit!')
+      const newStepState = {'temp_id': project.temp_id}
       await setStepState(newStepState)
       await setStepCount(stepCount + 1)
    }
@@ -30,8 +32,8 @@ const StepForm = ({project, stepCount, setStepCount, stepState, setStepState, pu
       const newStep = {...stepState, 'step_title': title, 'step': step}
       setStepState(newStep)
       setSteps([...steps, newStep])
-      await dispatch(addAStep(newStep))
-      const newStepState = {'project_id': project.id}
+      const res = await dispatch(addAStep(newStep))
+      const newStepState = {'temp_id': res.id}
       await setStepState(newStepState)
       await setStepCount(stepCount + 1)
       setPublish(true)
