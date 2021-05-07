@@ -13,7 +13,6 @@ function Steps({myRef}) {
 
   const handleClick = async () => {
     await dispatch(openForm());
-    // window.scrollTo(0,document.body.scrollHeight);
     window.scrollTo({ behavior: 'smooth', top: myRef.current.offsetTop })
   }
 
