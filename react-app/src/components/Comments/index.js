@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getComments, deleteCommentStore } from '../../store/comment';
 import { closeForm, openForm } from '../../store/commentPostState';
@@ -18,6 +18,8 @@ function Comments() {
   const commentFormState = useSelector((state) => state.commentFormState.open)
   const currentUser = useSelector((state) => state.currentUser.user)
 
+  const myRef = useRef(null);
+
   let commentsNum = 0
   comments.forEach(() => {
     commentsNum++;
@@ -34,6 +36,12 @@ function Comments() {
     await dispatch(setCurrentUser())
     setIsLoaded(true)
   }, [dispatch])
+
+  const handlePostComment = async () => {
+    await dispatch(openForm());
+    window.scrollTo(0,document.body.scrollHeight);
+    // myRef.current.focus();
+  }
 
   return (
     <div className="comment-section">
@@ -70,8 +78,10 @@ function Comments() {
               </div>
             ))}
             <div className="post-comment">
-              <button onClick={() => { dispatch(openForm()) }} className="post-comment-btn">Post Comment</button>
-              {commentFormState && <CommentForm />}
+              <button onClick={handlePostComment} className="post-comment-btn">Post Comment</button>
+              {commentFormState && <CommentForm 
+              // ref={myRef} 
+              />}
             </div>
             <StepBreak />
           </div>
