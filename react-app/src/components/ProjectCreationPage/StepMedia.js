@@ -1,27 +1,48 @@
 import React, { useEffect, useState } from "react";
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
+import {addStepImagery} from '../../store/step'
 import Video from '../Video'
 import StepForm from "./StepForm";
 import './Media.css'
 // import {useDispatch} from 'react-redux'
 
-const StepMedia = ({project, stepCount, setStepCount, stepState, setStepState, publish, setPublish}) => {
+const StepMedia = ({stepCount, setStepCount, stepState, setStepState, publish, setPublish}) => {
     const [type, setType] = useState('image')
     const [image, setImage] = useState(null);
     const [video, setVideo] = useState('');
     const [imageLoading, setImageLoading] = useState(false);
     const [code, setCode] = useState('')
     const [stepImg, setStepImg] = useState('')
+    const dispatch = useDispatch()
+    const project = useSelector((state) => state.project.project)
 
-     console.log(project, 'project in stepmedia')
+
+    if (project) console.log(project, 'project in stepmedia')
 
 
-    const moveOn = (e) => {
+
+    const moveOn = async(e) => {
         e.preventDefault()
+        let media = {
+                'temp_id': project.temp_id,
+                'step_imgs': stepImg,
+                'step_count': stepCount
+            }
         if (image) {
+            let media = 
+            dispatch(addStepImagery({
+                'temp_id': project.temp_id,
+                'step_imgs': stepImg,
+                'step_count': stepCount
+            }))
             setStepState({ ...stepState, 'step_count': stepCount, 'temp_id': project.temp_id, 'step_imgs': stepImg})
         }
         else if (video) {
+                dispatch(addStepImagery({
+                'temp_id': project.temp_id,
+                'step_imgs': video,
+                'step_count': stepCount
+            }))
             setStepState({ ...stepState, 'step_count': stepCount, 'temp_id': project.temp_id, 'step_imgs': video})
         }
         else {

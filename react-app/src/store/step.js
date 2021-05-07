@@ -1,5 +1,7 @@
 const SET_STEPS = 'steps/setSteps'
 const ADD_STEP = 'steps/addSteps'
+const POST_STEPS = 'steps/postSteps'
+const ADD_STEP_MEDIA = 'steps/addStepMedia'
 
 const setSteps = (steps) => ({
   type: SET_STEPS,
@@ -8,30 +10,59 @@ const setSteps = (steps) => ({
 
 const addStep = (step) => ({
   type: ADD_STEP,
-  payload: step
+  step
+})
+
+const postSteps = (steps) => ({
+  type: POST_STEPS,
+  steps
+})
+
+
+const addStepMedia = (media) => ({
+  type: ADD_STEP_MEDIA,
+  media
 })
 
 
 export const addAStep = (newStep) => async (dispatch) => {
   // const {temp_id, step_count, step_title, step_imgs, step} = newStep
-  const res = dispatch(addStep(newStep))
-  return res.payload
-  // const res = await fetch('/api/steps', {
-  // method: 'POST',
-  // headers: {'Content-Type': 'application/json'},
-  // body: JSON.stringify(
-  //   {project_id, 
-  //     step_count, 
-  //     step_title, 
-  //     step_imgs, 
-  //     step})
-  // })
-  // if (res.ok) {
-  //   const data = await res.json();
-  //   dispatch(addStep(data.step))
-  //   return res
-  // }
+  let res = dispatch(addStep(newStep))
+  res = await res.json()
+  return res.step;
 }
+
+
+export const addStepImagery = (media) => async (dispatch) => {
+  const {step_count, temp_id, step_imgs} = media;
+  let res = dispatch(addStepMedia(media))
+  // res = await res.json()
+  console.log(res, 'res from addStepImagery thunk')
+  return res.media;
+}
+
+
+// export const publishSteps = (steps) => async (dispatch) => {
+//   const res = []
+//   for(let i = 0; i < steps.length; i++) {
+//     let {step_count, step_title, step_imgs, step} = steps[i];
+//     let result = await fetch('/api/steps', {
+//       method: 'POST',
+//       headers: {'Content-Type': 'application/json'},
+//       body: JSON.stringify(
+//         {project_id, 
+//         step_count, 
+//         step_title, 
+//         step_imgs, 
+//         step})
+//   })
+//     const data = await result.json();
+//     res.push(data)
+//   }
+//   dispatch(postSteps(data.steps))
+// }
+
+
 
 
 export const getCurrentSteps = (projectId) => async (dispatch) => {
@@ -52,12 +83,13 @@ function reducer(state = {}, action) {
       })
       // newState['steps'] = action.steps
       return newState;
+    case ADD_STEP_MEDIA:
+      newState = {...state}
+      newState['step_media'] = action.media ;
+      return newState;  
     case ADD_STEP:
       newState = {...state}
-      let count = 1;
-      newState[`step ${count}`]  = action.payload
-      count ++
-      console.log(newState)
+      newState['step'] = action.step;
       return newState;
     default:
       return state;

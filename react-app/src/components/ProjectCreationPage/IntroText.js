@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {createProject} from '../../store/project'
 import TextEditor from "../TextEditor";
 import Video from '../Video'
@@ -12,7 +12,7 @@ const IntroText = ({project, setProject, table, setTable, setStepState, stepStat
    const [keyword, setKeyword] = useState('')
    const dispatch = useDispatch()
    const projectName = project.title.toUpperCase();
-
+ 
    const handleSubmit = async (e) => {
       e.preventDefault()
       const tempId = Math.floor(Math.random() * 1000);
@@ -22,8 +22,8 @@ const IntroText = ({project, setProject, table, setTable, setStepState, stepStat
       console.log(newProject, 'newProejct')
       const res = await dispatch(createProject(newProject))
       await console.log(res, 'res from introtext dispatch')
-      await setStepState({'temp_id': res.project.temp_id})
-      await setProject(res.project)
+      await setStepState({'temp_id': res.temp_id})
+      await setProject(res)
       await setTable('steps')
    }
 

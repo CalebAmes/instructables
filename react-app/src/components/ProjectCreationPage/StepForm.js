@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Component } from "react";
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import Video from '../Video'
 import {addAStep} from '../../store/step'
 import {Redirect} from 'react-router-dom'
@@ -12,8 +12,8 @@ const StepForm = ({project, stepCount, setStepCount, stepState, setStepState, pu
    const [step, setStep] = useState('')
    const [title, setTitle] = useState('')
    // const projectName = project.title.toUpperCase()
-
-
+   const stepMediaObj = useSelector((state) => state.steps.media)
+   if (stepMediaObj) console.log(stepMediaObj, 'step media object in step form')
    const handleSubmit = async (e) => {
       e.preventDefault()
       const newStep = {...stepState, 'step_title': title, 'step': step}
@@ -27,7 +27,7 @@ const StepForm = ({project, stepCount, setStepCount, stepState, setStepState, pu
       await setStepCount(stepCount + 1)
    }
 
-   const done = async (e) => {
+   const done = async (e) => { 
       e.preventDefault()
       const newStep = {...stepState, 'step_title': title, 'step': step}
       setStepState(newStep)

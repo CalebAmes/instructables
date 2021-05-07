@@ -31,7 +31,7 @@ export const getProjects = () => async (dispatch) => {
 export const createProject = (project) => async (dispatch) => {
     const { temp_id, user_id, title, category_id, keywords, intro_imgs, intro } = project;
     const res = dispatch(addProject(project))
-    return res
+    return res.project
 }
 
 
