@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { getProjects } from "../../store/project"
 import { getCurrentSteps } from "../../store/step"
 import { useDispatch, useSelector } from 'react-redux'
@@ -11,6 +11,8 @@ import Footer from '../Footer'
 
 function Project() {
   const dispatch = useDispatch()
+  const myRef = useRef(null);
+
 
   const projectItems = useSelector((state) => state.project)
 
@@ -34,10 +36,10 @@ function Project() {
         <Intro project={project} />
       )}
       {loaded && (
-        <Steps />
+        <Steps myRef={myRef}/>
       )}
       {loaded && (
-        <Comments />
+        <Comments myRef={myRef}/>
       )}
     </div>
   )

@@ -9,8 +9,9 @@ import { useParams } from "react-router-dom";
 import { setCurrentUser } from '../../store/currentUser';
 import { StepBreak } from '../Break';
 import './Comments.css'
+import { authenticate } from '../../services/auth';
 
-function Comments() {
+function Comments({myRef}) {
   const dispatch = useDispatch()
   const [isLoaded, setIsLoaded] = useState(false)
   const commentsObj = useSelector((state) => state.comments)
@@ -18,7 +19,7 @@ function Comments() {
   const commentFormState = useSelector((state) => state.commentFormState.open)
   const currentUser = useSelector((state) => state.currentUser.user)
 
-  const myRef = useRef(null);
+  // const myRef = useRef(null);
 
   let commentsNum = 0
   comments.forEach(() => {
@@ -83,7 +84,7 @@ function Comments() {
               myRef={myRef} 
               />}
             </div>
-            <StepBreak />
+            {/* <StepBreak /> */}
           </div>
         </>
       )}

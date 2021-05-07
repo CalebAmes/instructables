@@ -3,7 +3,6 @@ import { OneImage, TwoImages, ThreeImages } from '../StepImages'
 import { StepBreak } from '../Break'
 
 export default function Intro({ project }) {
-  console.log(project)
   return (
     <div className="steps">
       <div className="project-title">
