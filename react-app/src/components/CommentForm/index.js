@@ -7,7 +7,7 @@ import './commentForm.css';
 import { createComment } from '../../store/comment';
 
 
-export default function CommentForm() {
+export default function CommentForm({myRef}) {
   const dispatch = useDispatch()
   const [text, setText] = useState("")
 
@@ -22,9 +22,7 @@ export default function CommentForm() {
       upvotes: 0,
       projectId: id,
     }
-    // setTimeout(() => {
 
-    // })
     await dispatch(createComment(comment))
     setText("")
     dispatch(closeForm())
@@ -35,7 +33,7 @@ export default function CommentForm() {
 
   }, [dispatch])
   return (
-    <div className="post-comment-box">
+    <div ref={myRef} className="post-comment-box">
       <div className="post-comment-box-top">
         <img className="profile-img-comments post-comment-img" src="https://www.hashatit.com/images/uploads/users/61602/profile_picture/3F6B966D00000578-4428630-image-m-80_1492690622006.jpg" />
         <form onSubmit={handleSubmit} id="commentForm">

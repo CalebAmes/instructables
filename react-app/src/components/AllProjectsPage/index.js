@@ -24,8 +24,6 @@ function Projects() {
 
   const projects = Object.values(projectItems)
   const category = Object.values(categoryItems)
-  console.log(category)
-
 
   useEffect (() => {
     dispatch(getCategory());

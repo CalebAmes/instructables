@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getComments, deleteCommentStore } from '../../store/comment';
 import { closeForm, openForm } from '../../store/commentPostState';
@@ -9,14 +9,17 @@ import { useParams } from "react-router-dom";
 import { setCurrentUser } from '../../store/currentUser';
 import { StepBreak } from '../Break';
 import './Comments.css'
+import { authenticate } from '../../services/auth';
 
-function Comments() {
+function Comments({myRef}) {
   const dispatch = useDispatch()
   const [isLoaded, setIsLoaded] = useState(false)
   const commentsObj = useSelector((state) => state.comments)
   const comments = Object.values(commentsObj)
   const commentFormState = useSelector((state) => state.commentFormState.open)
   const currentUser = useSelector((state) => state.currentUser.user)
+
+  // const myRef = useRef(null);
 
   let commentsNum = 0
   comments.forEach(() => {
@@ -34,6 +37,12 @@ function Comments() {
     await dispatch(setCurrentUser())
     setIsLoaded(true)
   }, [dispatch])
+
+  const handlePostComment = async () => {
+    await dispatch(openForm());
+    // window.scrollTo(0,document.body.scrollHeight);
+    window.scrollTo({ behavior: 'smooth', top: myRef.current.offsetTop })
+  }
 
   return (
     <div className="comment-section">
@@ -70,10 +79,12 @@ function Comments() {
               </div>
             ))}
             <div className="post-comment">
-              <button onClick={() => { dispatch(openForm()) }} className="post-comment-btn">Post Comment</button>
-              {commentFormState && <CommentForm />}
+              <button onClick={handlePostComment} className="post-comment-btn">Post Comment</button>
+              {commentFormState && <CommentForm 
+              myRef={myRef} 
+              />}
             </div>
-            <StepBreak />
+            {/* <StepBreak /> */}
           </div>
         </>
       )}
