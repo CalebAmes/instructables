@@ -39,8 +39,8 @@ function Comments() {
 
   const handlePostComment = async () => {
     await dispatch(openForm());
-    window.scrollTo(0,document.body.scrollHeight);
-    // myRef.current.focus();
+    // window.scrollTo(0,document.body.scrollHeight);
+    window.scrollTo({ behavior: 'smooth', top: myRef.current.offsetTop })
   }
 
   return (
@@ -80,7 +80,7 @@ function Comments() {
             <div className="post-comment">
               <button onClick={handlePostComment} className="post-comment-btn">Post Comment</button>
               {commentFormState && <CommentForm 
-              // ref={myRef} 
+              myRef={myRef} 
               />}
             </div>
             <StepBreak />
