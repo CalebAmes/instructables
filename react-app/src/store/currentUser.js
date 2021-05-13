@@ -18,7 +18,15 @@ function reducer(state = {}, action) {
   switch (action.type) {
     case SET_USER:
       newState = {};
-      newState['user'] = action.user
+      if (action.user) {
+
+        if (action.user.errors === undefined) {
+          newState['user'] = action.user
+        } else {
+          newState['user'] = null
+        }
+      }
+      // newState['user'] = action.user
       return newState;
     default:
       return state;

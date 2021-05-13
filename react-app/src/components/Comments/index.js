@@ -60,7 +60,7 @@ function Comments({myRef}) {
                     <div className="profile-name-comments">{comment.user.username}</div>
                   </div>
                   <div className="toolbox-right">
-                    {comment.user.id == currentUser.id && (
+                    {currentUser !== null && comment.user.id == currentUser.id && (
                       <>
                         <a className="delete-btn-comments" onClick={() => { }}>Edit</a>
                         <a className="delete-btn-comments" onClick={() => { deleteComment(comment.id) }}>Delete</a>
