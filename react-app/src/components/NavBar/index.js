@@ -10,6 +10,7 @@ import { getUsers } from '../../store/user';
 import { logout } from '../../services/auth'
 import '../../index.css';
 import './NavBar.css';
+import { setCurrentUser } from '../../store/currentUser';
 
 const NavBar = ({ setAuthenticated }, props) => {
   return (
@@ -105,6 +106,7 @@ export function Dropdown({setAuthenticated}) {
 
   const logoutUser = async (e) => {
     logout();
+    dispatch(setCurrentUser())
     setAuthenticated(false);
   };
 

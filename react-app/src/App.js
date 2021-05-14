@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
@@ -22,16 +22,25 @@ function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch()
+  const currentUser = useSelector((state) => state.currentUser.user)
 
   useEffect(() => {
-    (async () => {
-      const user = await authenticate();
-      if (!user.errors) {
-        setAuthenticated(true);
-      }
-      setLoaded(true);
-    })();
-  }, []);
+    // (async () => {
+    //   const user = await authenticate();
+    //   if (!user.errors) {
+    //     console.log("HERERERE", user)
+    //     console.log("HEREHE:,", currentUser)
+    //     setAuthenticated(true);
+    //   }
+    //   setLoaded(true);
+    // })();
+    if (currentUser) {
+      setAuthenticated(true)
+    } else {
+      setAuthenticated(false)
+    }
+    setLoaded(true)
+  }, [currentUser]);
   
   if (!loaded) {
     return null;

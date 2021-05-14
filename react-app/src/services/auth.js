@@ -56,30 +56,49 @@ export const logout = async () => {
 };
 
 
-export const signUp = (user) => async (dispatch) => {
-  const { avatar, username, email, bio, password } = user;
-  const formData = new FormData();
-  formData.append("username", username);
-  formData.append("email", email);
-  formData.append("bio", bio)
-  formData.append("password", password);
-  if (avatar) formData.append("avatar", avatar)
+// export const signUp = (user) => async (dispatch) => {
+//   const { avatar, username, email, bio, password } = user;
+//   const formData = new FormData();
+//   formData.append("username", username);
+//   formData.append("email", email);
+//   formData.append("bio", bio)
+//   formData.append("password", password);
+//   if (avatar) formData.append("avatar", avatar)
 
-  // console.log(formData.get('avatar'), 'this is the avatar in the formData');
+//   // console.log(formData.get('avatar'), 'this is the avatar in the formData');
 
-  const res = await fetch(`/api/auth/signup`, {
+//   const res = await fetch(`/api/auth/signup`, {
+//     method: "POST",
+//     body: formData,
+//   });
+
+//   if (res.ok) {
+//     const data = await res.json();
+//     dispatch(setUser(data));
+//     return data;
+//   }
+//   else {
+//     console.log('Something went wrong', res)
+//   }
+// }
+
+
+export const signUp = async (username, email, password, bio) => {
+  console.log("IN AUTH STORE", email, password)
+  const response = await fetch("/api/auth/signup", {
     method: "POST",
-    body: formData,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username,
+      email,
+      password,
+      bio,
+      avatar: "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
+    }),
   });
-
-  if (res.ok) {
-    const data = await res.json();
-    dispatch(setUser(data));
-    return data;
-  }
-  else {
-    console.log('Something went wrong', res)
-  }
+  return await response.json();
 }
 
 export default reducer;
