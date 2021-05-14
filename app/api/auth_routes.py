@@ -56,6 +56,43 @@ def logout():
     return {'message': 'User logged out'}
 
 
+# @auth_routes.route('/signup', methods=['POST'])
+# def sign_up():
+#     """
+#     Creates a new user and logs them in
+#     """
+#     form = SignUpForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+
+#     if form.validate_on_submit():
+#         user_avatar = None
+#         if 'avatar' not in request.files:
+#             upload = 'https://instructables2.s3.amazonaws.com/robots.jpg'
+#         else:
+#             user_avatar = request.files['avatar']
+
+#         # if not allowed_file(user_avatar.filename):
+#         #     return {'errors': 'image required'}, 400
+
+#         if user_avatar and allowed_file(user_avatar.filename):
+#             user_avatar.filename = get_unique_filename(user_avatar.filename)
+#             upload = upload_file_to_s3(user_avatar)
+#             if upload['url']:
+#                 upload = upload['url']
+
+#         user = User(
+#             username=form.data['username'],
+#             email=form.data['email'],
+#             avatar=upload,
+#             bio=form.data['bio'],
+#             password=form.data['password'],
+#         )
+#         db.session.add(user)
+#         db.session.commit()
+#         login_user(user)
+#         return user.to_dict()
+#     return {'errors': validation_errors_to_error_messages(form.errors)}
+
 @auth_routes.route('/signup', methods=['POST'])
 def sign_up():
     """
@@ -63,29 +100,13 @@ def sign_up():
     """
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
     if form.validate_on_submit():
-        user_avatar = None
-        if 'avatar' not in request.files:
-            upload = 'https://instructables2.s3.amazonaws.com/robots.jpg'
-        else:
-            user_avatar = request.files['avatar']
-
-        # if not allowed_file(user_avatar.filename):
-        #     return {'errors': 'image required'}, 400
-
-        if user_avatar and allowed_file(user_avatar.filename):
-            user_avatar.filename = get_unique_filename(user_avatar.filename)
-            upload = upload_file_to_s3(user_avatar)
-            if upload['url']:
-                upload = upload['url']
-
         user = User(
             username=form.data['username'],
             email=form.data['email'],
-            avatar=upload,
-            bio=form.data['bio'],
             password=form.data['password'],
+            bio=form.data['bio'],
+            avatar=form.data['avatar'],
         )
         db.session.add(user)
         db.session.commit()
