@@ -15,42 +15,57 @@ import './AllProjectsPage.css'
 function Projects() {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false)
-
-  const projectItems = useSelector((state) => state.project)
+  let projects = []
+  let projectData = useSelector((state) => state.project.projects)
+  if(projectData) {
+    // projects = Object.values(projects)
+    for (let i = 0; i <projectData.length; i++) {
+      let el = projectData[i]
+      el = Object.values(el)
+      projects.push(el[0])
+    }
+    console.log(projects, 'projects from all projects  page')
+  }
   const categoryItems = useSelector((state) => state.category)
   const userItems = useSelector((state) => state.user)
 
   let { id } = useParams()
 
-  const projects = Object.values(projectItems)
+  // const projects = Object.values(projectItems)
   const category = Object.values(categoryItems)
   console.log(category)
 
 
   useEffect (() => {
     dispatch(getCategory());
-    dispatch(getProjects(id));
+    dispatch(getProjects());
     dispatch(getUsers())
     setLoaded(true)
   }, [dispatch])
 
-  return (
-    <>
-    {/* {loaded  &&
-        <Carousel className='carousel' images={category.imgs}/>
-    } */}
-    <div className='projects'>
-      <div>
-        <h1>All projects</h1>
-        {projects.map(project => (
-          <div key={project.id}>
-              <ClickProject project={project} user={userItems[project.user_id]} category={categoryItems[project.category_id]}/>
-            </div>
-        ))}
+  if(projects && category) {
+    return (
+      <>
+      {/* {loaded  &&
+          <Carousel className='carousel' images={category.imgs}/>
+      } */}
+      <div className='projects'>
+        <div>
+          <h1>All projects</h1>
+          {projects.map(project => (
+            <div key={project.id}>
+                <ClickProject project={project} user={userItems[project.user_id]} category={categoryItems[project.category_id]}/>
+              </div>
+          ))}
+        </div>
       </div>
-    </div>
-      <Footer/>
-  </>
- )}
+        <Footer/>
+    </>
+    )
+    
+  } else {
+    return <h1>loading....</h1>
+  }
+}
   
 export default Projects

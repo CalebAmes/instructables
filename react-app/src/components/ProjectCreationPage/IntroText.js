@@ -21,7 +21,7 @@ const IntroText = ({project, setProject, table, setTable, setStepState, stepStat
       // setProject({...project, 'category_id': categoryId, 'keywords': keywords, 'intro': intro})
       console.log(newProject, 'newProejct')
       const res = await dispatch(createProject(newProject))
-      await console.log(res, 'res from introtext dispatch')
+      // await console.log(res, 'res from introtext dispatch')
       await setStepState({'temp_id': res.temp_id})
       await setProject(res)
       await setTable('steps')

@@ -8,7 +8,7 @@ const IntroMedia = ({project, setProject}) => {
     const [userId, setUserId] = useState(0)
 
     const moveOn = (e) => {
-        setProject({...project, 'user_id': userId, 'intro_imgs': introImg})
+        setProject({...project, 'user_id': userId, 'intro_imgs': [introImg]})
     }
 
 

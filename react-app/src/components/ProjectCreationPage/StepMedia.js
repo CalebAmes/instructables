@@ -15,7 +15,7 @@ const StepMedia = ({stepCount, setStepCount, stepState, setStepState, publish, s
     const [stepImg, setStepImg] = useState('')
     const dispatch = useDispatch()
     const project = useSelector((state) => state.project.project)
-
+    const [addBody, setAddBody] = useState(false)
 
     if (project) console.log(project, 'project in stepmedia')
 
@@ -23,31 +23,32 @@ const StepMedia = ({stepCount, setStepCount, stepState, setStepState, publish, s
 
     const moveOn = async(e) => {
         e.preventDefault()
-        let media = {
-                'temp_id': project.temp_id,
-                'step_imgs': stepImg,
-                'step_count': stepCount
-            }
+        // let media = {
+        //         'temp_id': project.temp_id,
+        //         'step_imgs': stepImg,
+        //         'step_count': stepCount
+        //     }
         if (image) {
-            let media = 
-            dispatch(addStepImagery({
-                'temp_id': project.temp_id,
-                'step_imgs': stepImg,
-                'step_count': stepCount
-            }))
+            // let media = 
+            // dispatch(addStepImagery({
+            //     'temp_id': project.temp_id,
+            //     'step_imgs': stepImg,
+            //     'step_count': stepCount
+            // }))
             setStepState({ ...stepState, 'step_count': stepCount, 'temp_id': project.temp_id, 'step_imgs': stepImg})
         }
         else if (video) {
-                dispatch(addStepImagery({
-                'temp_id': project.temp_id,
-                'step_imgs': video,
-                'step_count': stepCount
-            }))
+            //     dispatch(addStepImagery({
+            //     'temp_id': project.temp_id,
+            //     'step_imgs': video,
+            //     'step_count': stepCount
+            // }))
             setStepState({ ...stepState, 'step_count': stepCount, 'temp_id': project.temp_id, 'step_imgs': video})
         }
         else {
-            setStepState({ ...stepState, 'step_count': stepCount, 'temp_id': project.temp_id})
+            setStepState({ ...stepState, 'step_count': stepCount, 'temp_id': project.temp_id, 'step_imgs': ''})
         }
+        setAddBody(true)
     }
 
 //     const done = () => {
@@ -151,6 +152,7 @@ const StepMedia = ({stepCount, setStepCount, stepState, setStepState, publish, s
                         )}
                         <button type="button" onClick={moveOn}>Add Step Body</button>
                     </div>
+                    {addBody && <StepForm />}
                     </div>
                 </div>
             </div>

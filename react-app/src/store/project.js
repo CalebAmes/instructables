@@ -76,9 +76,11 @@ function reducer(state = {}, action) {
       newState['project'] = action.project;
       return newState;
     case SET_PROJECT:
-      newState = {};
+      newState = {...state};
+      newState['projects'] = []
       action.project.forEach(item => {
-        newState[item.id] = item;
+        let proj = {[item.id]: item}
+        newState['projects'].push(proj)
       });
       return newState;
     case REMOVE_PROJECT:

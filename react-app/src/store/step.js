@@ -27,8 +27,8 @@ const addStepMedia = (media) => ({
 
 export const addAStep = (newStep) => async (dispatch) => {
   // const {temp_id, step_count, step_title, step_imgs, step} = newStep
-  let res = dispatch(addStep(newStep))
-  res = await res.json()
+  const res = dispatch(addStep(newStep))
+  // const data = await res.json()
   return res.step;
 }
 
@@ -36,33 +36,33 @@ export const addAStep = (newStep) => async (dispatch) => {
 export const addStepImagery = (media) => async (dispatch) => {
   const {step_count, temp_id, step_imgs} = media;
   let res = dispatch(addStepMedia(media))
-  // res = await res.json()
+  res = await res.json()
   console.log(res, 'res from addStepImagery thunk')
   return res.media;
 }
 
 
-// export const publishSteps = (steps) => async (dispatch) => {
-//   const res = []
-//   for(let i = 0; i < steps.length; i++) {
-//     let {step_count, step_title, step_imgs, step} = steps[i];
-//     let result = await fetch('/api/steps', {
-//       method: 'POST',
-//       headers: {'Content-Type': 'application/json'},
-//       body: JSON.stringify(
-//         {project_id, 
-//         step_count, 
-//         step_title, 
-//         step_imgs, 
-//         step})
-//   })
-//     const data = await result.json();
-//     res.push(data)
-//   }
-//   dispatch(postSteps(data.steps))
-// }
-
-
+export const publishSteps = (steps, project_id) => async (dispatch) => {
+  const res = []
+  for(let i = 0; i < steps.length; i++) {
+    let {step_count, step_title, step_imgs, step} = steps[i];
+    let result = await fetch('/api/steps', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(
+        {project_id, 
+        step_count, 
+        step_title, 
+        step_imgs, 
+        step})
+  })
+  // result = await result.json()
+  res.push(result)
+}
+  // let data = await res.json();
+  dispatch(postSteps(res))
+  return res
+}
 
 
 export const getCurrentSteps = (projectId) => async (dispatch) => {
@@ -89,7 +89,8 @@ function reducer(state = {}, action) {
       return newState;  
     case ADD_STEP:
       newState = {...state}
-      newState['step'] = action.step;
+      newState['steps'] = []
+      newState['steps'].push(action.step);
       return newState;
     default:
       return state;

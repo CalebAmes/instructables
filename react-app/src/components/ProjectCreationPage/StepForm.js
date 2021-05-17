@@ -6,14 +6,15 @@ import {Redirect} from 'react-router-dom'
 import './Text.css'
 import TextEditor from '../TextEditor'
 
-const StepForm = ({project, stepCount, setStepCount, stepState, setStepState, publish, setPublish, steps, setSteps}) => {
+const StepForm = ({stepCount, setStepCount, stepState, setStepState, publish, setPublish, steps, setSteps}) => {
    
    const dispatch = useDispatch()
    const [step, setStep] = useState('')
    const [title, setTitle] = useState('')
+   const project = useSelector((state) => state.project.project)
    // const projectName = project.title.toUpperCase()
-   const stepMediaObj = useSelector((state) => state.steps.media)
-   if (stepMediaObj) console.log(stepMediaObj, 'step media object in step form')
+   // const stepMediaObj = useSelector((state) => state.steps.media)
+   // if (stepMediaObj) console.log(stepMediaObj, 'step media object in step form')
    const handleSubmit = async (e) => {
       e.preventDefault()
       const newStep = {...stepState, 'step_title': title, 'step': step}
@@ -25,6 +26,7 @@ const StepForm = ({project, stepCount, setStepCount, stepState, setStepState, pu
       const newStepState = {'temp_id': project.temp_id}
       await setStepState(newStepState)
       await setStepCount(stepCount + 1)
+      
    }
 
    const done = async (e) => { 
@@ -51,7 +53,7 @@ const StepForm = ({project, stepCount, setStepCount, stepState, setStepState, pu
          {stepState.step_imgs.includes('amazonaws.com') && (
             <img src={stepState.step_imgs} alt='step image'/>
          )}
-         {!stepState.step_imgs.includes('amazonaws.com') && (
+         {stepState.step_imgs.includes('youtube.com') && (
             <Video embedId={getCode()} />
          )}
          <form onSubmit={handleSubmit}>

@@ -12,14 +12,22 @@ import Footer from '../Footer'
 function Project() {
   const dispatch = useDispatch()
 
-  const projectItems = useSelector((state) => state.project)
+  const projects = useSelector((state) => state.project.projects)
 
-  const projects = Object.values(projectItems)
+  // const projects = Object.values(projectItems)
 
   let { id } = useParams()
-
   const [loaded, setLoaded] = useState(false)
-  const project = projects[id - 1]
+  let project = null;
+  if(projects) {
+    for (let i = 0; i < projects.length; i++) {
+      let el = projects[i];
+      if (Object.keys(el)[0] === id) {
+        project = Object.values(el)[0]
+      }
+    }
+  }
+
   useEffect(async () => {
     await dispatch(getProjects())
     await dispatch(getCurrentSteps(id))
@@ -27,20 +35,23 @@ function Project() {
   }, [dispatch])
 
 
-
-  return (
-    <div>
-      {loaded && (
-        <Intro project={project} />
-      )}
-      {loaded && (
-        <Steps />
-      )}
-      {loaded && (
-        <Comments />
-      )}
-    </div>
-  )
+  if(project) {
+    return (
+      <div>
+        {loaded && (
+          <Intro project={project} />
+        )}
+        {loaded && (
+          <Steps />
+        )}
+        {loaded && (
+          <Comments />
+        )}
+      </div>
+    )
+  } else {
+    return <h1>loading...</h1>
+  }
 
 }
 
