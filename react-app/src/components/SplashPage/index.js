@@ -15,13 +15,21 @@ import Footer from '../Footer'
 
 function SplashPage(){
   const dispatch = useDispatch()
-  const projectItems = useSelector((state) => state.project);
+  const projectItems = useSelector((state) => state.project.projects);
   const categoryItems = useSelector((state) => state.category);
   const userItems = useSelector((state) => state.user);
   const [data, setData] = useState(false);
   const [isSplashLoaded, setIsSplashLoaded] = useState(false)
-
-  const projectArray = Object.values(projectItems);
+  
+  let projectArray = []
+    if(projectItems) {
+      for (let i = 0; i <projectItems.length; i++) {
+        let el = projectItems[i]
+        el = Object.values(el)
+        projectArray.push(el[0])
+      }
+    }
+  // const projectArray = Object.values(projectItems);
   const categoryArray = Object.values(categoryItems);
 
   
@@ -69,7 +77,7 @@ function SplashPage(){
 }
 
 export const CategoryHolder = () => {
-  const projectItems = useSelector((state) => state.project)
+  const projectItems = useSelector((state) => state.project.projects)
   const userItems = useSelector((state) => state.user)
   const categoryItems = useSelector((state) => state.category)
 
@@ -79,7 +87,16 @@ export const CategoryHolder = () => {
     getUsers()
   }, [])
 
-  const projects = Object.values(projectItems)
+
+  let projects = []
+  if(projectItems) {
+    for (let i = 0; i <projectItems.length; i++) {
+      let el = projectItems[i]
+      el = Object.values(el)
+      projects.push(el[0])
+    }
+  }
+  // const projects = Object.values(projectItems)
   const cat1 = projects.filter(project=>project?.category_id == 1).slice(0,4)
   const cat2 = projects.filter(project=>project?.category_id == 2).slice(0,4)
   const cat3 = projects.filter(project=>project?.category_id == 3).slice(0,4)

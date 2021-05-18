@@ -24,7 +24,6 @@ function Projects() {
       el = Object.values(el)
       projects.push(el[0])
     }
-    console.log(projects, 'projects from all projects  page')
   }
   const categoryItems = useSelector((state) => state.category)
   const userItems = useSelector((state) => state.user)
@@ -33,7 +32,6 @@ function Projects() {
 
   // const projects = Object.values(projectItems)
   const category = Object.values(categoryItems)
-  console.log(category)
 
 
   useEffect (() => {

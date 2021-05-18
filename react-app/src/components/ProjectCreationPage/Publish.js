@@ -13,8 +13,8 @@ const Publish = ({setTable}) => {
    const steps = useSelector((state) => state.steps.steps)
    const dispatch = useDispatch()
 
-  const getCode = () => {
-      const array = steps.step_imgs[0].split('/')
+  const getCode = (step) => {
+      const array = step.step_imgs[0].split('/')
       const embedCode = array[array.length - 1]
       return embedCode
    }
@@ -43,11 +43,11 @@ const Publish = ({setTable}) => {
             {steps.map((step, i) => (
                <div key={step.step_count}>
                   <h1>{`Step ${step.step_count}: ${step.step_title}`}</h1>
-                  {step.step_imgs.includes('amazonaws.com') && (
-                     <img src={step.step_imgs} alt={`step ${step.step_count} img`}/>
+                  {step.step_imgs[0].includes('amazonaws.com') && (
+                     <img src={step.step_imgs[0]} alt={`step ${step.step_count} img`}/>
                   )}
-                  {step.step_imgs.includes('youtube.com') && (
-                     <Video embedId={getCode()} />
+                  {step.step_imgs[0].includes('youtu') && (
+                     <Video embedId={getCode(step)} />
                   )}
                   <p>{step.step}</p>
                </div>
@@ -56,7 +56,6 @@ const Publish = ({setTable}) => {
               <button type='button' onClick={showProjects}>Publish!</button>
               {/* <button type='button' onClick={goBack}>Hmmm....needs some work</button> */}
             </div>
-   
          </div>
       )
    } else {

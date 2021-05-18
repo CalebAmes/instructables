@@ -15,18 +15,18 @@ const StepForm = ({stepCount, setStepCount, stepState, setStepState, publish, se
    // const projectName = project.title.toUpperCase()
    // const stepMediaObj = useSelector((state) => state.steps.media)
    // if (stepMediaObj) console.log(stepMediaObj, 'step media object in step form')
+
    const handleSubmit = async (e) => {
       e.preventDefault()
       const newStep = {...stepState, 'step_title': title, 'step': step}
       setStepState(newStep)
-      console.log(newStep, 'step from step submit')
+      // console.log(newStep, 'step from step submit')
       setSteps([...steps, newStep])
       const res = await dispatch(addAStep(newStep))
-      console.log(res, 'res from step submit!')
+      // console.log(res, 'res from step submit!')
       const newStepState = {'temp_id': project.temp_id}
       await setStepState(newStepState)
       await setStepCount(stepCount + 1)
-      
    }
 
    const done = async (e) => { 
@@ -53,7 +53,7 @@ const StepForm = ({stepCount, setStepCount, stepState, setStepState, publish, se
          {stepState.step_imgs.includes('amazonaws.com') && (
             <img src={stepState.step_imgs} alt='step image'/>
          )}
-         {stepState.step_imgs.includes('youtube.com') && (
+         {stepState.step_imgs.includes('youtu') && (
             <Video embedId={getCode()} />
          )}
          <form onSubmit={handleSubmit}>

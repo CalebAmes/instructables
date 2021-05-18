@@ -13,13 +13,20 @@ function Category(){
   const [ loaded, setLoaded ] = useState(false)
 
   const categoryItems = useSelector((state) => state.category)
-  const projectItems = useSelector((state) => state.project)
+  const projectItems = useSelector((state) => state.project.projects)
   const userItems = useSelector((state) => state.user)
 
   let { id } = useParams()
-  
+  let projects = []
 
-  const projects = Object.values(projectItems)
+  if(projectItems) {
+    for (let i = 0; i <projectItems.length; i++) {
+      let el = projectItems[i]
+      el = Object.values(el)
+      projects.push(el[0])
+    }
+  }
+  // const projects = Object.values(projectItems)
   const category = categoryItems[id]
 
   useEffect(async () => {

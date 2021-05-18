@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { OneImage, TwoImages, ThreeImages } from '../StepImages'
+import { OneImage, TwoImages, ThreeImages} from '../StepImages'
 import { StepBreak } from '../Break'
 import './steps.css'
 

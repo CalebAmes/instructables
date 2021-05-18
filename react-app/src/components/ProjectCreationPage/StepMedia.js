@@ -35,7 +35,7 @@ const StepMedia = ({stepCount, setStepCount, stepState, setStepState, publish, s
             //     'step_imgs': stepImg,
             //     'step_count': stepCount
             // }))
-            setStepState({ ...stepState, 'step_count': stepCount, 'temp_id': project.temp_id, 'step_imgs': stepImg})
+            setStepState({ ...stepState, 'step_count': stepCount, 'temp_id': project.temp_id, 'step_imgs': [stepImg]})
         }
         else if (video) {
             //     dispatch(addStepImagery({
@@ -43,10 +43,10 @@ const StepMedia = ({stepCount, setStepCount, stepState, setStepState, publish, s
             //     'step_imgs': video,
             //     'step_count': stepCount
             // }))
-            setStepState({ ...stepState, 'step_count': stepCount, 'temp_id': project.temp_id, 'step_imgs': video})
+            setStepState({ ...stepState, 'step_count': stepCount, 'temp_id': project.temp_id, 'step_imgs': [video]})
         }
         else {
-            setStepState({ ...stepState, 'step_count': stepCount, 'temp_id': project.temp_id, 'step_imgs': ''})
+            setStepState({ ...stepState, 'step_count': stepCount, 'temp_id': project.temp_id, 'step_imgs': []})
         }
         setAddBody(true)
     }
