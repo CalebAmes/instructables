@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { demoLogin, login } from "../../services/auth";
 import { useDispatch, useSelector } from 'react-redux';
@@ -39,6 +39,10 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
       setAuthenticated(true);
     }
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   if (authenticated) {
     if (commentRedirect) {

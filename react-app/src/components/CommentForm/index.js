@@ -29,6 +29,7 @@ export default function CommentForm({ myRef }) {
       }
       await dispatch(createComment(comment))
       setText("")
+      dispatch(setCommentRedirect("", null))
       dispatch(closeForm())
     } else {
       dispatch(setCommentRedirect(text, id))
