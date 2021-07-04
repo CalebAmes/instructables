@@ -29,9 +29,20 @@ export const login = (email, password) => async (dispatch) => {
       password
     })
   });
-  // const data = await response.json();
-  // dispatch(setUser(data));
-  // return data;
+  return await response.json();
+}
+
+export const demoLogin = () => async (dispatch) => {
+  const response = await fetch('/api/auth/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      email: "demo@demo.com",
+      password: "password",
+    })
+  });
   return await response.json();
 }
 
@@ -56,35 +67,10 @@ export const logout = async () => {
 };
 
 
-// export const signUp = (user) => async (dispatch) => {
-//   const { avatar, username, email, bio, password } = user;
-//   const formData = new FormData();
-//   formData.append("username", username);
-//   formData.append("email", email);
-//   formData.append("bio", bio)
-//   formData.append("password", password);
-//   if (avatar) formData.append("avatar", avatar)
 
-//   // console.log(formData.get('avatar'), 'this is the avatar in the formData');
-
-//   const res = await fetch(`/api/auth/signup`, {
-//     method: "POST",
-//     body: formData,
-//   });
-
-//   if (res.ok) {
-//     const data = await res.json();
-//     dispatch(setUser(data));
-//     return data;
-//   }
-//   else {
-//     console.log('Something went wrong', res)
-//   }
-// }
 
 
 export const signUp = async (username, email, password, bio) => {
-  console.log("IN AUTH STORE", email, password)
   const response = await fetch("/api/auth/signup", {
     method: "POST",
     headers: {

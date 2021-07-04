@@ -15,7 +15,6 @@ export const getUsers = () => async (dispatch) => {
 export const getUserById = async (userId) => {
   const res = await fetch(`/api/users/${userId}`);
   const data = await res.json();
-  console.log("asdasd", data)
   return data
 }
 

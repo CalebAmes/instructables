@@ -28,24 +28,22 @@ export const getProjects = () => async (dispatch) => {
 
 
 export const createProject = (project) => async (dispatch) => {
-    const { user_id, title, category_id, keywords, intro_imgs, intro } = project;
-    const res = await fetch('/api/projects', {
+  const { user_id, title, category_id, keywords, intro_imgs, intro } = project;
+  const res = await fetch('/api/projects', {
     method: 'POST',
-    headers: {'Content-Type': 'application/json'},
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      user_id, 
-      title, 
-      category_id, 
-      keywords, 
-      intro_imgs, 
+      user_id,
+      title,
+      category_id,
+      keywords,
+      intro_imgs,
       intro
     })
   });
   if (res.ok) {
     const data = await res.json()
-    console.log(data, 'data from thunk')
     dispatch(addProject(data.project))
-    console.log(res, 'res from thunk')
     return data;
   }
 }
