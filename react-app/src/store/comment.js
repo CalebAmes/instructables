@@ -34,7 +34,6 @@ export const createComment = (commentPost) => async (dispatch) => {
     headers: { "Content-Type": 'application/json' }
   });
   const data = await res.json();
-  console.log(data)
   dispatch(addComment(data));
   return data;
   // dispatch(getComments())

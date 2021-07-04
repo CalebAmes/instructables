@@ -25,15 +25,6 @@ function App() {
   const currentUser = useSelector((state) => state.currentUser.user)
 
   useEffect(() => {
-    // (async () => {
-    //   const user = await authenticate();
-    //   if (!user.errors) {
-    //     console.log("HERERERE", user)
-    //     console.log("HEREHE:,", currentUser)
-    //     setAuthenticated(true);
-    //   }
-    //   setLoaded(true);
-    // })();
     if (currentUser) {
       setAuthenticated(true)
     } else {
@@ -41,7 +32,7 @@ function App() {
     }
     setLoaded(true)
   }, [currentUser]);
-  
+
   if (!loaded) {
     return null;
   }
@@ -75,7 +66,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/create/new' authenticated={authenticated}>
-          <CreateProject/>
+          <CreateProject />
         </ProtectedRoute>
         <Route path='/create'>
           <Create />

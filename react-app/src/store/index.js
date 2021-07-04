@@ -9,6 +9,7 @@ import steps from './step';
 import currentUser from './currentUser';
 import singleUser from '../services/auth';
 import commentFormState from './commentPostState';
+import redirect from './redirect';
 
 const rootReducer = combineReducers({
   project,
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   singleUser,
   commentFormState,
   currentUser,
+  redirect,
 })
 
 const logger = require('redux-logger').default;

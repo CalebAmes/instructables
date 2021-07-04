@@ -8,10 +8,10 @@ from app.models import db, User
 def seed_users():
 
     demo = User(username='Demoa', email='demo@demo.com',
-                avatar='https://instructables2.s3.amazonaws.com/robots.jpg',
+                avatar='https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg',
                 password='password')
     demo1 = User(username='Spaskisaspwesep', email="schneider.maye@thompson.biz",
-                avatar='https://instructables2.s3.amazonaws.com/robots.jpg',
+                avatar='https://www.hashatit.com/images/uploads/users/61602/profile_picture/3F6B966D00000578-4428630-image-m-80_1492690622006.jpg',
                 password='password')
     demo2 = User(username='lindseycakez8t', email="czemlak@bauch.com",
                 avatar='https://instructables2.s3.amazonaws.com/robots.jpg',

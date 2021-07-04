@@ -11,7 +11,7 @@ import { StepBreak } from '../Break';
 import './Comments.css'
 import { authenticate } from '../../services/auth';
 
-function Comments({myRef}) {
+function Comments({ myRef }) {
   const dispatch = useDispatch()
   const [isLoaded, setIsLoaded] = useState(false)
   const commentsObj = useSelector((state) => state.comments)
@@ -62,12 +62,12 @@ function Comments({myRef}) {
                   <div className="toolbox-right">
                     {currentUser !== null && comment.user.id == currentUser.id && (
                       <>
-                        <a className="delete-btn-comments" onClick={() => { }}>Edit</a>
+                        {/* <a className="delete-btn-comments" onClick={() => { }}>Edit</a> */}
                         <a className="delete-btn-comments" onClick={() => { deleteComment(comment.id) }}>Delete</a>
                       </>
                     )}
-                    <button className="reply-btn">Reply</button>
-                    <button className="upvote-btn"><div className="upvote-arrow">▲</div> <div className="upvote-text">Upvote</div></button>
+                    {/* <button className="reply-btn">Reply</button>
+                    <button className="upvote-btn"><div className="upvote-arrow">▲</div> <div className="upvote-text">Upvote</div></button> */}
                   </div>
                 </div>
 
@@ -80,8 +80,8 @@ function Comments({myRef}) {
             ))}
             <div className="post-comment">
               <button onClick={handlePostComment} className="post-comment-btn">Post Comment</button>
-              {commentFormState && <CommentForm 
-              myRef={myRef} 
+              {commentFormState && <CommentForm
+                myRef={myRef}
               />}
             </div>
             {/* <StepBreak /> */}

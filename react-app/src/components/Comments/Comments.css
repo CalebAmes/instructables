@@ -28,7 +28,6 @@
 }
 
 .profile-img-comments {
-  cursor: pointer;
   object-fit: scale-down cover;
   width: 50px;
   height: 50px;
@@ -48,7 +47,6 @@
 }
 
 .profile-name-comments:hover {
-  cursor: pointer;
   color: #914e02;
   line-height: 24px;
   text-decoration: underline;

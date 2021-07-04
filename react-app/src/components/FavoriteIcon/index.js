@@ -16,18 +16,6 @@ function AddFavorite() {
   const users = Object.values(userItems)
   const favorites = Object.values(favoriteItems)
 
-
-  // useEffect(() => {
-  //   users.forEach((user) => {
-  //     (async () => {
-  //       const response = await fetch(`/api/users/favorites/${user.id}`);
-  //       const favorites = await response.json();
-  //       console.log(favorites)
-  //       return favorites
-  //     })();
-  //   }, []);
-  // })
-
   useEffect(() => {
     dispatch(getProjects())
     dispatch(getUsers())
